@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom"
+import axios from 'axios';
 import Toolbar from "./components/Toolbar/Toolbar";
 import Blog from "./components/Blog/Blog";
 
@@ -11,7 +12,7 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
+  /*componentWillMount() {
     fetch("http://localhost:3000/blogs")
       .then(response => response.json())
       .then(blogs => {
@@ -28,24 +29,27 @@ class App extends Component {
           this.setState({ blogs: this.state.blogs.concat([data]) });
         });
       });
+  }*/
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/blogs')
+      .then(res => this.setState({ blogs: res.data }))
   }
 
   render() {
     return (
       <Router>
         <div className="App">
+
           <div className="Toolbar">
             <Toolbar />
           </div>
+
           <Route exact path="/blogs" render={props => (
-
             <React.Fragment>
-
-              <div className="Blogs">
                 {this.state.blogs.map((blog, blogIndex) => (
                   <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} />
                 ))}
-              </div>
             </React.Fragment>
           )} />
 
@@ -53,12 +57,12 @@ class App extends Component {
             <React.Fragment>
               <h1>Start Page</h1>
             </React.Fragment>
-          )}/>
+          )} />
 
         </div>
       </Router>
-        );
-      }
-    }
-    
-    export default App;
+    );
+  }
+}
+
+export default App;
