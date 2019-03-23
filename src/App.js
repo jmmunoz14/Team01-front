@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import Toolbar from "./components/Toolbar/Toolbar";
 import Blog from "./components/Blog/Blog";
 
@@ -31,18 +32,33 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="Toolbar">
-          <Toolbar />
-        </div>
-        <div className="Blogs">
-          {this.state.blogs.map((blog, blogIndex) => (
-            <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} />
-          ))}
-        </div>
-      </div>
-    );
-  }
-}
+      <Router>
+        <div className="App">
+          <div className="Toolbar">
+            <Toolbar />
+          </div>
+          <Route exact path="/blogs" render={props => (
 
-export default App;
+            <React.Fragment>
+
+              <div className="Blogs">
+                {this.state.blogs.map((blog, blogIndex) => (
+                  <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} />
+                ))}
+              </div>
+            </React.Fragment>
+          )} />
+
+          <Route exact path="/" render={props => (
+            <React.Fragment>
+              <h1>Start Page</h1>
+            </React.Fragment>
+          )}/>
+
+        </div>
+      </Router>
+        );
+      }
+    }
+    
+    export default App;
