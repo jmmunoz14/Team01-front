@@ -18,7 +18,7 @@ export class Blogs extends Component {
                                 blog={blog}
                                 blogIndex={blogIndex}
                                 key={blogIndex}
-                                handleDeleteBlog={()=>handleDeleteBlog(blog._id)}
+                                handleDeleteBlog={()=>handleDeleteBlog(blog._id,blog.idChat)}
                                 
                                 />
                             ))}

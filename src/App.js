@@ -12,28 +12,57 @@ class App extends Component {
     super(props)
     this.state = {
       blogs: [],
-      materias: []
+      materias: [],
+      chats:[]
     }
   }
 
+  
   componentDidMount() {
     axios.get('http://localhost:3000/blogs')
       .then(res => this.setState({ blogs: res.data }))
 
     axios.get('http://localhost:3000/materias')
       .then(res => this.setState({ materias: res.data }))
+
+    axios.get('http://localhost:3000/chats')
+      .then(res => this.setState({ chats: res.data }))
   }
 
   handlePostBlog = (blog) => {
-    //console.log(blog)
-    axios.post('http://localhost:3000/blogs', blog)
+   //console.log(blog)
+    var chat= {
+      color: "#e786d1POST",
+    enabled: true,
+    comentarios: []
+  }
+    axios.post('http://localhost:3000/chats', chat)
+    .then(res => {
+      this.setState({ chats: [...this.state.chats, res.data] })
+      console.log(this.state.chats.length)
+      console.log(this.state.chats[this.state.chats.length-1].chatCreada._id)
+      var blognew={
+        titulo: blog.titulo,
+        descripcion: blog.descripcion,
+        idUsuario:blog.idUsuario,
+        date:blog.date,
+        idChat:this.state.chats[this.state.chats.length-1].chatCreada._id,
+        comentarios:[{idUsuario:blog.idUsuario,comentario:"tested"}]
+      }
+      axios.post('http://localhost:3000/blogs', blognew)
       .then(res => this.setState({ blogs: [...this.state.blogs, res.data] }))
+  })
+
+    
   }
 
-  handleDeleteBlog = (id) => {
+  handleDeleteBlog = (id,idChat) => {
     console.log(id)
     axios.delete(`http://localhost:3000/blogs/${id}`)
       .then(res => this.setState({ blogs: [...this.state.blogs.filter(blog => blog._id !== id)] }))
+
+      axios.delete(`http://localhost:3000/chats/${idChat}`)
+      .then(res => this.setState({ chats: [...this.state.chats.filter(chat => chat._id !== idChat)] }))
   }
 
   handlePutBlog = (blog, id) => {
@@ -76,13 +105,13 @@ class App extends Component {
 
           <Route exact path="/blogs" render={props => (
             <Fragment>
-              <Blogs blogs={blogs} handleDeleteBlog={id => this.handleDeleteBlog(id)} />
+              <Blogs blogs={blogs} handleDeleteBlog={(id,idChat) => this.handleDeleteBlog(id,idChat)} />
             </Fragment>
           )} />
 
           <Route exact path="/blogs/:id" render={props => (
             <Fragment>
-              <BlogDetail {...props} blogs={blogs} />
+              <BlogDetail {...props} />
             </Fragment>
           )} />
 

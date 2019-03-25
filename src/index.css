@@ -9,7 +9,26 @@ p.blogDesc{
     font-weight: 800;
     font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
     line-height: 1.2;
-    font-size: 24px;
+    font-size: 20px;
+    text-align: center!important;
+}
+
+p.coment{
+    font-weight: 1200;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-style: italic;
+    line-height: 2.4;
+    font-size: 14px;
+    text-align: center!important;
+}
+
+
+h4.blogDesc{
+    font-weight: 800;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+    font-size: 22px;
+    text-align: center!important;
 }
 
 p.mat{
@@ -41,4 +60,47 @@ a.blog
 a.blog:hover
 {
     color:#0085a1;
+}
+
+
+/* CSS Test begin */
+.comment-box {
+    margin-top: 30px !important;
+}
+/* CSS Test end */
+
+.comment-box img {
+    width: 50px;
+    height: 50px;
+}
+.comment-box .media-left {
+    padding-right: 10px;
+    width: 65px;
+}
+.comment-box .media-body p {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.comment-box .media-body .media p {
+    margin-bottom: 0;
+}
+.comment-box .media-heading {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 7px 10px;
+    position: relative;
+    margin-bottom: -1px;
+}
+.comment-box .media-heading:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-width: 1px 0 0 1px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 10px;
+    left: -6px;
 }
