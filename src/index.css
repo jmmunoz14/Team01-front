@@ -1,0 +1,44 @@
+h2.blog{
+    font-weight: 800;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+    font-size: 36px;
+}
+
+p.blogDesc{
+    font-weight: 800;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+    font-size: 24px;
+}
+
+p.mat{
+    font-weight: 800;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+    font-size: 18px;
+}
+
+h1.blog{
+    font-weight: 800;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+    font-size: 46px;
+    text-align: center!important;
+}
+
+p.blog{
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 0;
+    color: #868e96;
+}
+a.blog
+{
+    text-decoration: none;
+    color:#212529;
+}
+a.blog:hover
+{
+    color:#0085a1;
+}
