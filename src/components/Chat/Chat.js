@@ -8,7 +8,8 @@ export class Chat extends Component {
     this.state = {
       chat: {},
       comentLoad: false,
-      nuevoComentario: ""
+      nuevoComentario: "",
+      hovered: false
     };
   }
 
@@ -22,21 +23,29 @@ export class Chat extends Component {
 
   postComentario = comentario => {
     const { chat } = this.state;
-    chat.comentarios.push({ idUsuario: 100, comentario: comentario });
+    var colorr = chat.color;
+    if (comentario[0] === "#") {
+      colorr = comentario;
+    } else {
+      chat.comentarios.push({ idUsuario: 100, comentario: comentario });
+    }
     var newChat = {
       _id: chat._id,
-      color: chat.color,
+      color: colorr,
       enabled: chat.enabled,
       comentarios: chat.comentarios
     };
-    console.log(newChat);
     axios.put(`http://localhost:3000/chats/${chat._id}`, newChat).then(res => {
       this.setState({ chat: res.data });
-      console.log(res.data);
     });
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  onChangeColor = e => {
+    console.log(e.target.value);
+    this.postComentario(e.target.value);
+  };
 
   LightenDarkenColor = () => {
     var col = this.state.comentLoad ? this.state.chat.color : "#ffffff";
@@ -76,6 +85,31 @@ export class Chat extends Component {
           >
             Comentarios
           </h1>
+          <div className="row">
+            <div className="col-lg-3">
+              <h2
+                className="blog"
+                style={{ color: chat.color, textAlign: "center" }}
+              >
+                
+              </h2>
+            </div>
+            <div className="col-lg-6">
+              <input
+                style={{
+                  backgroundColor: chat.color,
+                  color: chat.color,
+                  border: "5px solid " + chat.color
+                }}
+                className="form-control colorpicker"
+                type="color"
+                name="chat.color"
+                onChange={this.onChangeColor}
+                value={this.state.chat.color}
+              />
+            </div>
+          </div>
+
           {comentLoad &&
             chat.comentarios.map((comentario, comentarioIndex) => (
               <Comentario comentario={comentario} key={comentarioIndex} />

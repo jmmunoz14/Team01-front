@@ -34,10 +34,10 @@ export class PutBlog extends Component {
                     </div>
                     <div className="row">
                         <div className="col-lg-4">
-                            <p className="blogDesc">Descripcion del Blog:</p>
+                            <p className="blogDesc">Descripcion del Blog (Puede Compilar MarkDown):</p>
                         </div>
                         <div className="col">
-                            <textarea onChange={this.onChange} value={descripcion} className="form-control" type="text" name="descripcion" id="PostDescripcion" />
+                            <textarea style={{height:"500px"}} onChange={this.onChange} value={descripcion} className="form-control" type="text" name="descripcion" id="PostDescripcion" />
                         </div>
                     </div>
                     <div className="row">

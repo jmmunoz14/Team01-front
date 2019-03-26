@@ -12,13 +12,19 @@ export class BlogDetail extends Component {
     };
   }
 
+  toMarkDown = () => {
+    var markdown = require("markdown").markdown;
+    var comentarioM = markdown.toHTML(this.state.blog.descripcion);
+    return comentarioM;
+  };
+
   componentDidMount() {
     axios
       .get("http://localhost:3000/blogs/" + this.props.match.params.id)
       .then(res => {
         this.setState({ blog: res.data });
         this.setState({ chatLoad: true });
-        //console.log(this.state.blog)
+        //console.log(this.state.blog)<p className="blogDesc">{blog.descripcion}</p>
       });
   }
   render() {
@@ -30,7 +36,9 @@ export class BlogDetail extends Component {
         </Link>
         <h1 className="blog">{blog.titulo}</h1>
 
-        <p className="blogDesc">{blog.descripcion}</p>
+        <div className="col-lg-8 col-md-10 mx-auto">
+          {chatLoad&&<div dangerouslySetInnerHTML={{ __html: this.toMarkDown() }} />}
+        </div>
         {chatLoad && <Chat idChat={blog.idChat} />}
       </div>
     );
