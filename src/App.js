@@ -90,8 +90,6 @@ class App extends Component {
       })
   }*/
 
-
-
   render() {
     const { blogs, materias } = this.state
     return (

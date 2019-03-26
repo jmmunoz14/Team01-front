@@ -6,8 +6,8 @@ export class Comentario extends Component {
         return (
             <Fragment>
                 <div className="container">
-                    <div className="row">
-                        <div className="media comment-box">
+                    <div className="row justify-content-center">
+                        <div className="media comment-box ">
                             <div className="media-left">
                                 <img alt="user" className="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></img>
                             </div>

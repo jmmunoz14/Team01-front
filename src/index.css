@@ -13,12 +13,12 @@ p.blogDesc{
     text-align: center!important;
 }
 
-p.coment{
+.coment{
     font-weight: 1200;
     font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
     font-style: italic;
     line-height: 2.4;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center!important;
 }
 
