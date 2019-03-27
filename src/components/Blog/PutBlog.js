@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 export class PutBlog extends Component {
     constructor(props) {
         super(props);
-        this.state = this.props.blogs.find(blog=>blog._id===this.props.match.params.id);
+        this.state = this.props.blogs.find(blog => blog._id === this.props.match.params.id);
     }
 
 
@@ -17,7 +17,7 @@ export class PutBlog extends Component {
     }
 
     render() {
-        
+
         const { materias, handlePutBlog } = this.props
         const { titulo, descripcion } = this.state
         return (
@@ -37,7 +37,7 @@ export class PutBlog extends Component {
                             <p className="blogDesc">Descripcion del Blog (Puede Compilar MarkDown):</p>
                         </div>
                         <div className="col">
-                            <textarea style={{height:"500px"}} onChange={this.onChange} value={descripcion} className="form-control" type="text" name="descripcion" id="PostDescripcion" />
+                            <textarea style={{ height: "500px" }} onChange={this.onChange} value={descripcion} className="form-control" type="text" name="descripcion" id="PostDescripcion" />
                         </div>
                     </div>
                     <div className="row">
@@ -51,7 +51,7 @@ export class PutBlog extends Component {
 
                         </div>
                     </div>
-                    <Link onClick={() => handlePutBlog({ titulo: titulo, descripcion: descripcion, date: " (Modified) "+this.getFecha() },this.props.match.params.id)} className="btn btn-success btn-lg btn-block" to="/blogs">Actualizar Blog</Link>
+                    <Link onClick={() => handlePutBlog({ titulo: titulo, descripcion: descripcion, date: " (Modified) " + this.getFecha() }, this.props.match.params.id)} className="btn btn-success btn-lg btn-block" to="/blogs">Actualizar Blog</Link>
 
                 </div>
             </div>

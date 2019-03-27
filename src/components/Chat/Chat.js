@@ -17,7 +17,7 @@ export class Chat extends Component {
     axios.get("http://localhost:3000/chats/" + this.props.idChat).then(res => {
       this.setState({ chat: res.data });
       this.setState({ comentLoad: true });
-      //console.log(this.state.chat)
+      // console.log(this.state.chat)
     });
   }
 
@@ -40,10 +40,12 @@ export class Chat extends Component {
     });
   };
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  onChange = e =>
+    this.setState({
+      [e.target.name]: e.target.value
+    });
 
   onChangeColor = e => {
-    console.log(e.target.value);
     this.postComentario(e.target.value);
   };
 
@@ -76,37 +78,17 @@ export class Chat extends Component {
     return (
       <Fragment>
         <div style={this.LightenDarkenColor()}>
-          <hr
-            style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }}
-          />
-          <h1
-            className="blog"
-            style={{ color: chat.color, textAlign: "center" }}
-          >
-            Comentarios
+          <hr style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }} />
+          <h1 className="blog" style={{ color: chat.color, textAlign: "center" }}>
+            {" "}Comentarios{" "}
           </h1>
           <div className="row">
             <div className="col-lg-3">
-              <h2
-                className="blog"
-                style={{ color: chat.color, textAlign: "center" }}
-              >
-                
-              </h2>
+              <h2 className="blog" style={{ color: chat.color, textAlign: "center" }} />
             </div>
             <div className="col-lg-6">
-              <input
-                style={{
-                  backgroundColor: chat.color,
-                  color: chat.color,
-                  border: "5px solid " + chat.color
-                }}
-                className="form-control colorpicker"
-                type="color"
-                name="chat.color"
-                onChange={this.onChangeColor}
-                value={this.state.chat.color}
-              />
+              <input style={{ backgroundColor: chat.color, color: chat.color, border: "5px solid " + chat.color }} className="form-control colorpicker"
+                type="color" name="chat.color" onChange={this.onChangeColor} value={this.state.chat.color} />
             </div>
           </div>
 
@@ -114,29 +96,13 @@ export class Chat extends Component {
             chat.comentarios.map((comentario, comentarioIndex) => (
               <Comentario comentario={comentario} key={comentarioIndex} />
             ))}
-          <hr
-            style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }}
-          />
-          <h1
-            className="blog"
-            style={{ color: chat.color, textAlign: "center" }}
-          >
+          <hr style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }} />
+          <h1 className="blog" style={{ color: chat.color, textAlign: "center" }}>
             Añadir Comentario
           </h1>
-          <hr
-            style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }}
-          />
-          <input
-            className="coment form-control"
-            type="text"
-            name="nuevoComentario"
-            value={nuevoComentario}
-            onChange={this.onChange}
-          />
-          <button
-            className="btn btn-success btn-lg btn-block"
-            onClick={() => this.postComentario(nuevoComentario)}
-          >
+          <hr style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }} />
+          <input className="coment form-control" type="text" name="nuevoComentario" value={nuevoComentario} onChange={this.onChange} />
+          <button className="btn btn-success btn-lg btn-block" onClick={() => this.postComentario(nuevoComentario)}>
             Añadir Nuevo Comentario
           </button>
         </div>
