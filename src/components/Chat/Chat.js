@@ -84,7 +84,7 @@ export class Chat extends Component {
           </h1>
           <div className="row">
             <div className="col-lg-3">
-              <h2 className="blog" style={{ color: chat.color, textAlign: "center" }} />
+              <h2 className="blog" style={{ color: chat.color, textAlign: "center" }}>ColorPicker----></h2>
             </div>
             <div className="col-lg-6">
               <input style={{ backgroundColor: chat.color, color: chat.color, border: "5px solid " + chat.color }} className="form-control colorpicker"

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 export default class Blog extends Component {
 
   render() {
-    const { blog,handleDeleteBlog } = this.props;
+    const { blog, handleDeleteBlog } = this.props;
     return (
       <React.Fragment>
         <div className="row">
@@ -21,12 +21,10 @@ export default class Blog extends Component {
             <Link className="blog" to="/">{" " + blog.idUsuario + " "}</Link>
               on {blog.date}</p>
           </div>
-
           <div className="col-lg-3">
             <button className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>Borrar</button>
-            <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/"+blog._id}>Actualizar</Link>
+            <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>Actualizar</Link>
           </div>
-
         </div>
         <hr>
         </hr>

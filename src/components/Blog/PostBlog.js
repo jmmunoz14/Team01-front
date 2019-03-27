@@ -1,14 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 export class PostBlog extends Component {
   constructor(props) {
     super(props);
     this.state = {
       titulo: "Nuevo Blog",
-      descripcion: "Descripcion Blog"
+      descripcion: "Descripcion Blog",
+      materias: [],
     };
   }
+
+  componentDidMount = () => {
+    axios
+      .get('http://localhost:3000/materias')
+      .then(res => this.setState({ materias: res.data }))
+  }
+
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   getFecha = () => {
@@ -18,8 +27,8 @@ export class PostBlog extends Component {
   };
 
   render() {
-    const { materias, handlePostBlog } = this.props;
-    const { titulo, descripcion } = this.state;
+    const { handlePostBlog } = this.props;
+    const { materias, titulo, descripcion } = this.state;
     return (
       <div className="row">
         <Link className="btn btn-warning blog btn-lg btn-block" to="/blogs">

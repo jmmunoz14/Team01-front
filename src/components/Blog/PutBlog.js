@@ -1,13 +1,30 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
+import axios from 'axios'
 
 export class PutBlog extends Component {
     constructor(props) {
         super(props);
-        this.state = this.props.blogs.find(blog => blog._id === this.props.match.params.id);
+        this.state = {
+            materias: [],
+            titulo: "",
+            descripcion: "",
+        }
     }
 
 
+    componentDidMount = () => {
+        axios
+            .get('http://localhost:3000/materias')
+            .then(res => this.setState({ materias: res.data }))
+
+        axios
+            .get('http://localhost:3000/blogs/' + this.props.match.params.id)
+            .then(res => {
+                this.setState({ titulo: res.data.titulo })
+                this.setState({ descripcion: res.data.descripcion })
+            })
+    }
 
     onChange = e => this.setState({ [e.target.name]: e.target.value })
     getFecha = () => {
@@ -18,10 +35,13 @@ export class PutBlog extends Component {
 
     render() {
 
-        const { materias, handlePutBlog } = this.props
-        const { titulo, descripcion } = this.state
+        const { handlePutBlog } = this.props
+        const { materias, titulo, descripcion } = this.state
         return (
             <div className="row">
+                <Link className="btn btn-warning blog btn-lg btn-block" to="/blogs">
+                    Return to blogs
+        </Link>
                 <div className="col-lg-8 col-md-10 mx-auto">
                     <h1 className="blog">Post new Blog</h1>
                     <div className="row">
