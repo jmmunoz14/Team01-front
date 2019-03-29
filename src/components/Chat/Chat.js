@@ -27,7 +27,7 @@ export class Chat extends Component {
     if (comentario[0] === "#") {
       colorr = comentario;
     } else {
-      chat.comentarios.push({ idUsuario: 100, comentario: comentario });
+      chat.comentarios.push({ idUsuario: localStorage.getItem("username"), comentario: comentario });
     }
     var newChat = {
       _id: chat._id,
@@ -101,9 +101,9 @@ export class Chat extends Component {
             Añadir Comentario
           </h1>
           <hr style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }} />
-          {localStorage.getItem("login")==="true"&&<React.Fragment><input className="coment form-control" type="text" name="nuevoComentario" value={nuevoComentario} onChange={this.onChange} />
-          <button className="btn btn-success btn-lg btn-block" onClick={() => this.postComentario(nuevoComentario)}>
-            Añadir Nuevo Comentario
+          {localStorage.getItem("login") === "true" && <React.Fragment><input placeHolder="Comentario.........." className="coment form-control" type="text" name="nuevoComentario" value={nuevoComentario} onChange={this.onChange} />
+            <button className="btn btn-success btn-lg btn-block" onClick={() => this.postComentario(nuevoComentario)}>
+              Añadir Nuevo Comentario
           </button></React.Fragment>}
         </div>
       </Fragment>

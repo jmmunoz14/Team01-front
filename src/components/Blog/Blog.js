@@ -1,14 +1,16 @@
-import React, { Component,useContext } from "react";
+import React, { Component, useContext } from "react";
 import { Link } from "react-router-dom"
 import UserContext from "../User/UserContext"
 
 class Blog extends Component {
-  
+
   componentDidMount = () => {
-    
-  
+
+
   }
-  
+  reload = () => {
+    window.location.reload()
+  }
 
   render() {
     const { blog, handleDeleteBlog } = this.props;
@@ -16,7 +18,7 @@ class Blog extends Component {
       <React.Fragment>
         <div className="row">
           <div className="col-lg-9">
-            <Link className="blog" to={"/blogs/" + blog._id}>
+            <Link className="blog" to={"/blogs/" + blog._id} onClick={this.reload}>
               <h2 className="blog">
                 {blog.titulo}
               </h2>
@@ -29,9 +31,9 @@ class Blog extends Component {
               on {blog.date}</p>
           </div>
           <div className="col-lg-3">
-            {localStorage.getItem("login")==="true"&&<React.Fragment>
-            <button className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>Borrar</button>
-            <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>Actualizar</Link></React.Fragment>}
+            {localStorage.getItem("login") === "true" && <React.Fragment>
+              <button className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>Borrar</button>
+              <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>Actualizar</Link></React.Fragment>}
           </div>
         </div>
         <hr>
@@ -40,5 +42,5 @@ class Blog extends Component {
     );
   }
 }
-Blog.contextType=UserContext;
+Blog.contextType = UserContext;
 export default Blog
