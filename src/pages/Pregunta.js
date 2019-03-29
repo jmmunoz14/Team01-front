@@ -45,15 +45,21 @@ class Pregunta extends Component {
     {
         this.setState({value: event.target.value});
     }
+
+    add (i)
+    {
+        return i +1;
+    }
     
     handleSubmit(event) 
     {
          if(this.state.value == this.state.preguntaas[this.state.currentQuestion].respuesta)
          {
-             this.setState({respuestasCorrectas : this.state.respuestasCorrectas+1})
+             this.setState( (respuestasCorrectas) => ({respuestasCorrectas:this.state.respuestasCorrectas + 1}),
+             () => {alert("Respuesta Correcta! \n numero de respuestas correctas: " + this.state.respuestasCorrectas);})
              
              console.log(this.state.currentQuestion)
-             alert('respuesta correcta! \n' + 'Numero de respuestas Correctas = '+ this.state.respuestasCorrectas)
+             
              if(this.state.currentQuestion<this.state.preguntaas.length-1)
              {
                 this.setState({currentQuestion : this.state.currentQuestion+1, value : ''})
