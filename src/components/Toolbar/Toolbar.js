@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom"
 
 const toolbar = props => (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-        <Link to="/" className="navbar-brand">MathG...</Link>
+    <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
+        <Link to="/" className="navbar-brand">The Math Games!</Link>
         <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
             <span className="navbar-toggler-icon"></span>
         </button>

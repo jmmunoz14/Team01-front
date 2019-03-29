@@ -50,8 +50,16 @@ class Pregunta extends Component {
          if(this.state.value == this.state.preguntaas[this.state.currentQuestion].respuesta)
          {
              alert('respuesta correcta')
-             console.log(this.state.preguntaas[this.state.currentQuestion].respuesta)
-             this.setState({currentQuestion : this.state.currentQuestion+1, value : ''})
+             console.log(this.state.currentQuestion)
+             if(this.state.currentQuestion<this.state.preguntaas.length-1)
+             {
+                this.setState({currentQuestion : this.state.currentQuestion+1, value : ''})
+             }
+             else{
+                alert('Fin de las preguntas, volviendo a empezar')
+                this.setState({currentQuestion : this.state.currentQuestion - this.state.currentQuestion, value : ''})
+             }
+             
 
          }
          else
@@ -78,7 +86,7 @@ class Pregunta extends Component {
                         </div>
                         <form onSubmit={this.handleSubmit}>
                             <label>
-                             <p>Respuesta:</p>
+                             <p className = 'respuestatext'>Respuesta:</p>
                                 <Input type="text" value={this.state.value} onChange={this.handleChange} />
                             </label>
                             <Button className='boton'>Submit</Button>
