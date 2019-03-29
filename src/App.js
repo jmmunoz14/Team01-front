@@ -4,13 +4,19 @@ import Toolbar from './components/Toolbar/Toolbar'
 import Blogs from './components/Blog/Blogs'
 import Partidas from './components/Partida/Partidas'
 import Pregunta from './components/Pregunta/Pregunta'
+
+import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Pregunta from './pages/Pregunta'
+import 'semantic-ui-css/semantic.min.css'
+
 class App extends Component {
 
   render() {
 
     return (
       <Router>
-        <div className='App'>
+        <Switch className='App'>
           <div className='Toolbar'>
             <Toolbar />
           </div>
@@ -44,8 +50,17 @@ class App extends Component {
             </Fragment>
           )}
           />
-        </div>
+
+            <Route  path='/quiz' component={Pregunta}/>
+
+        </Switch>
+
+        
+                  
+        
       </Router>
+
+      
     )
   }
 }
