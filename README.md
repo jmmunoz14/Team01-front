@@ -1,8 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
+Hello, with this project the user is able to:
+-Loging in
+-playing a quiz
+-Posting in a forum
+-Deleting Forum
+-commenting Forums
+-watching highcore
+### Installation
+To install this project, in the project directory, you can run:
 ### `npm Install`
 To install project dependencies.
 ### `npm start`
