@@ -51,7 +51,6 @@ export class PostPartida extends Component {
               {usuarios.map((usuario, usuarioIndex) => (
                 <p className="mat"><input type="radio" name="PostMaterias" id="PostMaterias" />{usuario.username}</p>
               ))}
-
             </div>
           </div>
           <Link onClick={() => handlePostPartida({
