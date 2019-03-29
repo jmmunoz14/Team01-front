@@ -176,7 +176,11 @@ desigualdad
     
     <div id="collapseThree41" class="collapse" role="tabpanel" aria-labelledby="headingThree41" data-parent="#accordionEx1">
       <div class="card-body">
-        
+      <img src="ecuaciones.png" className="icons" ></img>
+      <h1 className = 'textInside'>
+      Una ecuación es una igualdad matemática entre dos expresiones, denominadas miembros y separadas por el signo igual, en las que aparecen elementos conocidos o datos desconocidos o incógnitas, relacionados mediante operaciones matemáticas. 
+      Los valores conocidos pueden ser números, coeficientes o constantes; también variables o incluso objetos complejos como funciones o vectores, los elementos desconocidos pueden ser establecidos mediante otras ecuaciones de un sistema, o algún otro procedimiento de resolución de ecuaciones
+      </h1>
       </div>
     </div>
 
@@ -197,7 +201,10 @@ desigualdad
     
     <div id="collapseThree51" class="collapse" role="tabpanel" aria-labelledby="headingThree51" data-parent="#accordionEx1">
       <div class="card-body">
-        
+      <img src="trigonometricas.png" className="icons" ></img>
+      <h1 className = 'textInside'>En las ecuaciones trigonométricas intervienen funciones trigonométricas, que son periódicas y por tanto sus soluciones se pueden presentar en uno o en dos cuadrantes y además se repiten en todas las vueltas.
+
+Para resolver una ecuación trigonométrica haremos las transformaciones necesarias para trabajar con una sola función trigonométrica, para ello utilizaremos las identidades trigonométricas fundamentales.</h1>
       </div>
     </div>
 
@@ -218,7 +225,10 @@ desigualdad
     
     <div id="collapseThree61" class="collapse" role="tabpanel" aria-labelledby="headingThree61" data-parent="#accordionEx1">
       <div class="card-body">
-        
+      <img src="pencil.png" className="icons" ></img>
+      <h1 className = 'textInside'>La integración es un concepto fundamental del cálculo y del análisis matemático. Básicamente, una integral es una generalización de la suma de infinitos sumandos, infinitamente pequeños.
+
+El cálculo integral, encuadrado en el cálculo infinitesimal, es una rama de las matemáticas en el proceso de integración o antiderivación. Es muy común en la ingeniería y en la ciencia; se utiliza principalmente para el cálculo de áreas y volúmenes de regiones y sólidos de revolución.</h1>
       </div>
     </div>
 
