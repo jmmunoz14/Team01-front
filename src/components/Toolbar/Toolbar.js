@@ -13,9 +13,7 @@ export class Toolbar extends Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/home">Home</Link>
-                        </li>
+                        
                         <li className="nav-item">
                             <Link className="nav-link" to="/blogs">Blogs</Link>
                         </li>

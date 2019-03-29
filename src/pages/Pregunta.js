@@ -16,7 +16,8 @@ class Pregunta extends Component {
                 respuesta:''}
 
             ],
-            currentQuestion : 0
+            currentQuestion : 0,
+            respuestasCorrectas: 0
             
         }
         this.handleChange = this.handleChange.bind(this);
@@ -49,8 +50,10 @@ class Pregunta extends Component {
     {
          if(this.state.value == this.state.preguntaas[this.state.currentQuestion].respuesta)
          {
-             alert('respuesta correcta')
+             this.setState({respuestasCorrectas : this.state.respuestasCorrectas+1})
+             alert('respuesta correcta! \n' + 'Numero de respuestas Correctas = '+ this.state.respuestasCorrectas)
              console.log(this.state.currentQuestion)
+             
              if(this.state.currentQuestion<this.state.preguntaas.length-1)
              {
                 this.setState({currentQuestion : this.state.currentQuestion+1, value : ''})
@@ -58,6 +61,7 @@ class Pregunta extends Component {
              else{
                 alert('Fin de las preguntas, volviendo a empezar')
                 this.setState({currentQuestion : this.state.currentQuestion - this.state.currentQuestion, value : ''})
+                this.setState({respuestasCorrectas : this.state.respuestasCorrectas - this.state.respuestasCorrectas , value : ''})
              }
              
 
