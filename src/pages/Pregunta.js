@@ -1,8 +1,9 @@
 import React, { Component} from 'react'
 import {origen} from '../helper/config.js'
+import { Button } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
 
 
-let data = []
 class Pregunta extends Component {
     constructor(props) {
         super(props);
@@ -50,7 +51,8 @@ class Pregunta extends Component {
          {
              alert('respuesta correcta')
              console.log(this.state.preguntaas[this.state.currentQuestion].respuesta)
-             this.setState({currentQuestion : this.state.currentQuestion+1})
+             this.setState({currentQuestion : this.state.currentQuestion+1, value : ''})
+
          }
          else
          {
@@ -62,7 +64,7 @@ class Pregunta extends Component {
 
     render(){
         return(
-            <div>
+            <div className ='todo'>
                 <div className = 'quiz'>
                     Quíz
                 </div>
@@ -77,14 +79,12 @@ class Pregunta extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <label>
                              <p>Respuesta:</p>
-                                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                                <Input type="text" value={this.state.value} onChange={this.handleChange} />
                             </label>
-                                <input type="submit" value="Submit" />
+                            <Button className='boton'>Submit</Button>
                         </form>
                     </div>
                 </div>
-                 
-                
                  
             </div>
             
