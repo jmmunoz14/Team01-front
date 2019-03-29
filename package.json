@@ -12,12 +12,9 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-<<<<<<< HEAD
-    "typescript": "^3.3.4000"
-=======
+    "typescript": "^3.3.4000",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0"
->>>>>>> 05408ea8f740d6775a4e35911d23639f6efffa3e
   },
   "scripts": {
     "start": "react-scripts start",

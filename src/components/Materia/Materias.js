@@ -8,7 +8,7 @@ export class Materias extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            habilidades: [],
+            materias : [],
         }
     }
 
@@ -20,10 +20,14 @@ export class Materias extends Component{
                 <div className="card">
                     <div className="card-body">
                         <div className="subject-picture">
-                            <img src="/images/Integral-icon.png"/>
+                            <img src="/images/Integral-icon.png" width= "80em"/>
                         </div>
                         <div className="card-title">
                             {materia.name}
+                        </div>
+                        <div className="card-text">
+                            Esta es la descripcion de una materia. Con nuetra pagina, podras mejorar tu renimiento en esta amteria
+                            
                         </div>
                         
                     </div>
@@ -32,34 +36,34 @@ export class Materias extends Component{
 
         );
     }
-    getMaterias(){
-        var ret= [];
-        axios.get("http://localhost:3001/materias/").then(res => {
-            ret = list(res);
+    getMaterias(callback){
+        axios.get("http://localhost:3000/materias/").then(res => {
+            this.setState({materias: res.data});          
         });
-        return ret;
+
     }
 
     render(){
-        const materias = list(this.getMaterias());
+        this.getMaterias();
         const cards = [];
-        for(var materia of materias) { 
-            cards.push(<li>{this.renderMateria(materia)}</li>)
-        }
-        return(
-            <Fragment>
-                <ul>
-                    {cards}
-                </ul> 
-                <Route exact path={`${match.path}/:id`} render={props => (
-                        <Fragment>
-                            <BlogDetail {...props} />
-                        </Fragment>
-                    )}
-                />
-            
-            </Fragment>
-        );
+            for(var materia of this.state.materias) { 
+                cards.push(<li>{this.renderMateria(materia)}</li>)
+            }
+            return(
+                <Fragment>
+                    <ul>
+                        {cards}
+                    </ul> 
+                    {/* <Route exact path={`${match.path}/:id`} render={props => (
+                            <Fragment>
+                                <BlogDetail {...props} />
+                            </Fragment>
+                        )}
+                    /> */}
+                
+                </Fragment>
+            );
+        
     }
 } 
 

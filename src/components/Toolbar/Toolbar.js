@@ -23,6 +23,10 @@ export class Toolbar extends Component {
                         <li className="nav-item">
                             <Link className="nav-link" to="/quiz">Preguntas</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/materias">Materias</Link>
+                        </li>
+
                     </ul>
                     <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="#" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
