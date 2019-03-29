@@ -35,7 +35,7 @@ export class PostBlog extends Component {
           Return to blogs
         </Link>
         <div className="col-lg-8 col-md-10 mx-auto">
-          <h1 className="blog">Post new Blog</h1>
+          <h1 className="blog">Post Blog</h1>
           <div className="row">
             <div className="col-lg-4">
               <p className="blogDesc">Titulo del Blog:</p>
