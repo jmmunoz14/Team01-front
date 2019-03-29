@@ -103,7 +103,8 @@ class Habilidad extends Component {
       <div class="card-body">
       <img src="protractor.png" className="icons" ></img>
       <h1 className = 'textInside'>En geometría, el ángulo puede ser definido como la parte del plano determinada por dos semirrectas llamadas lados que tienen el mismo punto de origen llamado vértice del ángulo.
-La medida de un ángulo es considerada como la longitud del arco de circunferencia centrada en el vértice y delimitada por sus lados. Su medida es un múltiplo de la razón entre la longitud del arco y el radio. Su unidad natural es el radián, pero también se puede utilizar el grado sexagesimal o el grado centesimal.</h1>
+La medida de un ángulo es considerada como la longitud del arco de circunferencia centrada en el vértice y delimitada por sus lados. Su medida es un múltiplo de la razón entre la longitud del arco y el radio. 
+Su unidad natural es el radián, pero también se puede utilizar el grado sexagesimal o el grado centesimal.</h1>
       </div>
     </div>
 
@@ -126,7 +127,10 @@ La medida de un ángulo es considerada como la longitud del arco de circunferenc
     
     <div id="collapseTwo21" class="collapse" role="tabpanel" aria-labelledby="headingTwo21" data-parent="#accordionEx1">
       <div class="card-body">
-        
+      <img src="pencil.png" className="icons" ></img>
+      <h1 className = 'textInside'>En matemáticas, la derivada de una función mide la rapidez con la que cambia el valor de dicha función matemática, según cambie el valor de su variable independiente. 
+      La derivada de una función es un concepto local, es decir, se calcula como el límite de la rapidez de cambio media de la función en cierto intervalo, cuando el intervalo considerado para la variable independiente se torna cada vez más pequeño. 
+      Por ello se habla del valor de la derivada de una función en un punto dado.</h1>
       </div>
     </div>
 
@@ -147,7 +151,11 @@ La medida de un ángulo es considerada como la longitud del arco de circunferenc
     
     <div id="collapseThree31" class="collapse" role="tabpanel" aria-labelledby="headingThree31" data-parent="#accordionEx1">
       <div class="card-body">
-        
+      <img src="desigualdades.png" className="icons" ></img>
+      <h1 className = 'textInside'>En matemáticas, una
+desigualdad
+ es una relación de orden que se da entre dos valores cuando éstos son distintos (en caso de ser iguales, lo que se tiene es una igualdad). 
+ Si los valores en cuestión son elementos de un conjunto ordenado, como los enteros o los reales, entonces pueden ser comparados</h1>
       </div>
     </div>
 
