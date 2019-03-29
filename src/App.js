@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Toolbar from './components/Toolbar/Toolbar'
 import Blogs from './components/Blog/Blogs'
 import Partidas from './components/Partida/Partidas'
-import Pregunta from './components/Pregunta/Pregunta'
+import Pregunta from './pages/Pregunta'
 
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
