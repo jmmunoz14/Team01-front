@@ -10,6 +10,9 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import 'semantic-ui-css/semantic.min.css'
+import Materias from './components/Materia/Materias';
+
+
 class App extends Component {
 
     constructor(props) {
@@ -52,6 +55,12 @@ class App extends Component {
           <Route path='/partidas' render={props => (
             <Fragment>
               <Partidas {...props} />
+            </Fragment>
+          )}
+          />
+          <Route path='/materias' render={props => (
+            <Fragment>
+              <Materias {...props} />
             </Fragment>
           )}
           />

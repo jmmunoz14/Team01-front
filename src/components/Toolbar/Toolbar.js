@@ -83,6 +83,9 @@ export class Toolbar extends Component {
                         <li className="nav-item">
                             <Link className="nav-link" to="/quiz">Preguntas</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/materias">Materias</Link>
+                        </li>
                         {localStorage.getItem("login")==="true"&&<li className="nav-item">
                             <p className="nav-link blog" to="/">{"Bienvenido "+localStorage.getItem("username")}</p>
                         </li>}

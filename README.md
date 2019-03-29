@@ -1,13 +1,25 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
+Hello, with this project the user is able to:
+* Log in
+* play a quiz
+* Post in a blog
+* Delete a blog
+* comment in blogs
+* watch the highestcore
+* See the subjects that the app will help him/her on.
+### Installation
+To install this project, in the project directory, you can run:
+### `npm Install`
+To install project dependencies.
 ### `npm start`
 
+### `WARNING`
+It is very important to run first the back of this project, after that you should start the front, React will ask you if you wish
+to Run it on another port since 3000 is already in use, type 'yes'.
+
 Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
