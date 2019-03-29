@@ -50,7 +50,9 @@ class App extends Component {
 
           <Route exact path='/' render={props => (
             <Fragment>
-              <h1>Start Page</h1>
+              <img src="mathicon.png" className="mainImage" ></img>
+              <h1 className='welcome'> Bienvenido a </h1>
+              <h1 className='welcome2'>The Math Games</h1>
             </Fragment>
           )}
           />

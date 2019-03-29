@@ -35,9 +35,34 @@
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 
 }
+.mainImage
+{
+  width: 500px;
+  height: calc(100% - 47px);
+  margin-top: 47px;
+  border-radius: 50%;
+  padding:10px;
+  border:10px solid #a89631;
+  background-color:rgb(255, 255, 175);
+}
 /* change the background color */
 .navbar-custom {
   background-color: #FFDE5C;
+}
+.welcome{
+  font-weight: 800;
+  line-height: 1.2;
+  font-size: 25px;
+  text-justify: inter-word;
+  font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+.welcome2{
+  color: #e0a80b;
+  font-weight: 800;
+  line-height: 1.2;
+  font-size: 36px;
+  text-justify: inter-word;
+  font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
