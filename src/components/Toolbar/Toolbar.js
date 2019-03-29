@@ -6,8 +6,8 @@ export class Toolbar extends Component {
     render() {
 
         return (
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-                <Link to="/" className="navbar-brand">MathG...</Link>
+            <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
+        <Link to="/" className="navbar-brand">The Math Games!</Link>
                 <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -23,7 +23,7 @@ export class Toolbar extends Component {
                             <Link className="nav-link" to="/partidas">Partidas</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/preguntas">Preguntas</Link>
+                            <Link className="nav-link" to="/quiz">Preguntas</Link>
                         </li>
                     </ul>
                     <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
