@@ -16,7 +16,7 @@ export class Materias extends Component{
         var ref = "/materias/" + String(materia.id);
 
         return (
-            <a href= {ref}>
+            
                 <div className="card">
                     <div className="card-body">
                         <div className="subject-picture">
@@ -26,13 +26,13 @@ export class Materias extends Component{
                             {materia.name}
                         </div>
                         <div className="card-text">
-                            Esta es la descripcion de una materia. Con nuetra pagina, podras mejorar tu renimiento en esta amteria
-                            
+                            Esta es la descripcion de una materia. Con nuetra pagina, podras mejorar tu renimiento en esta materia.
+                    
                         </div>
                         
                     </div>
                 </div>
-            </a>
+     
 
         );
     }
