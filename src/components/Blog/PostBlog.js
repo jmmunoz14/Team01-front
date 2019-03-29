@@ -31,8 +31,8 @@ export class PostBlog extends Component {
     const { materias, titulo, descripcion } = this.state;
     return (
       <div className="row">
-        <Link className="btn btn-warning blog btn-lg btn-block" to="/blogs">
-          Return to blogs
+        <Link className="btn btn-danger blog btn-lg btn-block" to="/blogs">
+          Cancelar
         </Link>
         <div className="col-lg-8 col-md-10 mx-auto">
           <h1 className="blog">Post Blog</h1>

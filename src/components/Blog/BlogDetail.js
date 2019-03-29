@@ -31,8 +31,8 @@ export class BlogDetail extends Component {
     const { blog, chatLoad } = this.state;
     return (
       <div>
-        <Link className="btn btn-warning blog btn-lg btn-block" to="/blogs">
-          Return to blogs
+        <Link className="btn btn-info blog btn-lg btn-block" to="/blogs">
+          Esconder Detalle
         </Link>
         <h1 className="blog">{blog.titulo}</h1>
 
