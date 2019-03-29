@@ -13,7 +13,9 @@ class Pregunta extends Component {
                 {id:'',
                 materia:'',
                 respuesta:''}
-            ]
+
+            ],
+            currentQuestion : 0
             
         }
         this.handleChange = this.handleChange.bind(this);
@@ -61,7 +63,7 @@ class Pregunta extends Component {
         return(
             <div>
                 <div className = 'quiz'>
-                    quiz
+                    Quíz
                 </div>
             
                 <div className="card">
