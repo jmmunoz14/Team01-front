@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Toolbar from './components/Toolbar/Toolbar'
 import Blogs from './components/Blog/Blogs'
 import Partidas from './components/Partida/Partidas'
-import Pregunta from './components/Pregunta/Pregunta'
+import Pregunta from './pages/Pregunta'
+
+import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+import 'semantic-ui-css/semantic.min.css'
+
 class App extends Component {
 
   render() {
@@ -22,7 +27,7 @@ class App extends Component {
           )}
           />
 
-          <Route exact path='/preguntas' component={Pregunta} />
+
 
           <Route path='/blogs' render={props => (
             <Fragment>
@@ -44,8 +49,23 @@ class App extends Component {
             </Fragment>
           )}
           />
+          
+          <Route  path='/quiz' render={props => (
+            <Fragment>
+              <Pregunta/>
+            </Fragment>
+          )}
+          />
+            
+
         </div>
+
+        
+                  
+        
       </Router>
+
+      
     )
   }
 }
