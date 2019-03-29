@@ -101,7 +101,6 @@ export class Blogs extends Component {
                     </Fragment>
                 )}
                 />
-
                 <Route exact path='/blogs/api/put/:id' render={props => (
                     <Fragment>
                         <PutBlog {...props} handlePutBlog={(blog, id) => this.handlePutBlog(blog, id)} />

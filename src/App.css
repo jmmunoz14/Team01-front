@@ -35,6 +35,22 @@
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 
 }
+.textInside{
+  font-weight: 800;
+  line-height: 1.2;
+  font-size: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+  font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  color: #505050;
+}
+.icons{
+  width: 150px;
+  height: calc(100% - 47px);
+  margin-top: 47px;
+  border:10px solid #e6e6e6;
+  
+}
 .mainImage
 {
   width: 500px;
