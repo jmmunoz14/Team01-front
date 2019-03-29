@@ -51,9 +51,9 @@ class Pregunta extends Component {
          if(this.state.value == this.state.preguntaas[this.state.currentQuestion].respuesta)
          {
              this.setState({respuestasCorrectas : this.state.respuestasCorrectas+1})
-             alert('respuesta correcta! \n' + 'Numero de respuestas Correctas = '+ this.state.respuestasCorrectas)
-             console.log(this.state.currentQuestion)
              
+             console.log(this.state.currentQuestion)
+             alert('respuesta correcta! \n' + 'Numero de respuestas Correctas = '+ this.state.respuestasCorrectas)
              if(this.state.currentQuestion<this.state.preguntaas.length-1)
              {
                 this.setState({currentQuestion : this.state.currentQuestion+1, value : ''})
