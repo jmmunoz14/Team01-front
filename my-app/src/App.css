@@ -1,0 +1,58 @@
+.App {
+  text-align: center;
+}
+.card {
+  padding: 50px;
+  position: absolute;
+  margin-top: 10%;
+  margin-left:20%;
+}
+.preguntaText {
+  font-size: 30px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+.quiz {
+  font-size: 50px;
+  border-radius: 25px;
+  background: #FFDD30;
+  padding: 2px;
+  padding-left: 9%; 
+  width: 350px;
+  height: 80px; 
+  position: absolute;
+  margin-top:2%;
+  margin-left:35%;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+.titulo {
+  font-size: 50px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
