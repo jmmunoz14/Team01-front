@@ -1,11 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Hello, with this project the user is able to:
-* Log in
+* Log in (user:test2 password:test2 for easy testing)
 * play a quiz
-* Post in a blog
-* Delete a blog
-* comment in blogs
+* Post in a blog when loged in
+* Delete a blog when loged in
+* comment in blogs when loged in
 * watch the highestcore
 * See the subjects that the app will help him/her on.
 ### Installation
