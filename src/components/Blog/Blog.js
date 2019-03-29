@@ -1,7 +1,14 @@
-import React, { Component } from "react";
+import React, { Component,useContext } from "react";
 import { Link } from "react-router-dom"
+import UserContext from "../User/UserContext"
 
-export default class Blog extends Component {
+class Blog extends Component {
+  
+  componentDidMount = () => {
+    
+  
+  }
+  
 
   render() {
     const { blog, handleDeleteBlog } = this.props;
@@ -32,3 +39,5 @@ export default class Blog extends Component {
     );
   }
 }
+Blog.contextType=UserContext;
+export default Blog
