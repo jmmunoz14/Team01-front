@@ -46,15 +46,16 @@ class Pregunta extends Component {
     
     handleSubmit(event) 
     {
-         if(this.state.value == this.state.preguntaas[0].respuesta)
+         if(this.state.value == this.state.preguntaas[this.state.currentQuestion].respuesta)
          {
              alert('respuesta correcta')
-             console.log(this.state.preguntaas[0].respuesta)
+             console.log(this.state.preguntaas[this.state.currentQuestion].respuesta)
+             this.setState({currentQuestion : this.state.currentQuestion+1})
          }
          else
          {
             alert('respuesta incorrecta')
-            console.log(this.state.preguntaas[0].respuesta)
+            console.log(this.state.preguntaas[this.state.currentQuestion].respuesta)
          }
         event.preventDefault();
     }
@@ -71,7 +72,7 @@ class Pregunta extends Component {
                         <h5 className="card-title">Pregunta:</h5>
                         
                         <div className = 'preguntaText'>
-                        <p className="card-text">{this.state.preguntaas[0].enunciado}</p>
+                        <p className="card-text">{this.state.preguntaas[this.state.currentQuestion].enunciado}</p>
                         </div>
                         <form onSubmit={this.handleSubmit}>
                             <label>
