@@ -101,10 +101,10 @@ export class Chat extends Component {
             Añadir Comentario
           </h1>
           <hr style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }} />
-          <input className="coment form-control" type="text" name="nuevoComentario" value={nuevoComentario} onChange={this.onChange} />
+          {localStorage.getItem("login")==="true"&&<React.Fragment><input className="coment form-control" type="text" name="nuevoComentario" value={nuevoComentario} onChange={this.onChange} />
           <button className="btn btn-success btn-lg btn-block" onClick={() => this.postComentario(nuevoComentario)}>
             Añadir Nuevo Comentario
-          </button>
+          </button></React.Fragment>}
         </div>
       </Fragment>
     );

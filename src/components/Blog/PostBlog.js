@@ -65,7 +65,7 @@ export class PostBlog extends Component {
           </div>
           <Link onClick={() => handlePostBlog({
             titulo: titulo, descripcion: descripcion, date: this.getFecha(),
-            idUsuario: 100
+            idUsuario: localStorage.getItem("username")+""
           })
           }
             className="btn btn-success btn-lg btn-block" to="/blogs">

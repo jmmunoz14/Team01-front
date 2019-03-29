@@ -29,8 +29,9 @@ class Blog extends Component {
               on {blog.date}</p>
           </div>
           <div className="col-lg-3">
+            {localStorage.getItem("login")==="true"&&<React.Fragment>
             <button className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>Borrar</button>
-            <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>Actualizar</Link>
+            <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>Actualizar</Link></React.Fragment>}
           </div>
         </div>
         <hr>

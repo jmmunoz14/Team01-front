@@ -29,6 +29,7 @@ export class Blogs extends Component {
     }
 
     handlePostBlog = blog => {
+        console.log(localStorage.getItem("id"))
         // console.log(blog)
         var chat = {
             color: '#e786d1POST',
@@ -47,7 +48,10 @@ export class Blogs extends Component {
             }
             axios
                 .post('http://localhost:3000/blogs', blognew)
-                .then(res => this.setState({ blogs: [...this.state.blogs, res.data] }))
+                .then(res => {
+                    this.setState({ blogs: [...this.state.blogs, res.data] })
+                window.location.reload();
+            })
         })
     }
 
@@ -84,7 +88,7 @@ export class Blogs extends Component {
                         <div className="col-lg-8 col-md-10 mx-auto">
                             {blogs.map((blog, blogIndex) => (
                                 <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />))}
-                            <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">Añadir Nuevo Blog</Link>
+                            {localStorage.getItem("login")==="true"&&<Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">Añadir Nuevo Blog</Link>}
                         </div>
                     </div>
                 </div>
