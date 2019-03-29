@@ -8,6 +8,7 @@ export class Toolbar extends Component {
         this.state = {
           user: "",
           password: "",
+          email:"",
           usuario:[]
         };
       }//.filter(usuario=>usuario.username===this.state.username)
@@ -54,6 +55,22 @@ export class Toolbar extends Component {
     })
         
     }
+    registerUser = (e)=>{
+        e.preventDefault();
+        axios
+      .post('http://localhost:3000/api/register',{id:(Math.random() * 10000000000) +200,email:this.state.email,username:this.state.user,password:this.state.password})
+      .then(res => {
+        console.log(res.data)  
+        alert("Usuario Creado, puede hacer Log in")
+        window.location.reload();
+        
+        this.setState({ usuario: res.data })}).catch(err=>{
+            alert(err.response.data)
+            console.log(err.response.data)
+        })
+
+
+    }
     setLogin=(login)=>{
         localStorage.setItem("login",login?"true":"false")
         localStorage.setItem("username","")
@@ -91,7 +108,30 @@ export class Toolbar extends Component {
                         </li>}
                         {localStorage.getItem("login")==="true"&&<button onClick={()=>this.setLogin(false)}>Logout</button>}
                     </ul>
-                    
+                    {localStorage.getItem("login")==="false"&&<ul className="nav navbar-nav flex-row justify-content-between ml-auto">
+                        <li className="nav-item order-3 order-md-5"><a  className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
+                        <li className="dropdown order-3">
+                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary dropdown-toggle">Register <span className="caret"></span></button>
+                            <ul className="dropdown-menu dropdown-menu-right mt-2">
+                                <li className="px-3 py-2">
+                                    <form className="form" role="form" onSubmit={this.registerUser}>
+                                        <div className="form-group">
+                                            <input placeholder="UserName" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="user" value={this.state.user} />
+                                        </div>
+                                        <div className="form-group">
+                                            <input placeholder="Email" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="email" value={this.state.email} />
+                                        </div>
+                                        <div className="form-group">
+                                            <input id="passwordInput" placeholder="New Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password}/>
+                                        </div>
+                                        <div className="form-group">
+                                            <button type="submit" className="btn btn-primary btn-block">Login</button>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>}
                     {localStorage.getItem("login")==="false"&&<ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a  className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
