@@ -3,10 +3,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Hello, with this project the user is able to:
 * Log in
 * play a quiz
-* Post in a blof
+* Post in a blog
 * Delete a blog
 * comment in blogs
 * watch the highestcore
+* See the subjects that the app will help him/her on.
 ### Installation
 To install this project, in the project directory, you can run:
 ### `npm Install`
