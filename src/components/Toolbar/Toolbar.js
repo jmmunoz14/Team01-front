@@ -6,75 +6,74 @@ export class Toolbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          user: "",
-          password: "",
-          email:"",
-          usuario:[]
+            user: "",
+            password: "",
+            email: "",
+            usuario: []
         };
-      }//.filter(usuario=>usuario.username===this.state.username)
-      
+    }//.filter(usuario=>usuario.username===this.state.username)
+
     setLogedUser = (e) => {
         e.preventDefault();
         axios
-      .get('http://localhost:3000/api/obtainall')
-      .then(res => {
-          const use=res.data.filter(usuario=>usuario.username===this.state.user)[0]
-          if(use)
-          {
-              this.setState({ usuario: use })
-              console.log(this.state.usuario)
-            if(this.state.usuario.password===this.state.password){
-                localStorage.setItem("username",this.state.user)
-                localStorage.setItem("user",this.state.usuario)
-                localStorage.setItem("login","true")
-                localStorage.setItem("id",this.state.usuario._id)
-                console.log(this.state.usuario._id)
-                console.log("Todobien")
-                
-            }
-            else
-            {
-                localStorage.setItem("login","false")
-                console.log("PassIncorrecto")
-                alert("Usuario o Password Incorrectos")
-                localStorage.setItem("username","")
-                localStorage.setItem("id","")
-                
-            }
-        }else{
-            console.log("usuario Inva")
-            alert("Usuario o Password Incorrectos")
-            localStorage.setItem("login","false")
-            localStorage.setItem("username","")
-            localStorage.setItem("id","")
+            .get('http://localhost:3000/api/obtainall')
+            .then(res => {
+                const use = res.data.filter(usuario => usuario.username === this.state.user)[0]
+                if (use) {
+                    this.setState({ usuario: use })
+                    console.log(this.state.usuario)
+                    if (this.state.usuario.password === this.state.password) {
+                        localStorage.setItem("username", this.state.user)
+                        localStorage.setItem("user", this.state.usuario)
+                        localStorage.setItem("login", "true")
+                        localStorage.setItem("id", this.state.usuario._id)
+                        console.log(this.state.usuario._id)
+                        console.log("Todobien")
 
-        }
-        window.location.reload();
-          
-          
-    })
-        
+                    }
+                    else {
+                        localStorage.setItem("login", "false")
+                        console.log("PassIncorrecto")
+                        alert("Usuario o Password Incorrectos")
+                        localStorage.setItem("username", "")
+                        localStorage.setItem("id", "")
+
+                    }
+                } else {
+                    console.log("usuario Inva")
+                    alert("Usuario o Password Incorrectos")
+                    localStorage.setItem("login", "false")
+                    localStorage.setItem("username", "")
+                    localStorage.setItem("id", "")
+
+                }
+                window.location.reload();
+
+
+            })
+
     }
-    registerUser = (e)=>{
+    registerUser = (e) => {
         e.preventDefault();
         axios
-      .post('http://localhost:3000/api/register',{id:(Math.random() * 10000000000) +200,email:this.state.email,username:this.state.user,password:this.state.password})
-      .then(res => {
-        console.log(res.data)  
-        alert("Usuario Creado, puede hacer Log in")
-        window.location.reload();
-        
-        this.setState({ usuario: res.data })}).catch(err=>{
-            alert(err.response.data)
-            console.log(err.response.data)
-        })
+            .post('http://localhost:3000/api/register', { id: (Math.random() * 10000000000) + 200, email: this.state.email, username: this.state.user, password: this.state.password })
+            .then(res => {
+                console.log(res.data)
+                alert("Usuario Creado, puede hacer Log in")
+                window.location.reload();
+
+                this.setState({ usuario: res.data })
+            }).catch(err => {
+                alert(err.response.data)
+                console.log(err.response.data)
+            })
 
 
     }
-    setLogin=(login)=>{
-        localStorage.setItem("login",login?"true":"false")
-        localStorage.setItem("username","")
-        localStorage.setItem("id","")
+    setLogin = (login) => {
+        localStorage.setItem("login", login ? "true" : "false")
+        localStorage.setItem("username", "")
+        localStorage.setItem("id", "")
         window.location.reload();
     }
     onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -103,13 +102,13 @@ export class Toolbar extends Component {
                         <li className="nav-item">
                             <Link className="nav-link" to="/materias">Materias</Link>
                         </li>
-                        {localStorage.getItem("login")==="true"&&<li className="nav-item">
-                            <p className="nav-link blog" to="/">{"Bienvenido "+localStorage.getItem("username")}</p>
+                        {localStorage.getItem("login") === "true" && <li className="nav-item">
+                            <p className="nav-link blog" to="/">{"Bienvenido " + localStorage.getItem("username")}</p>
                         </li>}
-                        {localStorage.getItem("login")==="true"&&<button onClick={()=>this.setLogin(false)}>Logout</button>}
+                        {localStorage.getItem("login") === "true" && <button onClick={() => this.setLogin(false)}>Logout</button>}
                     </ul>
-                    {localStorage.getItem("login")==="false"&&<ul className="nav navbar-nav flex-row justify-content-between ml-auto">
-                        <li className="nav-item order-3 order-md-5"><a  className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
+                    {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
+                        <li className="nav-item order-3 order-md-5"><a className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
                             <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary dropdown-toggle">Register <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
@@ -122,18 +121,18 @@ export class Toolbar extends Component {
                                             <input placeholder="Email" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="email" value={this.state.email} />
                                         </div>
                                         <div className="form-group">
-                                            <input id="passwordInput" placeholder="New Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password}/>
+                                            <input id="passwordInput" placeholder="New Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-primary btn-block">Login</button>
+                                            <button type="submit" className="btn btn-primary btn-block">Register</button>
                                         </div>
                                     </form>
                                 </li>
                             </ul>
                         </li>
                     </ul>}
-                    {localStorage.getItem("login")==="false"&&<ul className="nav navbar-nav flex-row justify-content-between ml-auto">
-                        <li className="nav-item order-3 order-md-5"><a  className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
+                    {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
+                        <li className="nav-item order-3 order-md-5"><a className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
                             <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary dropdown-toggle">Login <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
@@ -143,7 +142,7 @@ export class Toolbar extends Component {
                                             <input placeholder="UserName" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="user" value={this.state.user} />
                                         </div>
                                         <div className="form-group">
-                                            <input id="passwordInput" placeholder="Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password}/>
+                                            <input id="passwordInput" placeholder="Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
                                         </div>
                                         <div className="form-group">
                                             <button type="submit" className="btn btn-primary btn-block">Login</button>
