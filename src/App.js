@@ -3,18 +3,25 @@ import Toolbar from './components/Toolbar/Toolbar'
 import Blogs from './components/Blog/Blogs'
 import Partidas from './components/Partida/Partidas'
 import Pregunta from './pages/Pregunta'
+import UserContext from "./components/User/UserContext"
 
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import 'semantic-ui-css/semantic.min.css'
-
 class App extends Component {
 
+    constructor(props) {
+      super(props);
+      this.state = {
+        user: "userr"
+      };
+    }
   render() {
 
     return (
       <Router>
+        <UserContext.Provider value={this.state}>
         <div className='App'>
           <div className='Toolbar'>
             <Toolbar />
@@ -26,8 +33,6 @@ class App extends Component {
             </Fragment>
           )}
           />
-
-
 
           <Route path='/blogs' render={props => (
             <Fragment>
@@ -56,13 +61,8 @@ class App extends Component {
             </Fragment>
           )}
           />
-            
-
         </div>
-
-        
-                  
-        
+        </UserContext.Provider>
       </Router>
 
       
