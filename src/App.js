@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Toolbar from './components/Toolbar/Toolbar'
 import Blogs from './components/Blog/Blogs'
 import Partidas from './components/Partida/Partidas'
-
+import Pregunta from './components/Pregunta/Pregunta'
 class App extends Component {
 
   render() {
@@ -21,6 +21,8 @@ class App extends Component {
             </Fragment>
           )}
           />
+
+          <Route exact path='/preguntas' component={Pregunta} />
 
           <Route path='/blogs' render={props => (
             <Fragment>
