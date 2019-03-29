@@ -9,18 +9,27 @@ export class Materias extends Component{
         super(props)
         this.state = {
             materias : [],
+            imSrcs: [
+                "/calculator.png",
+                "/pencil.png",
+                "/mathicon.png",
+                "/pi.png",
+                "/images/Integral-icon.png"
+            ]
         }
     }
 
-    renderMateria(materia){
-        var ref = "/materias/" + String(materia.id);
 
+
+    renderMateria(materia,indice){
+        var ref = "/materias/" + String(materia.id);
+     
         return (
             
                 <div className="card">
                     <div className="card-body">
                         <div className="subject-picture">
-                            <img src="/images/Integral-icon.png" width= "80em"/>
+                            <img src={this.state.imSrcs[4-indice]} width= "80em"/>
                         </div>
                         <div className="card-title">
                             {materia.name}
@@ -46,8 +55,8 @@ export class Materias extends Component{
     render(){
         this.getMaterias();
         const cards = [];
-            for(var materia of this.state.materias) { 
-                cards.push(<li>{this.renderMateria(materia)}</li>)
+            for(var materia in this.state.materias) { 
+                cards.push(<li>{this.renderMateria(this.state.materias[materia],materia)}</li>)
             }
             return(
                 <Fragment>
