@@ -81,8 +81,8 @@ export class Blogs extends Component {
         const { blogs } = this.state
         const { match } = this.props
         return (
-            <div style={{ backgroundColor: "#6a94cc" }}>
-                <h1 className="blog">Blogs</h1>
+            <div style={{ backgroundColor: "white" }}>
+                <h1 className="blog" style={{ color: '#0069D1' }}>Blogs</h1>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-md-10 mx-auto">

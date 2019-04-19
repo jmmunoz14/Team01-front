@@ -82,7 +82,7 @@ class Pregunta extends Component {
 
     render(){
         return(
-            <main>
+            
             <div className ='todo'>
                 <div className = 'quiz'>
                     Quíz
@@ -110,7 +110,7 @@ class Pregunta extends Component {
                 </div>
                  
             </div>
-            </main>
+            
             
         )
     }
