@@ -2,17 +2,17 @@ import React, { Component, Fragment } from 'react'
 import { Link } from "react-router-dom"
 import axios from 'axios'
 import { Route } from 'react-router-dom'
-import Materia from "./Materia"
+import Habilidad from "./Habilidad"
 import { Search } from 'semantic-ui-react';
 import TextField from '@material-ui/core/TextField';
 
 
 
-export class Materias extends Component{
+export class Habilidads extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            materias : [],
+            habilidades : [],
             imSrcs: [
                 "/calculator.png",
                 "/pencil.png",
@@ -27,12 +27,12 @@ export class Materias extends Component{
 
 
     componentDidMount(){
-        fetch('http://localhost:3000/materias/')
+        fetch('http://localhost:3000/habilidades/')
         .then(results => {
             return results.json();
 
         }).then(data => {
-            this.setState({materias : data});
+            this.setState({habilidades : data});
         })
 
     }
@@ -49,7 +49,7 @@ export class Materias extends Component{
           if (mat.name.indexOf(filterText) === -1) {
             return;
           }
-          rows.push(<Materia key={mat._id.toString()} materia = {mat}/>);
+          rows.push(<Habilidad key={mat._id.toString()} habilidad = {mat}/>);
         });
         return (
           <div className="row no-gutters mx-auto">
@@ -63,17 +63,17 @@ export class Materias extends Component{
        
             <div className= "container">
                 
-                <h1>Find your game by Subject!</h1>
+                <h1>Find your game by Skill!</h1>
                 <TextField
                     fullWidth
-                    placeholder="Search for your subject"
+                    placeholder="Search for your skill"
                     onChange={this.handleSearch}
                     />
-                {this.table(this.state.searchText,this.state.materias)}
+                {this.table(this.state.searchText,this.state.habilidades)}
                  
             </div>
         );
     }
 } 
 
-export default Materias
+export default Habilidads

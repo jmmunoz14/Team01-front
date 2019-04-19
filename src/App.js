@@ -4,7 +4,7 @@ import Blogs from './components/Blog/Blogs'
 import Partidas from './components/Partida/Partidas'
 import Pregunta from './pages/Pregunta'
 import UserContext from "./components/User/UserContext"
-import Habilidades from './components/Habilidades/Habilidad'
+import Habilidades from './components/Habilidades/Habilidades'
 
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -38,12 +38,7 @@ class App extends Component {
           )}
           />
 
-          <Route exactm path='/habilidades' render={props => (
-            <Fragment>
-              <Habilidades {...props} />
-            </Fragment>
-          )}
-          />
+          
 
           <Route path='/blogs' render={props => (
             <Fragment>
@@ -61,6 +56,12 @@ class App extends Component {
           <Route path='/materias' render={props => (
             <Fragment>
               <Materias {...props} />
+            </Fragment>
+          )}
+          />
+          <Route exactm path='/habilidades' render={props => (
+            <Fragment>
+              <Habilidades {...props} />
             </Fragment>
           )}
           />
