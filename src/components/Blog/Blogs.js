@@ -50,8 +50,8 @@ export class Blogs extends Component {
                 .post('http://localhost:3000/blogs', blognew)
                 .then(res => {
                     this.setState({ blogs: [...this.state.blogs, res.data] })
-                window.location.reload();
-            })
+                    window.location.reload();
+                })
         })
     }
 
@@ -81,14 +81,14 @@ export class Blogs extends Component {
         const { blogs } = this.state
         const { match } = this.props
         return (
-            <Fragment>
+            <div style={{ backgroundColor: "#6a94cc" }}>
                 <h1 className="blog">Blogs</h1>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-md-10 mx-auto">
                             {blogs.map((blog, blogIndex) => (
                                 <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />))}
-                            {localStorage.getItem("login")==="true"&&<Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">Añadir Nuevo Blog</Link>}
+                            {localStorage.getItem("login") === "true" && <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">Añadir Nuevo Blog</Link>}
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@ export class Blogs extends Component {
                     </Fragment>
                 )}
                 />
-            </Fragment>
+            </div>
         )
     }
 }

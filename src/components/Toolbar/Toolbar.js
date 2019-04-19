@@ -87,7 +87,7 @@ export class Toolbar extends Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav">
-                        
+
                         <li className="nav-item">
                             <Link className="nav-link" to="/blogs">Blogs</Link>
                         </li>
@@ -106,12 +106,12 @@ export class Toolbar extends Component {
                         {localStorage.getItem("login") === "true" && <li className="nav-item">
                             <p className="nav-link blog" to="/">{"Bienvenido " + localStorage.getItem("username")}</p>
                         </li>}
-                        {localStorage.getItem("login") === "true" && <button onClick={() => this.setLogin(false)}>Logout</button>}
+                        {localStorage.getItem("login") === "true" && <button className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>Logout</button>}
                     </ul>
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary dropdown-toggle">Register <span className="caret"></span></button>
+                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">Register <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" role="form" onSubmit={this.registerUser}>
@@ -135,7 +135,7 @@ export class Toolbar extends Component {
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary dropdown-toggle">Login <span className="caret"></span></button>
+                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Login <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" role="form" onSubmit={this.setLogedUser}>
