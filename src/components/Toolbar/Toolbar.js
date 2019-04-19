@@ -81,6 +81,7 @@ export class Toolbar extends Component {
 
         return (
             
+            
             <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
                 <Link to="/" className="navbar-brand">The Math Games!</Link>
                 <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
