@@ -60,6 +60,7 @@ class Pregunta extends Component {
 
     render(){
         return(
+            <main>
             <div>
                 <div className = 'quiz'>
                     Quíz
@@ -85,7 +86,7 @@ class Pregunta extends Component {
                 
                  
             </div>
-            
+            </main>
         )
     }
 }

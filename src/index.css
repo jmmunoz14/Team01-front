@@ -139,7 +139,7 @@ code {
 }
 
 .navbar-nav .nav-link{
-    color: #000000!important;
+    color: #ffffff!important;
     font-size: 25px!important;
 }
 .nav-item{
@@ -148,26 +148,26 @@ code {
 }
 
 .navbar-text {
-    color: #000000!important;
+    color: #ffffff!important;
 }
 
 .nav-item:hover{
     color: #ffffff	;
-    background-color: #18bdcf	!important;
+    background-color: #ecfd00	!important;
 }
 
 .navbar-text:hover {
-    color: #ffffff	;
-    background-color: #18bdcf	!important;
+    color: #000000	;
+    background-color: #ecfd00	!important;
 }
 
 .btn-outline-secondary:hover {
-    color: #ffffff	;
+    color: #000000	;
     border-color: #ffffff	;
-    background-color: #18bdcf	!important;
+    background-color: #ecfd00	!important;
 }
 
 .navbar-nav .nav-link:hover{
-    color: #ffffff	!important;
-    background-color: #18bdcf	!important;
+    color: #000000	!important;
+    background-color: #ecfd00	!important;
 }

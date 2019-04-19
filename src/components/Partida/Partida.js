@@ -13,7 +13,7 @@ export class Partida extends Component {
           {"Juego # "+partida.idJuego}
           </h2>
             {partida.puntajes.map((puntaje, index) => (
-              <h2 className="blog">
+              <h2 className="blog" key={index}>
                 {"Usuario: " + partida.idUsuarios[index] + " Puntaje: " + puntaje}
               </h2>
             ))}

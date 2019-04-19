@@ -80,6 +80,7 @@ export class Toolbar extends Component {
     render() {
 
         return (
+            
             <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
                 <Link to="/" className="navbar-brand">The Math Games!</Link>
                 <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -122,7 +123,7 @@ export class Toolbar extends Component {
                                             <input placeholder="Email" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="email" value={this.state.email} />
                                         </div>
                                         <div className="form-group">
-                                            <input id="passwordInput" placeholder="New Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
+                                            <input id="passwordInput1" placeholder="New Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
                                         </div>
                                         <div className="form-group">
                                             <button type="submit" className="btn btn-primary btn-block">Register</button>
@@ -135,7 +136,7 @@ export class Toolbar extends Component {
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Login <span className="caret"></span></button>
+                            <button type="button" id="dropdownMenu2" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Login <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" role="form" onSubmit={this.setLogedUser}>
@@ -143,7 +144,7 @@ export class Toolbar extends Component {
                                             <input placeholder="UserName" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="user" value={this.state.user} />
                                         </div>
                                         <div className="form-group">
-                                            <input id="passwordInput" placeholder="Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
+                                            <input id="passwordInput2" placeholder="Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
                                         </div>
                                         <div className="form-group">
                                             <button type="submit" className="btn btn-primary btn-block">Login</button>

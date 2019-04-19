@@ -4,7 +4,7 @@
 .card {
   padding: 50px;
   Margin:50px;
-  background: rgb(255, 217, 173)!important;
+  background: #416cb2!important;
 }
 .boton {
   margin: 10px!important;
@@ -12,22 +12,26 @@
 .respuestatext{
   font-weight: 800;
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-  color: rgb(82, 81, 81);
-  line-height: 1.2;
-  font-size: 20px;
+  color: #A3FFFF;
+  line-height: 2;
+  margin-right: 10px;
+  font-size: 30px;
   text-align: justify;
   text-justify: inter-word;
+  padding-left:100px;
 }
+
 .card-title
 {
   font-weight: 800;
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-  color: rgb(82, 81, 81);
+  color: #A3FFFF;
   line-height: 1.2;
-  font-size: 20px;
+  font-size: 30px;
 }
 .preguntaText {
   font-weight: 800;
+  color:rgb(255, 255, 255);
   line-height: 1.2;
   font-size: 36px;
   text-align: justify;
@@ -58,8 +62,8 @@
   margin-top: 47px;
   border-radius: 50%;
   padding:10px;
-  border:10px solid #a89631;
-  background-color:rgb(255, 255, 175);
+  border:10px solid #416cb2;
+  background-color:rgb(255, 246, 198);
 }
 /* change the background color */
 .navbar-custom {
@@ -83,14 +87,14 @@
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgb(255, 253, 253);
   font-size: 30px;
   font-weight: bold;
   margin-right: 50px
 }
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
-  color: rgba(24, 24, 24, 0.5);
+  color: rgb(255, 255, 255);
   font-size: 20px;
 }
 /* change the color of active or hovered links */
@@ -99,6 +103,7 @@
 .navbar-custom .nav-item:hover .nav-link {
   color: #ffffff;
 }
+
 .todo{
   display: flex;
   justify-content: center;
@@ -113,7 +118,8 @@
   align-items: center;
   font-size: 50px;
   border-radius: 25px;
-  background: #FFDD30;
+  background: #416cb2;
+  color: white;
   width: 350px;
   height: 80px; 
 

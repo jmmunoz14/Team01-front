@@ -82,6 +82,7 @@ class Pregunta extends Component {
 
     render(){
         return(
+            <main>
             <div className ='todo'>
                 <div className = 'quiz'>
                     Quíz
@@ -89,15 +90,19 @@ class Pregunta extends Component {
             
                 <div className="card">
                     <div className="card-body">
-                        <h5 className="card-title">Pregunta:</h5>
+                        <h1 className="card-title">Pregunta:</h1>
                         
                         <div className = 'preguntaText'>
                         <p className="card-text">{this.state.preguntaas[this.state.currentQuestion].enunciado}</p>
+                        
                         </div>
+                        
                         <form onSubmit={this.handleSubmit}>
-                            <label>
-                             <p className = 'respuestatext'>Respuesta:</p>
-                                <Input type="text" value={this.state.value} onChange={this.handleChange} />
+                        
+                        <label ><p className = 'respuestatext' id = "res">Respuesta:</p>
+                            
+                                
+                                <Input type="text" placeholder="Ingrese su respuesta" id="respuesta" value={this.state.value} onChange={this.handleChange} />
                             </label>
                             <Button className='boton'>Submit</Button>
                         </form>
@@ -105,6 +110,7 @@ class Pregunta extends Component {
                 </div>
                  
             </div>
+            </main>
             
         )
     }
