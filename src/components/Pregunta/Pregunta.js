@@ -11,11 +11,13 @@ class Pregunta extends Component {
                     {
                         id: '',
                         materia: '',
-                        respuesta: ''
+                        respuesta: '',
+                        
                     }
 
                 ],
-            currentQuestion: 0
+            currentQuestion: 0,
+            
 
         }
         this.handleChange = this.handleChange.bind(this);
@@ -74,7 +76,7 @@ class Pregunta extends Component {
                             <form onSubmit={this.handleSubmit}>
                                 <label>
                                     <p>Respuesta:</p>
-                                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                                    <input name="res" type="text" required value={this.state.value || ''} onChange={this.handleChange} />
                                 </label>
                                 <input type="submit" value="Submit" />
                             </form>
