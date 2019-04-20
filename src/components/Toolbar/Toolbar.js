@@ -80,13 +80,13 @@ export class Toolbar extends Component {
     render() {
 
         return (
-            
-            
+
+
             <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
                 <Link to="/" className="navbar-brand">The Math Games!</Link>
-                <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                <li className="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                     <span className="navbar-toggler-icon"></span>
-                </button>
+                </li>
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav">
 
@@ -108,15 +108,15 @@ export class Toolbar extends Component {
                         {localStorage.getItem("login") === "true" && <li className="nav-item">
                             <p className="nav-link blog" to="/">{"Bienvenido " + localStorage.getItem("username")}</p>
                         </li>}
-                        {localStorage.getItem("login") === "true" && <button className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>Logout</button>}
+                        {localStorage.getItem("login") === "true" && <li className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>Logout</li>}
                     </ul>
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
-                        <li className="nav-item order-3 order-md-5"><a className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
+                        <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">Register <span className="caret"></span></button>
+                            <li type="li" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">Register <span className="caret"></span></li>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
-                                    <form className="form" role="form" onSubmit={this.registerUser}>
+                                    <form className="form" onSubmit={this.registerUser}>
                                         <div className="form-group">
                                             <input placeholder="UserName" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="user" value={this.state.user} />
                                         </div>
@@ -127,7 +127,7 @@ export class Toolbar extends Component {
                                             <input id="passwordInput1" placeholder="New Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-primary btn-block">Register</button>
+                                            <li type="submit" className="btn btn-primary btn-block">Register</li>
                                         </div>
                                     </form>
                                 </li>
@@ -135,12 +135,12 @@ export class Toolbar extends Component {
                         </li>
                     </ul>}
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
-                        <li className="nav-item order-3 order-md-5"><a className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
+                        <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu2" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Login <span className="caret"></span></button>
+                            <li type="li" id="dropdownMenu2" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Login <span className="caret"></span></li>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
-                                    <form className="form" role="form" onSubmit={this.setLogedUser}>
+                                    <form className="form" onSubmit={this.setLogedUser}>
                                         <div className="form-group">
                                             <input placeholder="UserName" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="user" value={this.state.user} />
                                         </div>
@@ -148,7 +148,7 @@ export class Toolbar extends Component {
                                             <input id="passwordInput2" placeholder="Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-primary btn-block">Login</button>
+                                            <li type="submit" className="btn btn-primary btn-block">Login</li>
                                         </div>
                                         <div className="form-group text-center">
                                             <small>Forgot password?</small>

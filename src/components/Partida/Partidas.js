@@ -1,6 +1,5 @@
-import React, { Component,Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import Partida from "./Partida";
-import { Link } from "react-router-dom"
 import PostPartida from './PostPartida'
 import PutPartida from './PutPartida'
 import axios from 'axios'
@@ -11,13 +10,13 @@ export class Partidas extends Component {
         super(props)
         this.state = {
             partidas: [],
-            chats:[],
+            chats: [],
         }
     }
     componentDidMount = () => {
         axios
-        .get('http://localhost:3000/partidas')
-        .then(res => this.setState({ partidas: res.data }))
+            .get('http://localhost:3000/partidas')
+            .then(res => this.setState({ partidas: res.data }))
     }
 
     handlePostPartida = partida => {
@@ -65,10 +64,9 @@ export class Partidas extends Component {
     }
 
     //<Link className="btn btn-success btn-lg btn-block" to="/partidas/api/post">Añadir Nuevo Partida</Link>
-    
+
     render() {
         const { partidas } = this.state
-        const { match } = this.props
         return (
             <Fragment>
                 <h1 className="blog">Partidas en Curso</h1>
@@ -77,11 +75,11 @@ export class Partidas extends Component {
                         <div className="col-lg-8 col-md-10 mx-auto">
                             {partidas.map((partida, partidaIndex) => (
                                 <Partida partida={partida} partidaIndex={partidaIndex} key={partidaIndex} handleDeletePartida={() => this.handleDeletePartida(partida._id, partida.idChat)} />))}
-                            
+
                         </div>
                     </div>
                 </div>
-                
+
                 <Route exact path='/partidas/api/post' render={props => (
                     <Fragment>
                         <PostPartida {...props} handlePostPartida={partida => this.handlePostPartida(partida)} />
