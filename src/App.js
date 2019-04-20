@@ -4,7 +4,7 @@ import Blogs from './components/Blog/Blogs'
 import Partidas from './components/Partida/Partidas'
 import Pregunta from './pages/Pregunta'
 import Habilidades from './components/Habilidades/Habilidades'
-
+import { IntlProvider } from 'react-intl';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -23,69 +23,67 @@ class App extends Component {
   render() {
 
     return (
-      <Router>
+      <IntlProvider>
+        <Router>
 
-        <div className='App'>
-          <div className='Toolbar'>
-            <Toolbar />
+          <div className='App'>
+            <div className='Toolbar'>
+              <Toolbar />
+            </div>
+
+            <Route exactm path='/home' render={props => (
+              <Fragment>
+                <h1>HOME</h1>
+              </Fragment>
+            )}
+            />
+
+            <Route path='/blogs' render={props => (
+              <Fragment>
+                <Blogs {...props} />
+              </Fragment>
+            )}
+            />
+
+            <Route path='/partidas' render={props => (
+              <Fragment>
+                <Partidas {...props} />
+              </Fragment>
+            )}
+            />
+            <Route path='/materias' render={props => (
+              <Fragment>
+                <Materias {...props} />
+              </Fragment>
+            )}
+            />
+            <Route exactm path='/habilidades' render={props => (
+              <Fragment>
+                <Habilidades {...props} />
+              </Fragment>
+            )}
+            />
+
+            <Route exact path='/' render={props => (
+              <Fragment>
+
+                <img src="mathicon.png" className="mainImage" alt="Icono" ></img>
+                <h1 className='welcome'> Bienvenido a </h1>
+                <h1 className='welcome2'>The Math Games</h1>
+
+              </Fragment>
+            )}
+            />
+
+            <Route path='/quiz' render={props => (
+              <Fragment>
+                <Pregunta />
+              </Fragment>
+            )}
+            />
           </div>
-
-          <Route exactm path='/home' render={props => (
-            <Fragment>
-              <h1>HOME</h1>
-            </Fragment>
-          )}
-          />
-
-
-
-          <Route path='/blogs' render={props => (
-            <Fragment>
-              <Blogs {...props} />
-            </Fragment>
-          )}
-          />
-
-          <Route path='/partidas' render={props => (
-            <Fragment>
-              <Partidas {...props} />
-            </Fragment>
-          )}
-          />
-          <Route path='/materias' render={props => (
-            <Fragment>
-              <Materias {...props} />
-            </Fragment>
-          )}
-          />
-          <Route exactm path='/habilidades' render={props => (
-            <Fragment>
-              <Habilidades {...props} />
-            </Fragment>
-          )}
-          />
-
-          <Route exact path='/' render={props => (
-            <Fragment>
-
-              <img src="mathicon.png" className="mainImage" alt="Icono" ></img>
-              <h1 className='welcome'> Bienvenido a </h1>
-              <h1 className='welcome2'>The Math Games</h1>
-
-            </Fragment>
-          )}
-          />
-
-          <Route path='/quiz' render={props => (
-            <Fragment>
-              <Pregunta />
-            </Fragment>
-          )}
-          />
-        </div>
-      </Router>
-
-
+        </Router>
+      </IntlProvider>
     )
   }
 }

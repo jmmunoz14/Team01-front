@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
 import axios from 'axios'
-
+import { FormattedMessage } from 'react-intl';
 export class Toolbar extends Component {
     constructor(props) {
         super(props);
@@ -87,7 +87,12 @@ export class Toolbar extends Component {
 
 
             <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
-                <Link to="/" className="navbar-brand">The Math Games!</Link>
+                <Link to="/" className="navbar-brand">
+                    <FormattedMessage
+                        id="Home.title"
+                        defaultMessage="The Math Games!"
+                    />
+                </Link>
                 <li className="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                     <span className="navbar-toggler-icon"></span>
                 </li>
@@ -122,22 +127,22 @@ export class Toolbar extends Component {
                                 <li className="px-3 py-2">
                                     <form className="form" onSubmit={this.registerUser}>
                                         <div className="form-group">
-                                        <label>
-                                            Nombre de usuario:
+                                            <label>
+                                                Nombre de usuario:
                                             <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
-                                        </label>
+                                            </label>
                                         </div>
                                         <div className="form-group">
-                                        <label>
-                                            Correo Electronico:
-                                            <input  className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
-                                        </label>
+                                            <label>
+                                                Correo Electronico:
+                                            <input className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
+                                            </label>
                                         </div>
                                         <div className="form-group">
-                                        <label>
-                                            Contraseña:
+                                            <label>
+                                                Contraseña:
                                             <input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
-                                        </label>
+                                            </label>
                                         </div>
                                         <div className="form-group">
                                             <button type="submit" className="btn btn-dark btn-block">Registrarse</button>
@@ -155,21 +160,21 @@ export class Toolbar extends Component {
                                 <li className="px-3 py-2">
                                     <form className="form" onSubmit={this.setLogedUser}>
                                         <div className="form-group">
-                                        <label>
-                                            Nombre de usuario:
-                                            <input  className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
-                                        </label>
+                                            <label>
+                                                Nombre de usuario:
+                                            <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                            </label>
                                         </div>
                                         <div className="form-group">
-                                        <label>
-                                            Contraseña:
-                                            <input id="passwordInput2"  className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
-                                        </label>
+                                            <label>
+                                                Contraseña:
+                                            <input id="passwordInput2" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                            </label>
                                         </div>
                                         <div className="form-group">
                                             <button type="submit" className="btn btn-dark btn-block">Ingresar</button>
                                         </div>
-                                        
+
                                     </form>
                                 </li>
                             </ul>
