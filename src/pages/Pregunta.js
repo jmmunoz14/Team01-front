@@ -104,7 +104,7 @@ class Pregunta extends Component {
                                 
                                 <Input type="text" placeholder="Ingrese su respuesta" id="respuesta" value={this.state.value} onChange={this.handleChange} />
                             </label>
-                            <Button className='boton'>Submit</Button>
+                            <Button className='boton'>Enviar</Button>
                         </form>
                     </div>
                 </div>
