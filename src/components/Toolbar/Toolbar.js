@@ -14,7 +14,9 @@ export class Toolbar extends Component {
     }//.filter(usuario=>usuario.username===this.state.username)
 
     setLogedUser = (e) => {
+        console.log("login1")
         e.preventDefault();
+        console.log("login2")
         axios
             .get('http://localhost:3000/api/obtainall')
             .then(res => {
@@ -54,7 +56,9 @@ export class Toolbar extends Component {
 
     }
     registerUser = (e) => {
+        console.log("registro1")
         e.preventDefault();
+        console.log("registro2")
         axios
             .post('http://localhost:3000/api/register', { id: (Math.random() * 10000000000) + 200, email: this.state.email, username: this.state.user, password: this.state.password })
             .then(res => {
@@ -113,7 +117,7 @@ export class Toolbar extends Component {
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <li type="li" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">Register <span className="caret"></span></li>
+                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">Register <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" onSubmit={this.registerUser}>
@@ -127,7 +131,7 @@ export class Toolbar extends Component {
                                             <input id="passwordInput1" placeholder="New Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
                                         </div>
                                         <div className="form-group">
-                                            <li type="submit" className="btn btn-primary btn-block">Register</li>
+                                            <button type="submit" className="btn btn-primary btn-block">Register</button>
                                         </div>
                                     </form>
                                 </li>
@@ -137,7 +141,7 @@ export class Toolbar extends Component {
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <li type="li" id="dropdownMenu2" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Login <span className="caret"></span></li>
+                            <button type="button" id="dropdownMenu2" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Login <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" onSubmit={this.setLogedUser}>
@@ -148,7 +152,7 @@ export class Toolbar extends Component {
                                             <input id="passwordInput2" placeholder="Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
                                         </div>
                                         <div className="form-group">
-                                            <li type="submit" className="btn btn-primary btn-block">Login</li>
+                                            <button type="submit" className="btn btn-primary btn-block">Login</button>
                                         </div>
                                         <div className="form-group text-center">
                                             <small>Forgot password?</small>
