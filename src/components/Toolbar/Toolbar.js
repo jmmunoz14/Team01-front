@@ -89,7 +89,7 @@ export class Toolbar extends Component {
             <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
                 <Link to="/" className="navbar-brand">
                     <FormattedMessage
-                        id="Home.title"
+                        id="Toolbar.title"
                         defaultMessage="The Math Games!"
                     />
                 </Link>
@@ -100,29 +100,55 @@ export class Toolbar extends Component {
                     <ul className="navbar-nav">
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/blogs">Blogs</Link>
+                            <Link className="nav-link" to="/blogs"><FormattedMessage
+                                id="Toolbar.blogs"
+                                defaultMessage="Blogs"
+                            /></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/partidas">Partidas</Link>
+                            <Link className="nav-link" to="/partidas"><FormattedMessage
+                                id="Toolbar.partidas"
+                                defaultMessage="Partidas"
+                            /></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/quiz">Preguntas</Link>
+                            <Link className="nav-link" to="/quiz"><FormattedMessage
+                                id="Toolbar.pruebas"
+                                defaultMessage="Pruebas"
+                            /></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/materias">Materias</Link>
+                            <Link className="nav-link" to="/materias"><FormattedMessage
+                                id="Toolbar.materias"
+                                defaultMessage="Materias"
+                            /></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/habilidades">Habilidades</Link>
+                            <Link className="nav-link" to="/habilidades"><FormattedMessage
+                                id="Toolbar.habilidades"
+                                defaultMessage="Habilidades"
+                            /></Link>
                         </li>
                         {localStorage.getItem("login") === "true" && <li className="nav-item">
                             <p className="nav-link blog" to="/">{"Bienvenido " + localStorage.getItem("username")}</p>
                         </li>}
-                        {localStorage.getItem("login") === "true" && <li className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>Salir</li>}
+                        {localStorage.getItem("login") === "true" && <li className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>
+                            <FormattedMessage
+                                id="Toolbar.salir"
+                                defaultMessage="Salir"
+                            />
+                        </li>}
                     </ul>
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">Registrarse <span className="caret"></span></button>
+                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">
+                                <FormattedMessage
+                                    id="Toolbar.registrarse"
+                                    defaultMessage="Registrarse"
+                                />
+                                <span className="caret"></span>
+                            </button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" onSubmit={this.registerUser}>

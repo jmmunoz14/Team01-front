@@ -1,0 +1,34 @@
+[
+  {
+    "id": "Toolbar.title",
+    "defaultMessage": "The Math Games!"
+  },
+  {
+    "id": "Toolbar.blogs",
+    "defaultMessage": "Blogs"
+  },
+  {
+    "id": "Toolbar.partidas",
+    "defaultMessage": "Partidas"
+  },
+  {
+    "id": "Toolbar.pruebas",
+    "defaultMessage": "Pruebas"
+  },
+  {
+    "id": "Toolbar.materias",
+    "defaultMessage": "Materias"
+  },
+  {
+    "id": "Toolbar.habilidades",
+    "defaultMessage": "Habilidades"
+  },
+  {
+    "id": "Toolbar.salir",
+    "defaultMessage": "Salir"
+  },
+  {
+    "id": "Toolbar.registrarse",
+    "defaultMessage": "Registrarse"
+  }
+]
