@@ -112,26 +112,35 @@ export class Toolbar extends Component {
                         {localStorage.getItem("login") === "true" && <li className="nav-item">
                             <p className="nav-link blog" to="/">{"Bienvenido " + localStorage.getItem("username")}</p>
                         </li>}
-                        {localStorage.getItem("login") === "true" && <li className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>Logout</li>}
+                        {localStorage.getItem("login") === "true" && <li className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>Salir</li>}
                     </ul>
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">Register <span className="caret"></span></button>
+                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">Registrarse <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" onSubmit={this.registerUser}>
                                         <div className="form-group">
-                                            <input placeholder="UserName" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="user" value={this.state.user} />
+                                        <label>
+                                            Nombre de usuario:
+                                            <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                        </label>
                                         </div>
                                         <div className="form-group">
-                                            <input placeholder="Email" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="email" value={this.state.email} />
+                                        <label>
+                                            Correo Electronico:
+                                            <input  className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
+                                        </label>
                                         </div>
                                         <div className="form-group">
-                                            <input id="passwordInput1" placeholder="New Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
+                                        <label>
+                                            Contraseña:
+                                            <input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                        </label>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-primary btn-block">Register</button>
+                                            <button type="submit" className="btn btn-dark btn-block">Registrarse</button>
                                         </div>
                                     </form>
                                 </li>
@@ -141,22 +150,26 @@ export class Toolbar extends Component {
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu2" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Login <span className="caret"></span></button>
+                            <button type="button" id="dropdownMenu2" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Ingresar <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" onSubmit={this.setLogedUser}>
                                         <div className="form-group">
-                                            <input placeholder="UserName" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="user" value={this.state.user} />
+                                        <label>
+                                            Nombre de usuario:
+                                            <input  className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                        </label>
                                         </div>
                                         <div className="form-group">
-                                            <input id="passwordInput2" placeholder="Password" className="form-control form-control-sm" type="text" required="" onChange={this.onChange} name="password" value={this.state.password} />
+                                        <label>
+                                            Contraseña:
+                                            <input id="passwordInput2"  className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                        </label>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-primary btn-block">Login</button>
+                                            <button type="submit" className="btn btn-dark btn-block">Ingresar</button>
                                         </div>
-                                        <div className="form-group text-center">
-                                            <small>Forgot password?</small>
-                                        </div>
+                                        
                                     </form>
                                 </li>
                             </ul>

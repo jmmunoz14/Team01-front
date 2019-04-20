@@ -134,7 +134,7 @@ code {
 
 .btn-outline-secondary {
     color: #2a2929;
-    border-color: #2a2929;
+    
     font-size: 20px!important;
 }
 
@@ -162,9 +162,8 @@ code {
 }
 
 .btn-outline-secondary:hover {
-    color: #000000	;
-    border-color: #ffffff	;
-    background-color: #ecfd00	!important;
+    color: #ffffff	;
+    background-color: #000000	!important;
 }
 
 .navbar-nav .nav-link:hover{
