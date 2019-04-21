@@ -119,7 +119,9 @@ export class Toolbar extends Component {
     componentDidMount()
     {
         this.setActive()
+        
     }
+
     render() {
         
         return (
@@ -295,5 +297,6 @@ export class Toolbar extends Component {
             )
     }
 };
+
 
 export default Toolbar;
