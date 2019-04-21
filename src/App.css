@@ -157,3 +157,14 @@
     transform: rotate(360deg);
   }
 }
+
+.link-to-quiz{
+  color: white;
+
+}
+.link-to-quiz :hover{
+  color: black;
+}
+.click-quiz{
+  color: darkblue;
+}

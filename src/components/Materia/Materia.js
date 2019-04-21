@@ -29,7 +29,7 @@ export class Materia extends Component {
 
         return(
             <Fragment>   
-                <Link to={"/"+ materia.short} action="replace">
+                <Link to={"/"+ materia.short} action="replace" className="link-to-quiz">
                 <div className="card text-center p-4 mx-2 my-3" style={{width: 16 + "rem"}}>
                     <img class="card-img-top" src={materia.img} 
                     alt={navigator.language.includes("en")
