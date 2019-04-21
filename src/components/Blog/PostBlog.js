@@ -82,7 +82,7 @@ export class PostBlog extends Component {
             </div>
           </div>
           <Link onClick={() => handlePostBlog({
-            titulo: titulo, descripcion: descripcion, date: Date.now(),
+            titulo: titulo, idioma: window.navigator.language, descripcion: descripcion, date: Date.now(),
             idUsuario: localStorage.getItem("username") + ""
           })
           }
