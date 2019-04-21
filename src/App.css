@@ -102,6 +102,7 @@
 .navbar-custom .nav-item:focus .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
   color: #ffffff;
+  
 }
 
 .todo{
@@ -156,4 +157,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.link-to-quiz{
+  color: white;
+
+}
+.link-to-quiz :hover{
+  color: black;
+}
+.click-quiz{
+  color: darkblue;
 }

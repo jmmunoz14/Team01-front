@@ -69,7 +69,7 @@ class App extends Component {
           <Route exact path='/' render={props => (
             <Fragment>
 
-              <img src="mathicon.png" className="mainImage" alt="Icono" ></img>
+              <img src={require("./images/mathicon.png")} className="mainImage" alt="Icono" ></img>
               <h1 className='welcome'> <FormattedMessage id="Bienvenido a"/> </h1>
               <h1 className='welcome2'>The Math Games</h1>
 

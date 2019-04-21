@@ -16,6 +16,7 @@ export class BlogDetail extends Component {
   toMarkDown = () => {
     var markdown = require("markdown").markdown;
     var comentarioM = markdown.toHTML(this.state.blog.descripcion);
+    console.log(comentarioM)
     return comentarioM;
   };
 

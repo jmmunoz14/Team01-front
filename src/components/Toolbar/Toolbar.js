@@ -98,13 +98,35 @@ export class Toolbar extends Component {
         window.location.reload();
     }
     onChange = e => this.setState({ [e.target.name]: e.target.value });
-    render() {
 
+    setActive(){
+        var header = document.getElementsByClassName("navbar");
+        var btns = document.getElementsByClassName("cirr");
+        
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function() {
+          var current = document.getElementsByClassName("active");
+          if(current[0]!= undefined)
+          {
+            current[0].className = current[0].className.replace(" active", "");
+          }
+         
+          this.className += " active";
+          });
+        }
+    }
+
+    componentDidMount()
+    {
+        this.setActive()
+    }
+    render() {
+        
         return (
 
-
+            
             <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
-                <Link to="/" className="navbar-brand">
+                <Link to="/" className="nav-item nav-link cirr logo">
                     <FormattedMessage
                         id="Toolbar.title"
                         defaultMessage="The Math Games!"
@@ -114,28 +136,28 @@ export class Toolbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav mr-auto">
                         <li>
-                            <Link className="nav-item nav-link" to="/blogs"><FormattedMessage
+                            <Link className="nav-item nav-link cirr" to="/blogs"><FormattedMessage
                                 id="Toolbar.blogs"
                                 defaultMessage="Blogs"
                             /></Link>
                         </li>
 
                         <li>
-                            <Link className="nav-item nav-link" to="/partidas"><FormattedMessage
+                            <Link className="nav-item nav-link cirr" to="/partidas"><FormattedMessage
                                 id="Toolbar.partidas"
                                 defaultMessage="Partidas"
                             />
                             </Link>
                         </li>
                         <li>
-                            <Link className="nav-item nav-link" to="/quiz"><FormattedMessage
+                            <Link className="nav-item nav-link cirr" to="/quiz"><FormattedMessage
                                 id="Toolbar.pruebas"
                                 defaultMessage="Pruebas"
                             />
                             </Link>
                         </li>
                         <li>
-                            <Link className="nav-item nav-link" to="/materias">
+                            <Link className="nav-item nav-link cirr" to="/materias">
                                 <FormattedMessage
                                     id="Toolbar.materias"
                                     defaultMessage="Materias"
@@ -143,7 +165,7 @@ export class Toolbar extends Component {
                             </Link>
                         </li>
                         <li>
-                            <Link className="nav-item nav-link" to="/habilidades"><FormattedMessage
+                            <Link className="nav-item nav-link cirr" to="/habilidades"><FormattedMessage
                                 id="Toolbar.habilidades"
                                 defaultMessage="Habilidades"
                             />
@@ -168,6 +190,7 @@ export class Toolbar extends Component {
                             />
                         </li>}
                     </ul>
+                    
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
@@ -265,7 +288,11 @@ export class Toolbar extends Component {
                         </li>
                     </ul>}
                 </div>
-            </nav>)
+
+                
+            </nav>
+            
+            )
     }
 };
 

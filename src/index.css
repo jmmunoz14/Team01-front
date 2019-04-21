@@ -142,9 +142,18 @@ code {
     color: #ffffff!important;
     font-size: 27px!important;
     vertical-align: middle!important;
+    
+}
+.navbar .logo{
+    color:white!important;
+}
+.navbar .active{
+    color: black!important;
+    background-color: #ecfd00	!important;
 }
 .nav-item{
     color: #000000!important;
+    
     font-size: 27px!important;
     vertical-align: middle!important;
 }

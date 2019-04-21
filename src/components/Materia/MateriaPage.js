@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { FormattedMessage } from "react-intl";
 
 export class MateriaPage extends Component{
     // constructor(props) {
@@ -26,10 +27,18 @@ export class MateriaPage extends Component{
         return(
             <Fragment>
                 <h1> {materia.name}</h1>
-                <h4> {materia.desc}</h4>
-                <a href="/quiz" action="replace">
-                    <h4>Click here to go to the only quiz available</h4>
-                </a>
+                <h2> {materia.desc}</h2>
+                <u>
+                    <a href="/quiz" action="replace" className= "click-quiz">
+                        <h3>
+                            <FormattedMessage
+                                id = "Materia.clickQuiz"
+                                defaultMessage = "Haz click aquí para ir al único quiz disponible"
+                            />
+                        </h3>
+                    </a>
+                </u>
+
             </Fragment>
 
         );
