@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component, Fragment } from "react";
+import { Link, Route } from "react-router-dom";
+import MateriaPage from "./MateriaPage";
 
 export class Materia extends Component{
     constructor(props) {
@@ -9,10 +10,10 @@ export class Materia extends Component{
     render(){
         const materia = this.props.materia;
         return(
-
+            <Fragment>
+                
+                <Link to={"/"+ materia.name} action="replace">
                 <div className="card text-left p-4 mx-auto my-3" style={{width: 16 + "rem"}}>
- 
-                    
                     <div className="card-title">
                         {materia.name}
                     </div>
@@ -24,8 +25,10 @@ export class Materia extends Component{
                         <br/>
                         Allí podrás verlos separados por habilidad.
                     </div>
-
-            </div>
+                </div>
+            </Link>
+            </Fragment>
+            
         );
     }
 

@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { Link } from "react-router-dom"
-import axios from 'axios'
-import { Route } from 'react-router-dom'
 import Materia from "./Materia"
-import { Search } from 'semantic-ui-react';
+import MateriaPage from "./MateriaPage";
 import TextField from '@material-ui/core/TextField';
-
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
 
 export class Materias extends Component{
@@ -41,6 +38,22 @@ export class Materias extends Component{
         this.setState({searchText: event.target.value});
     }
 
+    routes(products){
+        const rows = [];
+        products.forEach((mat) => {
+          rows.push(
+          <Route key={mat._id.toString()} 
+                    path={"/" + mat.name} 
+                    render = {(props) => <MateriaPage {...props} materia = {mat}/>}/>
+                    );
+        });
+        return (
+            <Fragment>
+                {rows}
+            </Fragment>
+        );
+    }
+
     table(filterText,products){
         const rows = [];
         let lastCategory = null;
@@ -52,9 +65,13 @@ export class Materias extends Component{
           rows.push(<Materia key={mat._id.toString()} materia = {mat}/>);
         });
         return (
-          <div className="row no-gutters mx-auto">
-              {rows}
-          </div>
+            <Fragment>
+                {this.routes(products)}
+                <div className="row no-gutters mx-auto">
+                    {rows}
+                </div>
+            </Fragment>
+          
         );
       }
 
@@ -69,7 +86,11 @@ export class Materias extends Component{
                     placeholder="Search for your subject"
                     onChange={this.handleSearch}
                     />
-                {this.table(this.state.searchText,this.state.materias)}
+                <Router>
+                    {this.table(this.state.searchText,this.state.materias)}
+                    
+                </Router>
+                
                  
             </div>
         );

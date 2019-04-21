@@ -53,13 +53,13 @@ class App extends Component {
             </Fragment>
           )}
           />
-          <Route path='/materias' render={props => (
+          <Route exactm path='/materias' render={props => (
             <Fragment>
               <Materias {...props} />
             </Fragment>
           )}
           />
-          <Route exactm path='/habilidades' render={props => (
+          <Route exact path='/habilidades' render={props => (
             <Fragment>
               <Habilidades {...props} />
             </Fragment>
