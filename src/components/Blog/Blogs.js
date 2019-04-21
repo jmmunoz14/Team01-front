@@ -99,6 +99,14 @@ export class Blogs extends Component {
                                         />
                                         </p>
                                         </Link>}
+                                        {localStorage.getItem("login") === "false" && <button disabled={true} className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
+                                        <p style={{color:"black"}}>
+                                        <FormattedMessage
+                                            id="Blog.añadir"
+                                            defaultMessage="Añadir Nuevo Blog"
+                                        />
+                                        </p>
+                                        </button>}
 
                                 </div>
                             </div>
