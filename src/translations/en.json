@@ -34,5 +34,10 @@
     "Partida.puntaje": "Score",
     "Partida.encurso": " (In Progress)",
     "Partida.juego": "Game # ",
-    "Partida.terminada": " (Completed)"
+    "Partida.terminada": " (Completed)",
+    "Materia.titulo": "Find your games by subject!!!",
+    "Materia.clickQuiz": "Click here to go to the only quiz available",
+    "Habilidad.titulo": "Find your games by skill!",
+    "Habilidad.clickQuiz": "Click here to go to the only quiz available"
+    
 }
