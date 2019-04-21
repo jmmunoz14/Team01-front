@@ -17,7 +17,7 @@ class Blog extends Component {
       <React.Fragment>
         <div className="row">
           <div className="col-lg-9">
-            <Link className="blog" to={"/blogs/" + blog._id} onClick={this.forceUpdate}>
+            <Link className="blog" to={"/blogs/" + blog._id} >
               <h2 className="blog">
                 {blog.titulo}
               </h2>
