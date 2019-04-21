@@ -217,20 +217,28 @@ export class Toolbar extends Component {
                                     <form className="form" onSubmit={this.registerUser}>
                                         <div className="form-group">
                                             <label>
+                                            
                                                 <FormattedMessage
                                                     id="Toolbar.usuario"
                                                     defaultMessage="Nombre de Usuario"
                                                 />
-                                                <font color="crimson">*</font><input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                                <font color="crimson">*</font>
+                                                <div data-tip="e.g:  mathuser">
+                                                <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                            </div>
                                             </label>
                                         </div>
                                         <div className="form-group">
                                             <label>
+                                            
                                                 <FormattedMessage
                                                     id="Toolbar.correo"
                                                     defaultMessage="Correo Electronico"
                                                 />
-                                                <font color="crimson">*</font><input className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
+                                                <font color="crimson">*</font>
+                                            <div data-tip="e.g:  math@gmail.com">
+                                                <input className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
+                                            </div>
                                             </label>
                                         </div>
                                         <div className="form-group">
@@ -239,7 +247,11 @@ export class Toolbar extends Component {
                                                     id="Toolbar.contraseña"
                                                     defaultMessage="Contraseña"
                                                 />
-                                                <font color="crimson">*</font><input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                                
+                                                <font color="crimson">*</font>
+                                                <div data-tip="e.g:  Contraseña123">
+                                                <input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                                </div>
                                             </label>
                                         </div>
                                         <div className="form-group">
@@ -274,6 +286,7 @@ export class Toolbar extends Component {
                                                     id="Toolbar.usuario"
                                                     defaultMessage="Nombre de Usuario"
                                                 />
+                                                <font color="crimson">*</font>
                                                 <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
                                             </label>
                                         </div>
@@ -283,6 +296,7 @@ export class Toolbar extends Component {
                                                     id="Toolbar.contraseña"
                                                     defaultMessage="Contraseña"
                                                 />
+                                                <font color="crimson">*</font>
                                                 <input id="passwordInput2" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
                                             </label>
                                         </div>
@@ -293,6 +307,8 @@ export class Toolbar extends Component {
                                                     defaultMessage="Ingresar"
                                                 />
                                             </button>
+                                            <font color="crimson"><FormattedMessage id="obligatorio" defaultMessage="Los campos con * son obligatorios"/></font>
+
                                         </div>
 
                                     </form>
