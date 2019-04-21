@@ -38,5 +38,8 @@
     "Materia.titulo": "Encuentra tus juegos por materia!",
     "Materia.clickQuiz": "Haz click aquí para ir al único quiz disponible",
     "Habilidad.titulo": "Encuentra tus juegos por habilidad!",
-    "Habilidad.clickQuiz": "Haz click aquí para ir al único quiz disponible"
+    "Habilidad.clickQuiz": "Haz click aquí para ir al único quiz disponible",
+    "Blog.idioma": "Idioma",
+    "Blog.es": "Español",
+    "Blog.en": "Inglés"
 }

@@ -16,6 +16,9 @@ export class Blogs extends Component {
             blogs: [],
             materias: [],
             chats: [],
+            es: false,
+            en: false,
+            test: "",
         }
     }
 
@@ -78,8 +81,13 @@ export class Blogs extends Component {
         )
     }
 
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value })
+        console.log(this.state.test)
+    };
+
     render() {
-        const { blogs } = this.state
+        const { blogs, en, es } = this.state
         const { match } = this.props
         return (
             <div style={{ backgroundColor: "white" }}>
@@ -89,24 +97,57 @@ export class Blogs extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-8 col-md-10 mx-auto">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h2 className="blog">
+                                                <FormattedMessage
+                                                    id="Blog.idioma"
+                                                    defaultMessage="Idioma:"
+                                                />
+                                            </h2>
+                                        </div>
+                                        <div className="col">
+                                            <select id="idiomas" onChange={this.onChange} value={this.state.test} name="test" class="form-control form-control-lg">
+                                                <FormattedMessage id="{option.name}">
+                                                    {(message) => <option value="{option.value}">{message}</option>}
+                                                </FormattedMessage>
+                                                <option value="es">
+                                                    <FormattedMessage
+                                                        id="Blog.es"
+                                                        defaultMessage="es"
+                                                    />
+                                                </option>
+                                                <option values="en">
+                                                    <FormattedMessage
+                                                        id="Blog.en"
+                                                        defaultMessage="en"
+                                                    />
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
                                     {blogs.map((blog, blogIndex) => (
-                                        <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />))}
+                                        <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />
+                                    ))}
                                     {localStorage.getItem("login") === "true" && <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
-                                        <p style={{color:"black"}}>
-                                        <FormattedMessage
-                                            id="Blog.añadir"
-                                            defaultMessage="Añadir Nuevo Blog"
-                                        />
+                                        <p style={{ color: "black" }}>
+                                            <FormattedMessage
+                                                id="Blog.añadir"
+                                                defaultMessage="Añadir Nuevo Blog"
+                                            />
                                         </p>
-                                        </Link>}
-                                        {localStorage.getItem("login") === "false" && <button disabled={true} className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
-                                        <p style={{color:"black"}}>
-                                        <FormattedMessage
-                                            id="Blog.añadir"
-                                            defaultMessage="Añadir Nuevo Blog"
-                                        />
+                                    </Link>
+                                    }
+                                    {localStorage.getItem("login") === "false" && <button disabled={true} className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
+                                        <p style={{ color: "black" }}>
+                                            <FormattedMessage
+                                                id="Blog.añadir"
+                                                defaultMessage="Añadir Nuevo Blog"
+                                            />
                                         </p>
-                                        </button>}
+                                    </button>}
 
                                 </div>
                             </div>

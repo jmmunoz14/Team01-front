@@ -38,6 +38,8 @@
     "Materia.titulo": "Find your games by subject!!!",
     "Materia.clickQuiz": "Click here to go to the only quiz available",
     "Habilidad.titulo": "Find your games by skill!",
-    "Habilidad.clickQuiz": "Click here to go to the only quiz available"
-    
+    "Habilidad.clickQuiz": "Click here to go to the only quiz available",
+    "Blog.idioma": "Language:",
+    "Blog.es": "Spanish",
+    "Blog.en": "English"
 }
