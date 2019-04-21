@@ -11,5 +11,11 @@
     "Toolbar.bienvenido": "Bienvenido",
     "Toolbar.usuario": "Nombre de Usuario",
     "Toolbar.contraseña": "Contraseña",
-    "Toolbar.correo": "Correo Electronico"
+    "Toolbar.correo": "Correo Electronico",
+    "Pregunta:": "Pregunta:",
+    "Respuesta:":"Respuesta:",
+    "Enviar":"Enviar",
+    "ingrese":"Ingrese su respuesta",
+    "Bienvenido a":"Bienvenido a"
+
 }

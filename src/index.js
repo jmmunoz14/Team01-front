@@ -12,6 +12,7 @@ import locale_es from 'react-intl/locale-data/es';
 import messages_en from "./translations/en.json";
 import messages_es from "./translations/es.json";
 
+
 const messages = {
     'es': messages_es,
     'en': messages_en
