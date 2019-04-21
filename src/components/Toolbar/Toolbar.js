@@ -36,14 +36,29 @@ export class Toolbar extends Component {
                     else {
                         localStorage.setItem("login", "false")
                         console.log("PassIncorrecto")
-                        alert("Usuario o Password Incorrectos")
+                        if (window.navigator.language==="es")
+                        {
+                            alert("Usuario o Contraseña Incorrectos")
+                        }
+                        else
+                        {
+                            alert("Wrong User or Password")
+                        }
+                        
                         localStorage.setItem("username", "")
                         localStorage.setItem("id", "")
 
                     }
                 } else {
                     console.log("usuario Inva")
-                    alert("Usuario o Password Incorrectos")
+                    if (window.navigator.language==="es")
+                        {
+                            alert("Usuario o Contraseña Incorrectos")
+                        }
+                        else
+                        {
+                            alert("Wrong User or Password")
+                        }
                     localStorage.setItem("login", "false")
                     localStorage.setItem("username", "")
                     localStorage.setItem("id", "")
@@ -63,7 +78,15 @@ export class Toolbar extends Component {
             .post('http://localhost:3000/api/register', { id: (Math.random() * 10000000000) + 200, email: this.state.email, username: this.state.user, password: this.state.password })
             .then(res => {
                 console.log(res.data)
-                alert("Usuario Creado, puede hacer Log in")
+                if (window.navigator.language==="es")
+                        {
+                            alert("Usuario Creado, ahora puede iniciar sesión")
+                        }
+                        else
+                        {
+                            alert("User created, now you can Log in")
+                        }
+                
                 window.location.reload();
 
                 this.setState({ usuario: res.data })
