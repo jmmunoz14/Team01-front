@@ -6,6 +6,7 @@ import PutBlog from './PutBlog'
 import BlogDetail from './BlogDetail'
 import axios from 'axios'
 import { Route } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl';
 
 export class Blogs extends Component {
 
@@ -90,7 +91,15 @@ export class Blogs extends Component {
                                 <div className="col-lg-8 col-md-10 mx-auto">
                                     {blogs.map((blog, blogIndex) => (
                                         <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />))}
-                                    {localStorage.getItem("login") === "true" && <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">Añadir Nuevo Blog</Link>}
+                                    {localStorage.getItem("login") === "true" && <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
+                                        <p style={{color:"black"}}>
+                                        <FormattedMessage
+                                            id="Blog.añadir"
+                                            defaultMessage="Añadir Nuevo Blog"
+                                        />
+                                        </p>
+                                        </Link>}
+
                                 </div>
                             </div>
                         </div>

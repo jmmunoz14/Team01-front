@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
-
+import { FormattedMessage } from 'react-intl';
 class Blog extends Component {
 
   componentDidMount = () => {
@@ -22,14 +22,26 @@ class Blog extends Component {
                 {blog.titulo}
               </h2>
             </Link>
-            <p className="blog">Posted by
+            <p className="blog">
+            <FormattedMessage
+                  id="Blog.publicadopor"
+                  defaultMessage="Publicado Por"
+                />
             <Link className="blog" to="/">{" " + blog.idUsuario + " "}</Link>
-              on {blog.date}</p>
+              {Date(blog.date)}</p>
           </div>
           <div className="col-lg-3">
             {localStorage.getItem("login") === "true" && <React.Fragment>
-              <button className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>Borrar</button>
-              <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>Actualizar</Link></React.Fragment>}
+              <button className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>
+                <FormattedMessage
+                  id="Blog.borrar"
+                  defaultMessage="Borrar"
+                /></button>
+              <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>
+                <FormattedMessage
+                  id="Blog.actualizar"
+                  defaultMessage="Actualizar"
+                /></Link></React.Fragment>}
           </div>
         </div>
         <hr>
