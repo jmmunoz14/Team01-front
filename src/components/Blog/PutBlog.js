@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import axios from 'axios'
+import { FormattedMessage } from 'react-intl';
 
 export class PutBlog extends Component {
     constructor(props) {
@@ -39,14 +40,26 @@ export class PutBlog extends Component {
         const { materias, titulo, descripcion } = this.state
         return (
             <div className="row">
-                <Link className="btn btn-danger blog btn-lg btn-block" to="/blogs">
-                    Volver a Blogs
-        </Link>
+                <Link className="btn btn-info blog btn-lg btn-block" to="/blogs">
+                    <FormattedMessage
+                        id="Blog.volver"
+                        defaultMessage="Volver a Blogs"
+                    />
+                </Link>
                 <div className="col-lg-8 col-md-10 mx-auto">
-                    <h1 className="blog">Actualizar Blog</h1>
+                    <h1 className="blog">
+                        <FormattedMessage
+                            id="Blog.put"
+                            defaultMessage="Actualizar Blog"
+                        /></h1>
                     <div className="row">
                         <div className="col-lg-4">
-                            <p className="blogDesc">Titulo del Blog:</p>
+                            <p className="blogDesc">
+                                <FormattedMessage
+                                    id="Blog.titulo"
+                                    defaultMessage="Titulo del Blog:"
+                                />
+                            </p>
                         </div>
                         <div className="col">
                             <input onChange={this.onChange} value={titulo} className="form-control" type="text" name="titulo" id="postTitulo" />
@@ -54,7 +67,12 @@ export class PutBlog extends Component {
                     </div>
                     <div className="row">
                         <div className="col-lg-4">
-                            <p className="blogDesc">Descripcion del Blog (Puede Compilar MarkDown):</p>
+                            <p className="blogDesc">
+                                <FormattedMessage
+                                    id="Blog.descripcion"
+                                    defaultMessage="Descripcion del Blog (Puede Compilar MarkDown):"
+                                />
+                            </p>
                         </div>
                         <div className="col">
                             <textarea style={{ height: "500px" }} onChange={this.onChange} value={descripcion} className="form-control" type="text" name="descripcion" id="PostDescripcion" />
@@ -62,7 +80,12 @@ export class PutBlog extends Component {
                     </div>
                     <div className="row">
                         <div className="col-lg-4">
-                            <p className="blogDesc">Materias:</p>
+                            <p className="blogDesc">
+                                <FormattedMessage
+                                    id="Blog.materias"
+                                    defaultMessage="Materias:"
+                                />
+                            </p>
                         </div>
                         <div className="col">
                             {materias.map((materia, materiaIndex) => (
@@ -71,7 +94,12 @@ export class PutBlog extends Component {
 
                         </div>
                     </div>
-                    <Link onClick={() => handlePutBlog({ titulo: titulo, descripcion: descripcion, date: " (Modified) " + this.getFecha() }, this.props.match.params.id)} className="btn btn-success btn-lg btn-block" to="/blogs">Actualizar Blog</Link>
+                    <Link onClick={() => handlePutBlog({ titulo: titulo, descripcion: descripcion, date: " (Modified) " + this.getFecha() }, this.props.match.params.id)} className="btn btn-success btn-lg btn-block" to="/blogs">
+                        <FormattedMessage
+                            id="Blog.put"
+                            defaultMessage="Actualizar Blog"
+                        />
+                    </Link>
 
                 </div>
             </div>

@@ -13,10 +13,21 @@
     "Toolbar.contraseña": "Contraseña",
     "Toolbar.correo": "Correo Electronico",
     "Pregunta:": "Pregunta:",
-    "Respuesta:":"Respuesta:",
-    "Enviar":"Enviar",
-    "ingrese":"Ingrese su respuesta",
-    "Bienvenido a":"Bienvenido a",
-    "NoSesion": "Inicie sesión para iniciar el quiz"
-
+    "NoSesion": "Inicie sesión para iniciar el quiz",
+    "Respuesta:": "Respuesta:",
+    "Enviar": "Enviar",
+    "ingrese": "Ingrese su respuesta",
+    "Bienvenido a": "Bienvenido a",
+    "Blog.borrar": "Borrar",
+    "Blog.actualizar": "Actualizar",
+    "Blog.añadir": "Añadir Nuevo Blog",
+    "Blog.volver": "Volver a Blogs",
+    "Blog.post": "Publicar Nuevo Blog",
+    "Blog.titulo": "Titulo del Blog:",
+    "Blog.descripcion": "Descripcion del Blog (Puede Compilar MarkDown):",
+    "Blog.materias": "Materias relacionadas",
+    "Blog.put": "Actualizar Blog Seleccionado",
+    "Chat.comentarios": "Comentarios",
+    "Chat.añadir": "Añadir Nuevo Comentario",
+    "Blog.publicadopor":"Publicado por"
 }

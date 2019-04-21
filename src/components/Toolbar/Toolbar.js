@@ -36,29 +36,25 @@ export class Toolbar extends Component {
                     else {
                         localStorage.setItem("login", "false")
                         console.log("PassIncorrecto")
-                        if (window.navigator.language==="es")
-                        {
+                        if (window.navigator.language === "es") {
                             alert("Usuario o Contraseña Incorrectos")
                         }
-                        else
-                        {
+                        else {
                             alert("Wrong User or Password")
                         }
-                        
+
                         localStorage.setItem("username", "")
                         localStorage.setItem("id", "")
 
                     }
                 } else {
                     console.log("usuario Inva")
-                    if (window.navigator.language==="es")
-                        {
-                            alert("Usuario o Contraseña Incorrectos")
-                        }
-                        else
-                        {
-                            alert("Wrong User or Password")
-                        }
+                    if (window.navigator.language === "es") {
+                        alert("Usuario o Contraseña Incorrectos")
+                    }
+                    else {
+                        alert("Wrong User or Password")
+                    }
                     localStorage.setItem("login", "false")
                     localStorage.setItem("username", "")
                     localStorage.setItem("id", "")
@@ -78,15 +74,13 @@ export class Toolbar extends Component {
             .post('http://localhost:3000/api/register', { id: (Math.random() * 10000000000) + 200, email: this.state.email, username: this.state.user, password: this.state.password })
             .then(res => {
                 console.log(res.data)
-                if (window.navigator.language==="es")
-                        {
-                            alert("Usuario Creado, ahora puede iniciar sesión")
-                        }
-                        else
-                        {
-                            alert("User created, now you can Log in")
-                        }
-                
+                if (window.navigator.language === "es") {
+                    alert("Usuario Creado, ahora puede iniciar sesión")
+                }
+                else {
+                    alert("User created, now you can Log in")
+                }
+
                 window.location.reload();
 
                 this.setState({ usuario: res.data })
@@ -121,47 +115,48 @@ export class Toolbar extends Component {
                 </li>
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav mr-auto">
-                    <li>
-                        <Link className="nav-item nav-link" to="/blogs"><FormattedMessage
-                            id="Toolbar.blogs"
-                            defaultMessage="Blogs"
-                        /></Link>
-                    </li>
+                        <li>
+                            <Link className="nav-item nav-link" to="/blogs"><FormattedMessage
+                                id="Toolbar.blogs"
+                                defaultMessage="Blogs"
+                            /></Link>
+                        </li>
 
-                    <li>
-                        <Link className="nav-item nav-link" to="/partidas"><FormattedMessage
-                            id="Toolbar.partidas"
-                            defaultMessage="Partidas"
-                        />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="nav-item nav-link" to="/quiz"><FormattedMessage
-                            id="Toolbar.pruebas"
-                            defaultMessage="Pruebas"
-                        />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="nav-item nav-link" to="/materias"><FormattedMessage
-                            id="Toolbar.materias"
-                            defaultMessage="Materias"
-                        />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="nav-item nav-link" to="/habilidades"><FormattedMessage
-                            id="Toolbar.habilidades"
-                            defaultMessage="Habilidades"
-                        />
-                        </Link>
-                    </li>
-                        {localStorage.getItem("login") === "true" && <li className="nav-item nav-link blog">
+                        <li>
+                            <Link className="nav-item nav-link" to="/partidas"><FormattedMessage
+                                id="Toolbar.partidas"
+                                defaultMessage="Partidas"
+                            />
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="nav-item nav-link" to="/quiz"><FormattedMessage
+                                id="Toolbar.pruebas"
+                                defaultMessage="Pruebas"
+                            />
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="nav-item nav-link" to="/materias">
+                                <FormattedMessage
+                                    id="Toolbar.materias"
+                                    defaultMessage="Materias"
+                                />
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="nav-item nav-link" to="/habilidades"><FormattedMessage
+                                id="Toolbar.habilidades"
+                                defaultMessage="Habilidades"
+                            />
+                            </Link>
+                        </li>
+                        {localStorage.getItem("login") === "true" && <li className="nav-item nav-link blog">_____-
                             <FormattedMessage
                                 id="Toolbar.bienvenido"
                                 defaultMessage="Bienvenido"
                             />
-                            {" " + localStorage.getItem("username")}
+                            {" " + localStorage.getItem("username")+"!!!"}
                         </li>}
                     </ul>
                     <ul className="navbar-nav ml-auto">
