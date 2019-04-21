@@ -32,7 +32,7 @@ export class PostBlog extends Component {
     return (
       <div className="row">
         <Link className="btn btn-danger blog btn-lg btn-block" to="/blogs">
-          Cancelar
+          Volver a Blogs
         </Link>
         <div className="col-lg-8 col-md-10 mx-auto">
           <h1 className="blog">Post Blog</h1>
@@ -65,7 +65,7 @@ export class PostBlog extends Component {
           </div>
           <Link onClick={() => handlePostBlog({
             titulo: titulo, descripcion: descripcion, date: this.getFecha(),
-            idUsuario: localStorage.getItem("username")+""
+            idUsuario: localStorage.getItem("username") + ""
           })
           }
             className="btn btn-success btn-lg btn-block" to="/blogs">

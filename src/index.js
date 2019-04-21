@@ -18,7 +18,7 @@ const messages = {
     'en': messages_en
 };
 const language = navigator.language.split(/[-_]/)[0];  // language without region code
-console.log("LANGGGGGGGGGGG;" + language);
+
 addLocaleData([...locale_en, ...locale_es]);
 ReactDOM.render(
     <IntlProvider locale={language} messages={messages[language]}>

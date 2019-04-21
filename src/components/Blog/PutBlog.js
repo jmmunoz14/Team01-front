@@ -40,7 +40,7 @@ export class PutBlog extends Component {
         return (
             <div className="row">
                 <Link className="btn btn-danger blog btn-lg btn-block" to="/blogs">
-                    Cancelar
+                    Volver a Blogs
         </Link>
                 <div className="col-lg-8 col-md-10 mx-auto">
                     <h1 className="blog">Actualizar Blog</h1>
