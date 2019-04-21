@@ -1,0 +1,15 @@
+{
+    "Toolbar.title": "The Math Games!",
+    "Toolbar.blogs": "Blogs",
+    "Toolbar.partidas": "Matches",
+    "Toolbar.pruebas": "Quiz",
+    "Toolbar.materias": "Subjects",
+    "Toolbar.habilidades": "Skills",
+    "Toolbar.salir": "Logout",
+    "Toolbar.registrarse": "Register",
+    "Toolbar.iniciar": "Login",
+    "Toolbar.bienvenido": "Welcome",
+    "Toolbar.usuario": "Username",
+    "Toolbar.contraseña": "Password",
+    "Toolbar.correo": "Email"
+}

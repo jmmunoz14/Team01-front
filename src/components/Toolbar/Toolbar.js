@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
 import axios from 'axios'
-
+import { FormattedMessage } from 'react-intl';
 export class Toolbar extends Component {
     constructor(props) {
         super(props);
@@ -87,7 +87,12 @@ export class Toolbar extends Component {
 
 
             <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
-                <Link to="/" className="navbar-brand">The Math Games!</Link>
+                <Link to="/" className="navbar-brand">
+                    <FormattedMessage
+                        id="Toolbar.title"
+                        defaultMessage="The Math Games!"
+                    />
+                </Link>
                 <li className="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                     <span className="navbar-toggler-icon"></span>
                 </li>
@@ -95,52 +100,98 @@ export class Toolbar extends Component {
                     <ul className="navbar-nav">
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/blogs">Blogs</Link>
+                            <Link className="nav-link" to="/blogs"><FormattedMessage
+                                id="Toolbar.blogs"
+                                defaultMessage="Blogs"
+                            /></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/partidas">Puntuación máxima</Link>
+                            <Link className="nav-link" to="/partidas"><FormattedMessage
+                                id="Toolbar.partidas"
+                                defaultMessage="Partidas"
+                            /></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/quiz">Preguntas</Link>
+                            <Link className="nav-link" to="/quiz"><FormattedMessage
+                                id="Toolbar.pruebas"
+                                defaultMessage="Pruebas"
+                            /></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/materias">Materias</Link>
+                            <Link className="nav-link" to="/materias"><FormattedMessage
+                                id="Toolbar.materias"
+                                defaultMessage="Materias"
+                            /></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/habilidades">Habilidades</Link>
+                            <Link className="nav-link" to="/habilidades"><FormattedMessage
+                                id="Toolbar.habilidades"
+                                defaultMessage="Habilidades"
+                            /></Link>
                         </li>
                         {localStorage.getItem("login") === "true" && <li className="nav-item">
-                            <p className="nav-link blog" to="/">{"Bienvenido " + localStorage.getItem("username")}</p>
+                            <p className="nav-link blog">
+                                <FormattedMessage
+                                    id="Toolbar.bienvenido"
+                                    defaultMessage="Bienvenido"
+                                />
+                                {" " + localStorage.getItem("username")}
+                            </p>
+
                         </li>}
-                        {localStorage.getItem("login") === "true" && <li className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>Salir</li>}
+                        {localStorage.getItem("login") === "true" && <li className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>
+                            <FormattedMessage
+                                id="Toolbar.salir"
+                                defaultMessage="Salir"
+                            />
+                        </li>}
                     </ul>
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">Registrarse <span className="caret"></span></button>
+                            <button type="button" id="dropdownMenu1" data-toggle="dropdown" className="btn btn-outline-secondary btn-info dropdown-toggle">
+                                <FormattedMessage
+                                    id="Toolbar.registrarse"
+                                    defaultMessage="Registrarse"
+                                />
+                                <span className="caret"></span>
+                            </button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" onSubmit={this.registerUser}>
                                         <div className="form-group">
-                                        <label>
-                                            Nombre de usuario:
-                                            <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
-                                        </label>
+                                            <label>
+                                                <FormattedMessage
+                                                    id="Toolbar.usuario"
+                                                    defaultMessage="Nombre de Usuario"
+                                                />
+                                                <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                            </label>
                                         </div>
                                         <div className="form-group">
-                                        <label>
-                                            Correo Electronico:
-                                            <input  className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
-                                        </label>
+                                            <label>
+                                                <FormattedMessage
+                                                    id="Toolbar.correo"
+                                                    defaultMessage="Correo Electronico"
+                                                />
+                                                <input className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
+                                            </label>
                                         </div>
                                         <div className="form-group">
-                                        <label>
-                                            Contraseña:
-                                            <input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
-                                        </label>
+                                            <label>
+                                                <FormattedMessage
+                                                    id="Toolbar.contraseña"
+                                                    defaultMessage="Contraseña"
+                                                />
+                                                <input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                            </label>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-dark btn-block">Registrarse</button>
+                                            <button type="submit" className="btn btn-dark btn-block"><FormattedMessage
+                                                id="Toolbar.registrarse"
+                                                defaultMessage="Registrarse"
+                                            />
+                                            </button>
                                         </div>
                                     </form>
                                 </li>
@@ -150,26 +201,42 @@ export class Toolbar extends Component {
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
-                            <button type="button" id="dropdownMenu2" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">Ingresar <span className="caret"></span></button>
+                            <button type="button" id="dropdownMenu2" data-toggle="dropdown" className="btn btn-outline-secondary btn-success dropdown-toggle">
+                                <FormattedMessage
+                                    id="Toolbar.iniciar"
+                                    defaultMessage="Ingresar"
+                                />
+                                <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
                                     <form className="form" onSubmit={this.setLogedUser}>
                                         <div className="form-group">
-                                        <label>
-                                            Nombre de usuario:
-                                            <input  className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
-                                        </label>
+                                            <label>
+                                                <FormattedMessage
+                                                    id="Toolbar.usuario"
+                                                    defaultMessage="Nombre de Usuario"
+                                                />
+                                                <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                            </label>
                                         </div>
                                         <div className="form-group">
-                                        <label>
-                                            Contraseña:
-                                            <input id="passwordInput2"  className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
-                                        </label>
+                                            <label>
+                                                <FormattedMessage
+                                                    id="Toolbar.contraseña"
+                                                    defaultMessage="Contraseña"
+                                                />
+                                                <input id="passwordInput2" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                            </label>
                                         </div>
                                         <div className="form-group">
-                                            <button type="submit" className="btn btn-dark btn-block">Ingresar</button>
+                                            <button type="submit" className="btn btn-dark btn-block">
+                                                <FormattedMessage
+                                                    id="Toolbar.iniciar"
+                                                    defaultMessage="Ingresar"
+                                                />
+                                            </button>
                                         </div>
-                                        
+
                                     </form>
                                 </li>
                             </ul>
