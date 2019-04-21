@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { origen } from '../helper/config.js'
 import { Button } from 'semantic-ui-react'
 import { Input } from 'semantic-ui-react'
-
+import {FormattedMessage} from 'react-intl';
 
 class Pregunta extends Component {
     constructor(props) {
@@ -54,7 +54,11 @@ class Pregunta extends Component {
     handleSubmit(event) {
         if (this.state.value === this.state.preguntaas[this.state.currentQuestion].respuesta) {
             this.setState((respuestasCorrectas) => ({ respuestasCorrectas: this.state.respuestasCorrectas + 1 }),
-                () => { alert("Respuesta Correcta! \n numero de respuestas correctas: " + this.state.respuestasCorrectas); })
+                () => {  if (window.navigator.language==="es"){
+                    alert("Respuesta Correcta! \n numero de respuestas correctas: " + this.state.respuestasCorrectas); }
+                else{
+                    alert("Correct Answer! \n score: " + this.state.respuestasCorrectas); 
+                }})
 
             console.log(this.state.currentQuestion)
 
@@ -62,7 +66,15 @@ class Pregunta extends Component {
                 this.setState({ currentQuestion: this.state.currentQuestion + 1, value: '' })
             }
             else {
-                alert('Fin de las preguntas, volviendo a empezar')
+                if (window.navigator.language==="es")
+                { 
+                    alert('Fin de las preguntas, volviendo a empezar')
+                }
+                else
+                {
+                    alert('End of questions, restarting')
+                }
+                
                 this.setState({ currentQuestion: this.state.currentQuestion - this.state.currentQuestion, value: '' })
                 this.setState({ respuestasCorrectas: this.state.respuestasCorrectas - this.state.respuestasCorrectas, value: '' })
             }
@@ -70,7 +82,14 @@ class Pregunta extends Component {
 
         }
         else {
-            alert('respuesta incorrecta')
+            if (window.navigator.language==="es")
+            {
+                alert('respuesta incorrecta')
+            }
+            else{
+                alert('wrong question')
+            }
+            
             console.log(this.state.preguntaas[this.state.currentQuestion].respuesta)
         }
         event.preventDefault();
@@ -86,7 +105,7 @@ class Pregunta extends Component {
 
                 <div className="card">
                     <div className="card-body">
-                        <h1 className="card-title">Pregunta:</h1>
+                        <h1 className="card-title"><FormattedMessage id="Pregunta:"/></h1>
 
                         <div className='preguntaText'>
                             <p className="card-text">{this.state.preguntaas[this.state.currentQuestion].enunciado}</p>
@@ -95,12 +114,16 @@ class Pregunta extends Component {
 
                         <form onSubmit={this.handleSubmit}>
 
-                            <label ><p className='respuestatext' id="res">Respuesta:</p>
+                            <label ><p className='respuestatext' id="res"><FormattedMessage id="Respuesta:"/></p>
+                            <FormattedMessage id="ingrese" defaultMessage="Ingrese su respuesta">
 
+                                {placeholder =>  <Input type="text"  id="respuesta" value={this.state.value} onChange={this.handleChange} 
+                                    placeholder={placeholder} />}
 
-                                <Input type="text" placeholder="Ingrese su respuesta" id="respuesta" value={this.state.value} onChange={this.handleChange} />
+                            </FormattedMessage>
+
                             </label>
-                            <Button className='boton'>Enviar</Button>
+                            <Button className='boton'><FormattedMessage id="Enviar"/></Button>
                         </form>
                     </div>
                 </div>

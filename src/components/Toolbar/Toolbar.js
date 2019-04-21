@@ -98,7 +98,7 @@ export class Toolbar extends Component {
                             <Link className="nav-link" to="/blogs">Blogs</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/partidas">Partidas</Link>
+                            <Link className="nav-link" to="/partidas">Puntuación máxima</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/quiz">Preguntas</Link>

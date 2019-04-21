@@ -4,6 +4,7 @@ import Blogs from './components/Blog/Blogs'
 import Partidas from './components/Partida/Partidas'
 import Pregunta from './pages/Pregunta'
 import Habilidades from './components/Habilidades/Habilidades'
+import {FormattedMessage} from 'react-intl';
 
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -69,7 +70,7 @@ class App extends Component {
             <Fragment>
 
               <img src="mathicon.png" className="mainImage" alt="Icono" ></img>
-              <h1 className='welcome'> Bienvenido a </h1>
+              <h1 className='welcome'> <FormattedMessage id="Bienvenido a"/> </h1>
               <h1 className='welcome2'>The Math Games</h1>
 
             </Fragment>

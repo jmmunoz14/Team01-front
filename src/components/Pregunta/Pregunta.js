@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { origen } from '../helper/config.js'
+import {FormattedMessage} from 'react-intl';
 
 class Pregunta extends Component {
     constructor(props) {
@@ -68,7 +69,7 @@ class Pregunta extends Component {
 
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Pregunta:</h5>
+                            <h5 className="card-title"><FormattedMessage id="Pregunta:"/></h5>
 
                             <div className='preguntaText'>
                                 <p className="card-text">{this.state.preguntaas[this.state.currentQuestion].enunciado}</p>
