@@ -2,12 +2,12 @@ import React, { Component, Fragment } from "react";
 import { Link, Route } from "react-router-dom";
 import MateriaPage from "./MateriaPage";
 
-export class Materia extends Component{
-    constructor(props) {
+export class Materia extends Component {
+    /*constructor(props) {
         super(props)
-    }
+    }*/
 
-    render(){
+    render() {
         const materia = this.props.materia;
         return(
             <Fragment>
@@ -22,8 +22,8 @@ export class Materia extends Component{
                         <br/> 
                         Si haces click en este recuadro, podras acceder a los juegos que te van a
                         ayudar con tu renimiento en {materia.name}.
-                        <br/>
-                        Allí podrás verlos separados por habilidad.
+                        <br />
+                    Allí podrás verlos separados por habilidad.
                     </div>
                 </div>
             </Link>
@@ -32,7 +32,7 @@ export class Materia extends Component{
         );
     }
 
-    
-} 
+
+}
 
 export default Materia

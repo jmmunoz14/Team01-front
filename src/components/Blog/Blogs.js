@@ -6,6 +6,7 @@ import PutBlog from './PutBlog'
 import BlogDetail from './BlogDetail'
 import axios from 'axios'
 import { Route } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl';
 
 export class Blogs extends Component {
 
@@ -82,16 +83,38 @@ export class Blogs extends Component {
         const { match } = this.props
         return (
             <div style={{ backgroundColor: "white" }}>
-                <h1 className="blog" style={{ color: '#0069D1' }}>Blogs</h1>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-8 col-md-10 mx-auto">
-                            {blogs.map((blog, blogIndex) => (
-                                <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />))}
-                            {localStorage.getItem("login") === "true" && <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">Añadir Nuevo Blog</Link>}
+                <Route exact path="/blogs" render={props => (
+                    <Fragment>
+                        <h1 className="blog" style={{ color: '#0069D1' }}>Blogs</h1>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-8 col-md-10 mx-auto">
+                                    {blogs.map((blog, blogIndex) => (
+                                        <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />))}
+                                    {localStorage.getItem("login") === "true" && <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
+                                        <p style={{color:"black"}}>
+                                        <FormattedMessage
+                                            id="Blog.añadir"
+                                            defaultMessage="Añadir Nuevo Blog"
+                                        />
+                                        </p>
+                                        </Link>}
+                                        {localStorage.getItem("login") === "false" && <button disabled={true} className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
+                                        <p style={{color:"black"}}>
+                                        <FormattedMessage
+                                            id="Blog.añadir"
+                                            defaultMessage="Añadir Nuevo Blog"
+                                        />
+                                        </p>
+                                        </button>}
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </Fragment>
+                )}
+                />
+
                 <Route exact path={`${match.path}/:id`} render={props => (
                     <Fragment>
                         <BlogDetail {...props} />

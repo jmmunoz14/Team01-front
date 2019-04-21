@@ -1,7 +1,6 @@
-import React, { Component, useContext } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom"
-import UserContext from "../User/UserContext"
-
+import { FormattedMessage } from 'react-intl';
 class Blog extends Component {
 
   componentDidMount = () => {
@@ -18,22 +17,39 @@ class Blog extends Component {
       <React.Fragment>
         <div className="row">
           <div className="col-lg-9">
-            <Link className="blog" to={"/blogs/" + blog._id} onClick={this.reload}>
+            <Link className="blog" to={"/blogs/" + blog._id} onClick={this.forceUpdate}>
               <h2 className="blog">
                 {blog.titulo}
               </h2>
-              <h3 className="blog">
-                {blog.titulo}
-              </h3>
             </Link>
-            <p className="blog">Posted by
+            <p className="blog">
+            <FormattedMessage
+                  id="Blog.publicadopor"
+                  defaultMessage="Publicado Por"
+                />
             <Link className="blog" to="/">{" " + blog.idUsuario + " "}</Link>
-              on {blog.date}</p>
+              {Date(blog.date)}</p>
           </div>
           <div className="col-lg-3">
-            {localStorage.getItem("login") === "true" && <React.Fragment>
-              <button className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>Borrar</button>
-              <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>Actualizar</Link></React.Fragment>}
+            <React.Fragment>
+              <button disabled={!((localStorage.getItem("username")===blog.idUsuario)&&(localStorage.getItem("login") === "true"))} className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>
+                <FormattedMessage
+                  id="Blog.borrar"
+                  defaultMessage="Borrar"
+                /></button>
+              {((localStorage.getItem("username")===blog.idUsuario)&&(localStorage.getItem("login") === "true"))&&<Link  className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>
+                <FormattedMessage
+                  id="Blog.actualizar"
+                  defaultMessage="Actualizar"
+                />
+              </Link>}
+              {!((localStorage.getItem("username")===blog.idUsuario)&&(localStorage.getItem("login") === "true"))&&<button  className="btn btn-warning btn-lg btn-block" disabled={true}>
+                <FormattedMessage
+                  id="Blog.actualizar"
+                  defaultMessage="Actualizar"
+                />
+              </button>}
+            </React.Fragment>
           </div>
         </div>
         <hr>
@@ -42,5 +58,4 @@ class Blog extends Component {
     );
   }
 }
-Blog.contextType = UserContext;
 export default Blog

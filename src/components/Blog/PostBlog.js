@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
+import { FormattedMessage } from 'react-intl';
 
 export class PostBlog extends Component {
   constructor(props) {
@@ -20,25 +21,32 @@ export class PostBlog extends Component {
 
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
-  getFecha = () => {
-    var d = Date(Date.now());
-
-    return d.toString();
-  };
 
   render() {
     const { handlePostBlog } = this.props;
     const { materias, titulo, descripcion } = this.state;
     return (
       <div className="row">
-        <Link className="btn btn-danger blog btn-lg btn-block" to="/blogs">
-          Cancelar
+        <Link className="btn btn-info blog btn-lg btn-block" to="/blogs">
+          <FormattedMessage
+            id="Blog.volver"
+            defaultMessage="Volver a Blogs"
+          />
         </Link>
         <div className="col-lg-8 col-md-10 mx-auto">
-          <h1 className="blog">Post Blog</h1>
+          <h1 className="blog">
+            <FormattedMessage
+              id="Blog.post"
+              defaultMessage="Publicar Nuevo Blog"
+            /></h1>
           <div className="row">
             <div className="col-lg-4">
-              <p className="blogDesc">Titulo del Blog:</p>
+              <p className="blogDesc">
+                <FormattedMessage
+                  id="Blog.titulo"
+                  defaultMessage="Titulo del Blog:"
+                />
+              </p>
             </div>
             <div className="col">
               <input onChange={this.onChange} value={titulo} className="form-control" type="text" name="titulo" id="postTitulo" />
@@ -46,7 +54,12 @@ export class PostBlog extends Component {
           </div>
           <div className="row">
             <div className="col-lg-4">
-              <p className="blogDesc">Descripcion del Blog (Puede Compilar MarkDown):</p>
+              <p className="blogDesc">
+                <FormattedMessage
+                  id="Blog.descripcion"
+                  defaultMessage="Descripcion del Blog (Puede Compilar MarkDown):"
+                />
+              </p>
             </div>
             <div className="col">
               <textarea style={{ height: "500px" }} onChange={this.onChange} value={descripcion} className="form-control" type="text" name="descripcion" id="PostDescripcion" />
@@ -54,7 +67,12 @@ export class PostBlog extends Component {
           </div>
           <div className="row">
             <div className="col-lg-4">
-              <p className="blogDesc">Materias:</p>
+              <p className="blogDesc">
+                <FormattedMessage
+                  id="Blog.materias"
+                  defaultMessage="Materias:"
+                />
+              </p>
             </div>
             <div className="col">
               {materias.map((materia, materiaIndex) => (
@@ -64,12 +82,15 @@ export class PostBlog extends Component {
             </div>
           </div>
           <Link onClick={() => handlePostBlog({
-            titulo: titulo, descripcion: descripcion, date: this.getFecha(),
-            idUsuario: localStorage.getItem("username")+""
+            titulo: titulo, descripcion: descripcion, date: Date.now(),
+            idUsuario: localStorage.getItem("username") + ""
           })
           }
             className="btn btn-success btn-lg btn-block" to="/blogs">
-            Crear Blog
+            <FormattedMessage
+              id="Blog.post"
+              defaultMessage="Publicar Nuevo Blog"
+            />
           </Link>
         </div>
       </div>

@@ -50,7 +50,7 @@ p.blog{
     font-size: 18px;
     font-style: italic;
     margin-top: 0;
-    color: #ffffff;
+    color: darkblue;
 }
 a.blog
 {
@@ -134,17 +134,19 @@ code {
 
 .btn-outline-secondary {
     color: #2a2929;
-    border-color: #2a2929;
+    
     font-size: 20px!important;
 }
 
 .navbar-nav .nav-link{
     color: #ffffff!important;
-    font-size: 25px!important;
+    font-size: 27px!important;
+    vertical-align: middle!important;
 }
 .nav-item{
     color: #000000!important;
-    font-size: 25px!important;
+    font-size: 27px!important;
+    vertical-align: middle!important;
 }
 
 .navbar-text {
@@ -162,9 +164,8 @@ code {
 }
 
 .btn-outline-secondary:hover {
-    color: #000000	;
-    border-color: #ffffff	;
-    background-color: #ecfd00	!important;
+    color: #ffffff	;
+    background-color: #000000	!important;
 }
 
 .navbar-nav .nav-link:hover{

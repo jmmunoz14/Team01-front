@@ -5,11 +5,11 @@ import TextField from '@material-ui/core/TextField';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
 
-export class Materias extends Component{
+export class Materias extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            materias : [],
+            materias: [],
             imSrcs: [
                 "/calculator.png",
                 "/pencil.png",
@@ -17,25 +17,25 @@ export class Materias extends Component{
                 "/pi.png",
                 "/images/Integral-icon.png"
             ],
-            searchText :""
+            searchText: ""
         }
         this.handleSearch = this.handleSearch.bind(this);
     }
 
 
-    componentDidMount(){
+    componentDidMount() {
         fetch('http://localhost:3000/materias/')
-        .then(results => {
-            return results.json();
+            .then(results => {
+                return results.json();
 
-        }).then(data => {
-            this.setState({materias : data});
-        })
+            }).then(data => {
+                this.setState({ materias: data });
+            })
 
     }
 
-    handleSearch(event){
-        this.setState({searchText: event.target.value});
+    handleSearch(event) {
+        this.setState({ searchText: event.target.value });
     }
 
     routes(products){
@@ -56,13 +56,13 @@ export class Materias extends Component{
 
     table(filterText,products){
         const rows = [];
-        let lastCategory = null;
-    
+        //let lastCategory = null;
+
         products.forEach((mat) => {
-          if (mat.name.indexOf(filterText) === -1) {
-            return;
-          }
-          rows.push(<Materia key={mat._id.toString()} materia = {mat}/>);
+            if (mat.name.indexOf(filterText) === -1) {
+                return;
+            }
+            rows.push(<Materia key={mat._id.toString()} materia={mat} />);
         });
         return (
             <Fragment>
@@ -73,13 +73,13 @@ export class Materias extends Component{
             </Fragment>
           
         );
-      }
+    }
 
-    render(){
-      return(
-       
-            <div className= "container">
-                
+    render() {
+        return (
+
+            <div className="container">
+
                 <h1>Find your game by Subject!</h1>
                 <TextField
                     fullWidth
@@ -95,6 +95,6 @@ export class Materias extends Component{
             </div>
         );
     }
-} 
+}
 
 export default Materias

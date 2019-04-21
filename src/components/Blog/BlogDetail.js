@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Chat from "../Chat/Chat";
 import axios from "axios";
+import { FormattedMessage } from 'react-intl';
 
 export class BlogDetail extends Component {
   constructor(props) {
@@ -32,12 +33,15 @@ export class BlogDetail extends Component {
     return (
       <div>
         <Link className="btn btn-info blog btn-lg btn-block" to="/blogs">
-          Esconder Detalle
+          <FormattedMessage
+            id="Blog.volver"
+            defaultMessage="Volver a Blogs"
+          />
         </Link>
         <h1 className="blog">{blog.titulo}</h1>
 
         <div className="col-lg-8 col-md-10 mx-auto">
-          {chatLoad&&<div dangerouslySetInnerHTML={{ __html: this.toMarkDown() }} />}
+          {chatLoad && <div dangerouslySetInnerHTML={{ __html: this.toMarkDown() }} />}
         </div>
         {chatLoad && <Chat idChat={blog.idChat} />}
       </div>

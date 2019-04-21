@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import Comentario from "./Comentario";
+import { FormattedMessage } from 'react-intl';
 
 export class Chat extends Component {
   constructor(props) {
@@ -77,34 +78,39 @@ export class Chat extends Component {
     const { chat, comentLoad, nuevoComentario } = this.state;
     return (
       <Fragment>
-        <div style={this.LightenDarkenColor()}>
+        <div>
           <hr style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }} />
-          <h1 className="blog" style={{ color: chat.color, textAlign: "center" }}>
-            {" "}Comentarios{" "}
+          <h1 className="blog" style={{ textAlign: "center" }}>
+            {" "}
+            <FormattedMessage
+              id="Chat.comentarios"
+              defaultMessage="Comentarios"
+            />{" "}
           </h1>
-          <div className="row">
-            <div className="col-lg-3">
-              <h2 className="blog" style={{ color: chat.color, textAlign: "center" }}>ColorPicker----></h2>
-            </div>
-            <div className="col-lg-6">
-              <input style={{ backgroundColor: chat.color, color: chat.color, border: "5px solid " + chat.color }} className="form-control colorpicker"
-                type="color" name="chat.color" onChange={this.onChangeColor} value={this.state.chat.color} />
-            </div>
-          </div>
-
           {comentLoad &&
             chat.comentarios.map((comentario, comentarioIndex) => (
               <Comentario comentario={comentario} key={comentarioIndex} />
             ))}
           <hr style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }} />
-          <h1 className="blog" style={{ color: chat.color, textAlign: "center" }}>
-            Añadir Comentario
+          <h1 className="blog" style={{ textAlign: "center" }}>
+            <FormattedMessage
+              id="Chat.añadir"
+              defaultMessage="Añadir Nuevo Comentario"
+            />
           </h1>
           <hr style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }} />
-          {localStorage.getItem("login") === "true" && <React.Fragment><input placeHolder="Comentario.........." className="coment form-control" type="text" name="nuevoComentario" value={nuevoComentario} onChange={this.onChange} />
+          {localStorage.getItem("login") === "true" && <React.Fragment>
+          <textarea title="añadir" placeholder={window.navigator.language === "es"?"Escriba su comentario aqui":"Type your comment here"} className="coment form-control" type="text" name="nuevoComentario" value={nuevoComentario} onChange={this.onChange} >
+          
+          </textarea>
             <button className="btn btn-success btn-lg btn-block" onClick={() => this.postComentario(nuevoComentario)}>
-              Añadir Nuevo Comentario
-          </button></React.Fragment>}
+            <p style={{color:"black"}}>
+              <FormattedMessage
+                id="Chat.añadir"
+                defaultMessage="Añadir Nuevo Comentario"
+              />
+            </p>
+            </button></React.Fragment>}
         </div>
       </Fragment>
     );
