@@ -16,8 +16,8 @@ export class Blogs extends Component {
             blogs: [],
             materias: [],
             chats: [],
-            es: false,
-            en: false,
+            es: true,
+            en: true,
             test: "",
         }
     }
@@ -48,7 +48,8 @@ export class Blogs extends Component {
                 idUsuario: blog.idUsuario,
                 date: blog.date,
                 idChat: this.state.chats[this.state.chats.length - 1].chatCreada._id,
-                comentarios: [{ idUsuario: blog.idUsuario, comentario: 'tested' }]
+                comentarios: [{ idUsuario: blog.idUsuario, comentario: 'tested' }],
+                idioma: blog.idioma
             }
             axios
                 .post('http://localhost:3000/blogs', blognew)
@@ -82,12 +83,28 @@ export class Blogs extends Component {
     }
 
     onChange = e => {
+        e.preventDefault();
         this.setState({ [e.target.name]: e.target.value })
-        console.log(this.state.test)
+        if (e.target.value === "Any" || e.target.value === "Cualquiera") {
+            this.setState({ es: true })
+            this.setState({ en: true })
+        }
+        else if (e.target.value === "Español" || e.target.value === "Spanish") {
+            this.setState({ es: true })
+            this.setState({ en: false })
+        }
+        else if (e.target.value === "Inglés" || e.target.value === "English") {
+            this.setState({ en: true })
+            this.setState({ es: false })
+        }
+        else {
+            this.setState({ en: false })
+            this.setState({ es: false })
+        }
     };
 
     render() {
-        const { blogs, en, es } = this.state
+        const { blogs, en, es, test } = this.state
         const { match } = this.props
         return (
             <div style={{ backgroundColor: "white" }}>
@@ -97,9 +114,10 @@ export class Blogs extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-8 col-md-10 mx-auto">
+                                    <hr />
                                     <div className="row">
                                         <div className="col">
-                                            <h2 className="blog">
+                                            <h2 className="blog" style={{ color: '#0069D1' }}>
                                                 <FormattedMessage
                                                     id="Blog.idioma"
                                                     defaultMessage="Idioma:"
@@ -107,28 +125,19 @@ export class Blogs extends Component {
                                             </h2>
                                         </div>
                                         <div className="col">
-                                            <select id="idiomas" onChange={this.onChange} value={this.state.test} name="test" class="form-control form-control-lg">
-                                                <FormattedMessage id="{option.name}">
-                                                    {(message) => <option value="{option.value}">{message}</option>}
-                                                </FormattedMessage>
-                                                <option value="es">
-                                                    <FormattedMessage
-                                                        id="Blog.es"
-                                                        defaultMessage="es"
-                                                    />
-                                                </option>
-                                                <option values="en">
-                                                    <FormattedMessage
-                                                        id="Blog.en"
-                                                        defaultMessage="en"
-                                                    />
-                                                </option>
+                                            <select id="idiomas" onChange={this.onChange} value={test} name="test" className="form-control form-control-lg">
+                                                <FormattedMessage id="Blog.cualquiera" defaultMessage="Cualquiera" tagName='option' />
+                                                <FormattedMessage id="Blog.es" defaultMessage="es" tagName='option' />
+                                                <FormattedMessage id="Blog.en" defaultMessage="en" tagName='option' />
                                             </select>
                                         </div>
                                     </div>
-
-
-                                    {blogs.map((blog, blogIndex) => (
+                                    <hr />
+                                    <hr />
+                                    {es && blogs.filter(blog => blog.idioma === "es").map((blog, blogIndex) => (
+                                        <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />
+                                    ))}
+                                    {en && blogs.filter(blog => blog.idioma === "en").map((blog, blogIndex) => (
                                         <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />
                                     ))}
                                     {localStorage.getItem("login") === "true" && <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">

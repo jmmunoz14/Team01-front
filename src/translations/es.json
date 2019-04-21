@@ -39,7 +39,8 @@
     "Materia.clickQuiz": "Haz click aquí para ir al único quiz disponible",
     "Habilidad.titulo": "Encuentra tus juegos por habilidad!",
     "Habilidad.clickQuiz": "Haz click aquí para ir al único quiz disponible",
-    "Blog.idioma": "Idioma",
+    "Blog.idioma": "Idioma:",
     "Blog.es": "Español",
-    "Blog.en": "Inglés"
+    "Blog.en": "Inglés",
+    "Blog.cualquiera": "Cualquiera"
 }
