@@ -97,49 +97,50 @@ export class Toolbar extends Component {
                     <span className="navbar-toggler-icon"></span>
                 </li>
                 <div className="collapse navbar-collapse" id="navbarMenu">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav mr-auto">
 
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/blogs"><FormattedMessage
-                                id="Toolbar.blogs"
-                                defaultMessage="Blogs"
-                            /></Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/partidas"><FormattedMessage
-                                id="Toolbar.partidas"
-                                defaultMessage="Partidas"
-                            /></Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/quiz"><FormattedMessage
-                                id="Toolbar.pruebas"
-                                defaultMessage="Pruebas"
-                            /></Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/materias"><FormattedMessage
-                                id="Toolbar.materias"
-                                defaultMessage="Materias"
-                            /></Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/habilidades"><FormattedMessage
-                                id="Toolbar.habilidades"
-                                defaultMessage="Habilidades"
-                            /></Link>
-                        </li>
-                        {localStorage.getItem("login") === "true" && <li className="nav-item">
-                            <p className="nav-link blog">
-                                <FormattedMessage
-                                    id="Toolbar.bienvenido"
-                                    defaultMessage="Bienvenido"
-                                />
-                                {" " + localStorage.getItem("username")}
-                            </p>
+                        <Link className="nav-item nav-link" to="/blogs"><FormattedMessage
+                            id="Toolbar.blogs"
+                            defaultMessage="Blogs"
+                        /></Link>
 
+
+                        <Link className="nav-item nav-link" to="/partidas"><FormattedMessage
+                            id="Toolbar.partidas"
+                            defaultMessage="Partidas"
+                        />
+                        </Link>
+
+                        <Link className="nav-item nav-link" to="/quiz"><FormattedMessage
+                            id="Toolbar.pruebas"
+                            defaultMessage="Pruebas"
+                        />
+                        </Link>
+
+                        <Link className="nav-item nav-link" to="/materias"><FormattedMessage
+                            id="Toolbar.materias"
+                            defaultMessage="Materias"
+                        />
+                        </Link>
+
+                        <Link className="nav-item nav-link" to="/habilidades"><FormattedMessage
+                            id="Toolbar.habilidades"
+                            defaultMessage="Habilidades"
+                        />
+                        </Link>
+                        {localStorage.getItem("login") === "true" && <li className="nav-item nav-link blog">
+                            <FormattedMessage
+                                id="Toolbar.bienvenido"
+                                defaultMessage="Bienvenido"
+                            />
+                            {" " + localStorage.getItem("username")}
                         </li>}
-                        {localStorage.getItem("login") === "true" && <li className="btn btn-danger btn-large" onClick={() => this.setLogin(false)}>
+                    </ul>
+                    <ul className="navbar-nav ml-auto">
+
+
+
+                        {localStorage.getItem("login") === "true" && <li style={{ fontSize: "20px", left: "100px!important", right: "0px" }} className="btn btn-danger btn-large flex-row justify-content-between" onClick={() => this.setLogin(false)}>
                             <FormattedMessage
                                 id="Toolbar.salir"
                                 defaultMessage="Salir"

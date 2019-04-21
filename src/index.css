@@ -50,7 +50,7 @@ p.blog{
     font-size: 18px;
     font-style: italic;
     margin-top: 0;
-    color: #ffffff;
+    color: gray;
 }
 a.blog
 {
@@ -140,11 +140,13 @@ code {
 
 .navbar-nav .nav-link{
     color: #ffffff!important;
-    font-size: 25px!important;
+    font-size: 27px!important;
+    vertical-align: middle!important;
 }
 .nav-item{
     color: #000000!important;
-    font-size: 25px!important;
+    font-size: 27px!important;
+    vertical-align: middle!important;
 }
 
 .navbar-text {

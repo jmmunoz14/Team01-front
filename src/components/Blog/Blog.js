@@ -21,9 +21,6 @@ class Blog extends Component {
               <h2 className="blog">
                 {blog.titulo}
               </h2>
-              <h3 className="blog">
-                {blog.titulo}
-              </h3>
             </Link>
             <p className="blog">Posted by
             <Link className="blog" to="/">{" " + blog.idUsuario + " "}</Link>
