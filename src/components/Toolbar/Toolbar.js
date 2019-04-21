@@ -121,36 +121,41 @@ export class Toolbar extends Component {
                 </li>
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav mr-auto">
-
+                    <li>
                         <Link className="nav-item nav-link" to="/blogs"><FormattedMessage
                             id="Toolbar.blogs"
                             defaultMessage="Blogs"
                         /></Link>
+                    </li>
 
-
+                    <li>
                         <Link className="nav-item nav-link" to="/partidas"><FormattedMessage
                             id="Toolbar.partidas"
                             defaultMessage="Partidas"
                         />
                         </Link>
-
+                    </li>
+                    <li>
                         <Link className="nav-item nav-link" to="/quiz"><FormattedMessage
                             id="Toolbar.pruebas"
                             defaultMessage="Pruebas"
                         />
                         </Link>
-
+                    </li>
+                    <li>
                         <Link className="nav-item nav-link" to="/materias"><FormattedMessage
                             id="Toolbar.materias"
                             defaultMessage="Materias"
                         />
                         </Link>
-
+                    </li>
+                    <li>
                         <Link className="nav-item nav-link" to="/habilidades"><FormattedMessage
                             id="Toolbar.habilidades"
                             defaultMessage="Habilidades"
                         />
                         </Link>
+                    </li>
                         {localStorage.getItem("login") === "true" && <li className="nav-item nav-link blog">
                             <FormattedMessage
                                 id="Toolbar.bienvenido"
