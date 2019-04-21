@@ -31,17 +31,25 @@ class Blog extends Component {
               {Date(blog.date)}</p>
           </div>
           <div className="col-lg-3">
-            {localStorage.getItem("login") === "true" && <React.Fragment>
-              <button className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>
+            <React.Fragment>
+              <button disabled={!((localStorage.getItem("username")===blog.idUsuario)&&(localStorage.getItem("login") === "true"))} className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>
                 <FormattedMessage
                   id="Blog.borrar"
                   defaultMessage="Borrar"
                 /></button>
-              <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>
+              {((localStorage.getItem("username")===blog.idUsuario)&&(localStorage.getItem("login") === "true"))&&<Link  className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>
                 <FormattedMessage
                   id="Blog.actualizar"
                   defaultMessage="Actualizar"
-                /></Link></React.Fragment>}
+                />
+              </Link>}
+              {!((localStorage.getItem("username")===blog.idUsuario)&&(localStorage.getItem("login") === "true"))&&<button  className="btn btn-warning btn-lg btn-block" disabled={true}>
+                <FormattedMessage
+                  id="Blog.actualizar"
+                  defaultMessage="Actualizar"
+                />
+              </button>}
+            </React.Fragment>
           </div>
         </div>
         <hr>
