@@ -137,7 +137,9 @@ code {
     
     font-size: 20px!important;
 }
-
+.ocult{
+    font-size: 1px;
+}
 .navbar-nav .nav-link{
     color: #ffffff!important;
     font-size: 27px!important;

@@ -125,11 +125,14 @@ export class Blogs extends Component {
                                             </h2>
                                         </div>
                                         <div className="col">
+                                        <label className="ocult">
+                                            .
                                             <select id="idiomas" onChange={this.onChange} value={test} name="test" className="form-control form-control-lg">
                                                 <FormattedMessage id="Blog.cualquiera" defaultMessage="Cualquiera" tagName='option' />
                                                 <FormattedMessage id="Blog.es" defaultMessage="es" tagName='option' />
                                                 <FormattedMessage id="Blog.en" defaultMessage="en" tagName='option' />
                                             </select>
+                                        </label>
                                         </div>
                                     </div>
                                     <hr />
