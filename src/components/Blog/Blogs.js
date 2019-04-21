@@ -107,7 +107,7 @@ export class Blogs extends Component {
                                             </h2>
                                         </div>
                                         <div className="col">
-                                            <select id="idiomas" onChange={this.onChange} value={this.state.test} name="test" class="form-control form-control-lg">
+                                            <select id="idiomas" onChange={this.onChange} value={this.state.test} name="test" className="form-control form-control-lg">
                                                 <FormattedMessage id="{option.name}">
                                                     {(message) => <option value="{option.value}">{message}</option>}
                                                 </FormattedMessage>

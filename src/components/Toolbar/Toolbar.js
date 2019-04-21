@@ -61,6 +61,7 @@ export class Toolbar extends Component {
 
                 }
                 window.location.reload();
+                
 
 
             })
@@ -112,6 +113,8 @@ export class Toolbar extends Component {
           }
          
           this.className += " active";
+
+          
           });
         }
     }
@@ -137,6 +140,12 @@ export class Toolbar extends Component {
 
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav mr-auto">
+                        <li>
+                        <Link className="nav-item nav-link cirr" to="/"><FormattedMessage
+                                id="Toolbar.inicio"
+                                defaultMessage="Inicio"
+                            /></Link>
+                        </li>
                         <li>
                             <Link className="nav-item nav-link cirr" to="/blogs"><FormattedMessage
                                 id="Toolbar.blogs"
@@ -212,7 +221,7 @@ export class Toolbar extends Component {
                                                     id="Toolbar.usuario"
                                                     defaultMessage="Nombre de Usuario"
                                                 />
-                                                <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                                <font color="crimson">*</font><input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
                                             </label>
                                         </div>
                                         <div className="form-group">
@@ -221,7 +230,7 @@ export class Toolbar extends Component {
                                                     id="Toolbar.correo"
                                                     defaultMessage="Correo Electronico"
                                                 />
-                                                <input className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
+                                                <font color="crimson">*</font><input className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
                                             </label>
                                         </div>
                                         <div className="form-group">
@@ -230,7 +239,7 @@ export class Toolbar extends Component {
                                                     id="Toolbar.contraseña"
                                                     defaultMessage="Contraseña"
                                                 />
-                                                <input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                                <font color="crimson">*</font><input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
                                             </label>
                                         </div>
                                         <div className="form-group">
@@ -239,6 +248,8 @@ export class Toolbar extends Component {
                                                 defaultMessage="Registrarse"
                                             />
                                             </button>
+                                            <br></br>
+                                            <font color="crimson"><FormattedMessage id="obligatorio" defaultMessage="Los campos con * son obligatorios"/></font>
                                         </div>
                                     </form>
                                 </li>

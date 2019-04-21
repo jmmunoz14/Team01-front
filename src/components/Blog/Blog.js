@@ -27,7 +27,7 @@ class Blog extends Component {
                   id="Blog.publicadopor"
                   defaultMessage="Publicado Por"
                 />
-            <Link className="blog" to="/">{" " + blog.idUsuario + " "}</Link>
+            <Link className="blog"  onClick={this.onClick}>{" " + blog.idUsuario + " "}</Link>
               {Date(blog.date)}</p>
           </div>
           <div className="col-lg-3">
