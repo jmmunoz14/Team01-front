@@ -14,7 +14,8 @@ class Pregunta extends Component {
                     {
                         id: '',
                         materia: '',
-                        respuesta: ''
+                        respuesta: '',
+                        idioma: ''
                     }
 
                 ],
@@ -26,7 +27,9 @@ class Pregunta extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentWillMount() {
-        fetch(origen + '/api/allquestion')
+        if(window.navigator.language==="en")
+        {
+        fetch(origen + '/api/allquestionen')
             .then((response) => {
                 return response.json()
             })
@@ -36,10 +39,28 @@ class Pregunta extends Component {
             })
             .then((json) => {
                 this.setState({ preguntaas: json });
-
-                console.log(json)
+                
+                
 
             });
+        }
+        else
+        {
+            fetch(origen + '/api/allquestiones')
+            .then((response) => {
+                return response.json()
+            })
+            .then((json) => {
+
+                return json;
+            })
+            .then((json) => {
+                this.setState({ preguntaas: json });
+                
+                
+
+            });
+        }
 
     }
 
@@ -96,13 +117,33 @@ class Pregunta extends Component {
     }
 
     render() {
+        if(localStorage.getItem("login") === "false")
+                {
+                    return(
+
+                        <div className='todo'>
+                                <div className='quiz'>
+                                    Quíz
+                                </div>
+                                <div className="card">
+                                        <div className="card-body">
+                                                <h1 className="card-title"><FormattedMessage id="NoSesion"/></h1>
+                                        </div>
+                                </div>
+                        </div>
+                    )
+                }
+        else
+        {
+
+        
         return (
 
             <div className='todo'>
                 <div className='quiz'>
                     Quíz
                 </div>
-
+                
                 <div className="card">
                     <div className="card-body">
                         <h1 className="card-title"><FormattedMessage id="Pregunta:"/></h1>
@@ -132,6 +173,7 @@ class Pregunta extends Component {
 
 
         )
+    }
     }
 }
 

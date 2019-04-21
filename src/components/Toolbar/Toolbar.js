@@ -109,7 +109,7 @@ export class Toolbar extends Component {
         return (
 
 
-            <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
+            <nav className="navbar navbar-expand-md navbar-dark navbar-custom p-0">
                 <Link to="/" className="navbar-brand">
                     <FormattedMessage
                         id="Toolbar.title"
