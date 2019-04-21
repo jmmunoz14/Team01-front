@@ -12,7 +12,7 @@ export class Comentario extends Component {
                                 <img alt="user" className="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></img>
                             </div>
                             <div className="media-body">
-                                <h4 className="media-heading blogDesc">{comentario.idUsuario}</h4>
+                                <h2 className="media-heading blogDesc">{comentario.idUsuario}</h2>
                                 <p className="coment">{comentario.comentario}</p>
                             </div>  
                         </div>

@@ -27,15 +27,15 @@ export class HabilidadPage extends Component{
         return(
             <Fragment>
                 <h1> {habilidad.name}</h1>
-                <h4> {habilidad.desc}</h4>
+                <h2> {habilidad.desc}</h2>
                 <u>
                     <a href="/quiz" action="replace" className="click-quiz">
-                    <h4>
+                    <h3>
                             <FormattedMessage
                                 id = "Habilidad.clickQuiz"
                                 defaultMessage = "Haz click aquí para ir al único quiz disponible"
                             />
-                        </h4>
+                    </h3>
                     </a>
                 </u>
             </Fragment>

@@ -31,7 +31,7 @@ export class Habilidad extends Component {
             <Fragment>   
                 <Link to={"/"+ habilidad.short} action="replace" className="link-to-quiz">
                 <div className="card text-center p-4 mx-2 my-3" style={{width: 16 + "rem"}}>
-                    <img class="card-img-top" src={habilidad.img} 
+                    <img className="card-img-top" src={habilidad.img} 
                     alt={navigator.language.includes("en")
                     ? "Image of the skill " + habilidad.name
                     :"Imágen de la habilidad " + habilidad.name}/>

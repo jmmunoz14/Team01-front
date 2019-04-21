@@ -28,7 +28,7 @@ export class Partida extends Component {
           fontSize: "25px",
           fontFamily: "Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif",
           lineHeight: "1.2"
-        }} className="table table-striped">
+        }} className="table">
           <thead style={{ color: '#0069D1' }}>
             <tr>
               <th>#</th>
