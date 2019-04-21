@@ -61,7 +61,7 @@ export class Toolbar extends Component {
 
                 }
                 window.location.reload();
-                
+
 
 
             })
@@ -100,36 +100,34 @@ export class Toolbar extends Component {
     }
     onChange = e => this.setState({ [e.target.name]: e.target.value });
 
-    setActive(){
-        var header = document.getElementsByClassName("navbar");
+    setActive() {
+        //var header = document.getElementsByClassName("navbar");
         var btns = document.getElementsByClassName("cirr");
-        
-        for (var i = 0; i < btns.length; i++) {
-          btns[i].addEventListener("click", function() {
-          var current = document.getElementsByClassName("active");
-          if(current[0]!= undefined)
-          {
-            current[0].className = current[0].className.replace(" active", "");
-          }
-         
-          this.className += " active";
 
-          
-          });
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+                if (current[0] !== undefined) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+
+                this.className += " active";
+
+
+            });
         }
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
         this.setActive()
-        
+
     }
 
     render() {
-        
+
         return (
 
-            
+
             <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
                 <Link to="/" className="nav-item nav-link cirr logo">
                     <FormattedMessage
@@ -141,7 +139,7 @@ export class Toolbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav mr-auto">
                         <li>
-                        <Link className="nav-item nav-link cirr" to="/"><FormattedMessage
+                            <Link className="nav-item nav-link cirr" to="/"><FormattedMessage
                                 id="Toolbar.inicio"
                                 defaultMessage="Inicio"
                             /></Link>
@@ -201,7 +199,7 @@ export class Toolbar extends Component {
                             />
                         </li>}
                     </ul>
-                    
+
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
@@ -249,7 +247,7 @@ export class Toolbar extends Component {
                                             />
                                             </button>
                                             <br></br>
-                                            <font color="crimson"><FormattedMessage id="obligatorio" defaultMessage="Los campos con * son obligatorios"/></font>
+                                            <font color="crimson"><FormattedMessage id="obligatorio" defaultMessage="Los campos con * son obligatorios" /></font>
                                         </div>
                                     </form>
                                 </li>
@@ -302,10 +300,10 @@ export class Toolbar extends Component {
                     </ul>}
                 </div>
 
-                
+
             </nav>
-            
-            )
+
+        )
     }
 };
 

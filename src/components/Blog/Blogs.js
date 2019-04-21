@@ -7,7 +7,7 @@ import BlogDetail from './BlogDetail'
 import axios from 'axios'
 import { Route } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl';
-
+import Swal from 'sweetalert2'
 export class Blogs extends Component {
 
     constructor(props) {
@@ -55,30 +55,67 @@ export class Blogs extends Component {
                 .post('http://localhost:3000/blogs', blognew)
                 .then(res => {
                     this.setState({ blogs: [...this.state.blogs, res.data] })
-                    window.location.reload();
+                    Swal.fire(
+                        'Done!',
+                        'Your Blog has been created!',
+                        'success'
+                    ).then((result) => {
+                        if (result.value) {
+                            window.location.reload()
+                        }
+                    })
                 })
         })
     }
 
     handleDeleteBlog = (id, idChat) => {
-        console.log(id)
-        axios.delete(`http://localhost:3000/blogs/${id}`).then(res =>
-            this.setState({
-                blogs: [...this.state.blogs.filter(blog => blog._id !== id)]
-            })
-        )
 
-        axios.delete(`http://localhost:3000/chats/${idChat}`).then(res =>
-            this.setState({
-                chats: [...this.state.chats.filter(chat => chat._id !== idChat)]
-            })
-        )
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                axios.delete(`http://localhost:3000/blogs/${id}`).then(res =>
+                    this.setState({
+                        blogs: [...this.state.blogs.filter(blog => blog._id !== id)]
+                    })
+                )
+
+                axios.delete(`http://localhost:3000/chats/${idChat}`).then(res => {
+                    this.setState({ chats: [...this.state.chats.filter(chat => chat._id !== idChat)] })
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+                )
+
+            }
+        })
+
+
     }
 
     handlePutBlog = (blog, id) => {
         const { blogs } = this.state
-        axios.put(`http://localhost:3000/blogs/${id}`, blog).then(res =>
+        axios.put(`http://localhost:3000/blogs/${id}`, blog).then(res => {
             this.setState({ blogs: [...blogs.splice(blogs.indexOf(blogs.find(blog => blog._id === id)), 1, res.data)] })
+            Swal.fire(
+                'Done!',
+                'Your Blog has been updated!',
+                'success'
+            ).then((result) => {
+                if (result.value) {
+                    window.location.reload()
+                }
+            })
+        }
         )
     }
 
@@ -125,14 +162,14 @@ export class Blogs extends Component {
                                             </h2>
                                         </div>
                                         <div className="col">
-                                        <label className="ocult">
-                                            .
+                                            <label className="ocult">
+                                                .
                                             <select id="idiomas" onChange={this.onChange} value={test} name="test" className="form-control form-control-lg">
-                                                <FormattedMessage id="Blog.cualquiera" defaultMessage="Cualquiera" tagName='option' />
-                                                <FormattedMessage id="Blog.es" defaultMessage="es" tagName='option' />
-                                                <FormattedMessage id="Blog.en" defaultMessage="en" tagName='option' />
-                                            </select>
-                                        </label>
+                                                    <FormattedMessage id="Blog.cualquiera" defaultMessage="Cualquiera" tagName='option' />
+                                                    <FormattedMessage id="Blog.es" defaultMessage="es" tagName='option' />
+                                                    <FormattedMessage id="Blog.en" defaultMessage="en" tagName='option' />
+                                                </select>
+                                            </label>
                                         </div>
                                     </div>
                                     <hr />

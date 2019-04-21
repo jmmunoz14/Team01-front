@@ -28,11 +28,6 @@ export class PutBlog extends Component {
     }
 
     onChange = e => this.setState({ [e.target.name]: e.target.value })
-    getFecha = () => {
-        var d = Date(Date.now());
-
-        return d.toString()
-    }
 
     render() {
 
@@ -94,7 +89,7 @@ export class PutBlog extends Component {
 
                         </div>
                     </div>
-                    <Link onClick={() => handlePutBlog({ titulo: titulo, descripcion: descripcion, date: " (Modified) " + this.getFecha() }, this.props.match.params.id)} className="btn btn-success btn-lg btn-block" to="/blogs">
+                    <Link onClick={() => handlePutBlog({ titulo: titulo, descripcion: descripcion, date: Date.now() }, this.props.match.params.id)} className="btn btn-success btn-lg btn-block" to="/blogs">
                         <FormattedMessage
                             id="Blog.put"
                             defaultMessage="Actualizar Blog"
