@@ -103,7 +103,7 @@ export class Toolbar extends Component {
         return (
 
 
-            <nav className="navbar navbar-expand-md navbar-dark navbar-custom p-0">
+            <nav className="navbar navbar-expand-lg navbar-dark navbar-custom p-0">
                 <Link to="/" className="navbar-brand">
                     <FormattedMessage
                         id="Toolbar.title"
@@ -151,12 +151,12 @@ export class Toolbar extends Component {
                             />
                             </Link>
                         </li>
-                        {localStorage.getItem("login") === "true" && <li className="nav-item nav-link blog">_____-
+                        {localStorage.getItem("login") === "true" && <li className="nav-item nav-link blog">
                             <FormattedMessage
                                 id="Toolbar.bienvenido"
                                 defaultMessage="Bienvenido"
                             />
-                            {" " + localStorage.getItem("username")+"!!!"}
+                            {" " + localStorage.getItem("username")}
                         </li>}
                     </ul>
                     <ul className="navbar-nav ml-auto">
