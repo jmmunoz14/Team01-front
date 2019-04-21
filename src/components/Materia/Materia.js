@@ -31,7 +31,7 @@ export class Materia extends Component {
             <Fragment>   
                 <Link to={"/"+ materia.short} action="replace">
                 <div className="card text-center p-4 mx-2 my-3" style={{width: 16 + "rem"}}>
-                    <img class="card-img-top" src={materia.img} 
+                    <img className="card-img-top" src={materia.img} 
                     alt={navigator.language.includes("en")
                     ? "Image of the subject " + materia.name
                     :"Imágen de la materia " + materia.name}/>
