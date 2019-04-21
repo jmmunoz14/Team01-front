@@ -29,5 +29,10 @@
     "Blog.put": "Actualizar Blog Seleccionado",
     "Chat.comentarios": "Comentarios",
     "Chat.añadir": "Añadir Nuevo Comentario",
-    "Blog.publicadopor":"Publicado por"
+    "Blog.publicadopor": "Publicado por",
+    "Partida.titulo": "Partidas en Curso",
+    "Partida.puntaje": "Puntaje",
+    "Partida.encurso": " (En Curso)",
+    "Partida.juego": "Juego # ",
+    "Partida.terminada": " (Finalizado)"
 }

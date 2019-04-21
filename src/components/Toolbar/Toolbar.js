@@ -110,7 +110,7 @@ export class Toolbar extends Component {
                         defaultMessage="The Math Games!"
                     />
                 </Link>
-                
+
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav mr-auto">
                         <li>
@@ -149,17 +149,17 @@ export class Toolbar extends Component {
                             />
                             </Link>
                         </li>
+
+                    </ul>
+                    <ul className="navbar-nav ml-auto">
+
                         {localStorage.getItem("login") === "true" && <li className="nav-item nav-link blog">
                             <FormattedMessage
                                 id="Toolbar.bienvenido"
                                 defaultMessage="Bienvenido"
                             />
-                            {" " + localStorage.getItem("username")}
+                            {" " + localStorage.getItem("username") + "!!-"}
                         </li>}
-                    </ul>
-                    <ul className="navbar-nav ml-auto">
-
-
 
                         {localStorage.getItem("login") === "true" && <li style={{ fontSize: "20px", left: "100px!important", right: "0px" }} className="btn btn-danger btn-large flex-row justify-content-between" onClick={() => this.setLogin(false)}>
                             <FormattedMessage
