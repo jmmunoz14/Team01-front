@@ -5,52 +5,51 @@ import TextField from '@material-ui/core/TextField';
 import { FormattedMessage } from 'react-intl';
 
 
-class Table extends Component{
-    constructor(props){
+class Table extends Component {
+    constructor(props) {
         super(props);
         this.handleSelected = this.handleSelected.bind(this);
     }
 
-    handleSelected(e){
+    handleSelected(e) {
         this.props.onSelection(e);
     }
 
 
-    noEncuentra(es,en, filterText){
+    noEncuentra(es, en, filterText) {
         var esLo = String(es).toLowerCase();
         var enLo = String(en).toLowerCase();
         var text = String(filterText).toLowerCase()
         var esp = Boolean(esLo.indexOf(text) === -1);
         var eng = Boolean(enLo.indexOf(text) === -1);
-        return Boolean(esp&&eng);
-        
+        return Boolean(esp && eng);
+
     }
 
-    render(){
+    render() {
         const rows = [];
         const products = this.props.products;
         const filterText = this.props.filterText;
 
 
         products.forEach((hab) => {
-        console.log("forEach");    
-        
-        if (this.noEncuentra(hab.nameEs,hab.nameEn,filterText)) {
-            return;
-        }
-        
-        
-        rows.push(
-            <Habilidad 
-                key={hab._id.toString()} 
-                habilidad={hab} 
-                onSeleccion={this.handleSelected}/>
+
+            if (this.noEncuentra(hab.nameEs, hab.nameEn, filterText)) {
+                return;
+            }
+
+
+            rows.push(
+                <Habilidad
+                    key={hab._id.toString()}
+                    habilidad={hab}
+                    onSeleccion={this.handleSelected} />
             );
         });
         return (
-                <div className="row no-gutters mx-auto">
-                    {rows}
-                </div>          
+            <div className="row no-gutters mx-auto">
+                {rows}
+            </div>
         );
     }
 }
@@ -85,48 +84,48 @@ export class Habilidades extends Component {
         this.setState({ searchText: event.target.value });
     }
 
-    handleSelection(habilidad){
-        this.setState({habilidadSeleccionada : habilidad});
+    handleSelection(habilidad) {
+        this.setState({ habilidadSeleccionada: habilidad });
         document.getElementById("search-skill").scrollIntoView();
 
     }
 
     render() {
         return (
-            
+
 
             <div className="container">
 
                 <h1>
-                    <FormattedMessage 
+                    <FormattedMessage
                         id="Habilidad.titulo"
-                        defaultMessage= "Encuentra tus juegos por habilidad!"
+                        defaultMessage="Encuentra tus juegos por habilidad!"
                     />
                 </h1>
                 <TextField
                     fullWidth
                     placeholder={
-                        navigator.language.includes("en") 
-                        ? "Search for your skill"
-                        : "Busca tu habilidad" }
-                    onChange={this.handleSearch}
-                    label= {
                         navigator.language.includes("en")
-                        ? "Search for your skill:"
-                        : "Busca tu habilidad:" 
+                            ? "Search for your skill"
+                            : "Busca tu habilidad"}
+                    onChange={this.handleSearch}
+                    label={
+                        navigator.language.includes("en")
+                            ? "Search for your skill:"
+                            : "Busca tu habilidad:"
                     }
                     id="search-skill"
-                    />
-                <HabilidadPage 
+                />
+                <HabilidadPage
                     habilidad={this.state.habilidadSeleccionada}
                     onClose={this.handleSelection}
-                    />                        
-                <Table 
-                    products = {this.state.habilidades} 
+                />
+                <Table
+                    products={this.state.habilidades}
                     filterText={this.state.searchText}
                     onSelection={this.handleSelection}
-                    />
-                
+                />
+
             </div>
         );
     }

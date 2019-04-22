@@ -18,7 +18,6 @@ export class Chat extends Component {
     axios.get("http://localhost:3000/chats/" + this.props.idChat).then(res => {
       this.setState({ chat: res.data });
       this.setState({ comentLoad: true });
-      // console.log(this.state.chat)
     });
   }
 
@@ -101,17 +100,17 @@ export class Chat extends Component {
           <hr style={{ backgroundColor: "#fff", borderTop: "2px dashed #8c8b8b" }} />
           {localStorage.getItem("login") === "true" && <React.Fragment>
             <label>.
-          <textarea title="añadir" placeholder={window.navigator.language === "es"?"Escriba su comentario aqui":"Type your comment here"} className="coment form-control" type="text" name="nuevoComentario" value={nuevoComentario} onChange={this.onChange} >
-          
-          </textarea>
-          </label>
+          <textarea title="añadir" placeholder={window.navigator.language === "es" ? "Escriba su comentario aqui" : "Type your comment here"} className="coment form-control" type="text" name="nuevoComentario" value={nuevoComentario} onChange={this.onChange} >
+
+              </textarea>
+            </label>
             <button className="btn btn-success btn-lg btn-block" onClick={() => this.postComentario(nuevoComentario)}>
-            <p style={{color:"black"}}>
-              <FormattedMessage
-                id="Chat.añadir"
-                defaultMessage="Añadir Nuevo Comentario"
-              />
-            </p>
+              <p style={{ color: "black" }}>
+                <FormattedMessage
+                  id="Chat.añadir"
+                  defaultMessage="Añadir Nuevo Comentario"
+                />
+              </p>
             </button></React.Fragment>}
         </div>
       </Fragment>

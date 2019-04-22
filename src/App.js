@@ -6,6 +6,7 @@ import Pregunta from './pages/Pregunta'
 import Habilidades from './components/Habilidades/Habilidades'
 import {FormattedMessage} from 'react-intl';
 
+
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -30,6 +31,7 @@ class App extends Component {
           <div className='Toolbar'>
             <Toolbar />
           </div>
+          
 
           <Route exactm path='/home' render={props => (
             <Fragment>

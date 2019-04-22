@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom"
 import axios from 'axios'
 import { FormattedMessage } from 'react-intl';
+import Swal from 'sweetalert2'
+
 export class Toolbar extends Component {
     constructor(props) {
         super(props);
@@ -14,80 +16,96 @@ export class Toolbar extends Component {
     }//.filter(usuario=>usuario.username===this.state.username)
 
     setLogedUser = (e) => {
-        console.log("login1")
         e.preventDefault();
-        console.log("login2")
         axios
             .get('http://localhost:3000/api/obtainall')
             .then(res => {
                 const use = res.data.filter(usuario => usuario.username === this.state.user)[0]
                 if (use) {
                     this.setState({ usuario: use })
-                    console.log(this.state.usuario)
                     if (this.state.usuario.password === this.state.password) {
                         localStorage.setItem("username", this.state.user)
                         localStorage.setItem("user", this.state.usuario)
                         localStorage.setItem("login", "true")
                         localStorage.setItem("id", this.state.usuario._id)
-                        console.log(this.state.usuario._id)
-                        console.log("Todobien")
-
+                        var done = 'Successful Login!'
+                        if (window.navigator.language.startsWith("es")) {
+                            done = "Inicio Exitoso!"
+                        }
+                        Swal.fire(
+                            done,
+                            ":)",
+                            'success'
+                        ).then((result) => {
+                            if (result.value) {
+                                window.location.reload()
+                            }
+                        })
                     }
                     else {
                         localStorage.setItem("login", "false")
-                        console.log("PassIncorrecto")
-                        if (window.navigator.language === "es") {
-                            alert("Usuario o Contraseña Incorrectos")
-                        }
-                        else {
-                            alert("Wrong User or Password")
-                        }
 
+
+                        var done2 = "Wrong User or Password"
+                        if (window.navigator.language.startsWith("es")) {
+                            done2 = "Usuario o Contraseña Incorrectos"
+                        }
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: done2
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload()
+                            }
+                        })
                         localStorage.setItem("username", "")
                         localStorage.setItem("id", "")
 
                     }
                 } else {
-                    console.log("usuario Inva")
-                    if (window.navigator.language === "es") {
-                        alert("Usuario o Contraseña Incorrectos")
+                    var done3 = "Wrong User or Password"
+                    if (window.navigator.language.startsWith("es")) {
+                        done3 = "Usuario o Contraseña Incorrectos"
                     }
-                    else {
-                        alert("Wrong User or Password")
-                    }
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: done3
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.reload()
+                        }
+                    })
                     localStorage.setItem("login", "false")
                     localStorage.setItem("username", "")
                     localStorage.setItem("id", "")
 
                 }
-                window.location.reload();
-
-
-
             })
 
     }
     registerUser = (e) => {
-        console.log("registro1")
         e.preventDefault();
-        console.log("registro2")
         axios
             .post('http://localhost:3000/api/register', { id: (Math.random() * 10000000000) + 200, email: this.state.email, username: this.state.user, password: this.state.password })
             .then(res => {
-                console.log(res.data)
-                if (window.navigator.language === "es") {
-                    alert("Usuario Creado, ahora puede iniciar sesión")
+                var done = "User created, now you can Log in"
+                if (window.navigator.language.startsWith("es")) {
+                    done = "Usuario Creado, ahora puede iniciar sesión"
                 }
-                else {
-                    alert("User created, now you can Log in")
-                }
-
-                window.location.reload();
-
+                Swal.fire(
+                    done,
+                    ":)",
+                    'success'
+                ).then((result) => {
+                    if (result.value) {
+                        window.location.reload()
+                    }
+                })
                 this.setState({ usuario: res.data })
             }).catch(err => {
                 alert(err.response.data)
-                console.log(err.response.data)
             })
 
 
@@ -96,7 +114,20 @@ export class Toolbar extends Component {
         localStorage.setItem("login", login ? "true" : "false")
         localStorage.setItem("username", "")
         localStorage.setItem("id", "")
-        window.location.reload();
+        var done = 'Successful Logout!'
+        if (window.navigator.language.startsWith("es")) {
+            done = "Salida Exitosa!"
+        }
+        Swal.fire(
+            done,
+            ":)",
+            'success'
+        ).then((result) => {
+            if (result.value) {
+                window.location.reload()
+            }
+        })
+        //window.location.reload();
     }
     onChange = e => this.setState({ [e.target.name]: e.target.value });
 
@@ -215,28 +246,28 @@ export class Toolbar extends Component {
                                     <form className="form" onSubmit={this.registerUser}>
                                         <div className="form-group">
                                             <label>
-                                            
+
                                                 <FormattedMessage
                                                     id="Toolbar.usuario"
                                                     defaultMessage="Nombre de Usuario"
                                                 />
                                                 <font color="crimson">*</font>
                                                 <div data-tip="e.g:  mathuser">
-                                                <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
-                                            </div>
+                                                    <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                                </div>
                                             </label>
                                         </div>
                                         <div className="form-group">
                                             <label>
-                                            
+
                                                 <FormattedMessage
                                                     id="Toolbar.correo"
                                                     defaultMessage="Correo Electronico"
                                                 />
                                                 <font color="crimson">*</font>
-                                            <div data-tip="e.g:  math@gmail.com">
-                                                <input className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
-                                            </div>
+                                                <div data-tip="e.g:  math@gmail.com">
+                                                    <input className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
+                                                </div>
                                             </label>
                                         </div>
                                         <div className="form-group">
@@ -245,10 +276,10 @@ export class Toolbar extends Component {
                                                     id="Toolbar.contraseña"
                                                     defaultMessage="Contraseña"
                                                 />
-                                                
+
                                                 <font color="crimson">*</font>
                                                 <div data-tip="e.g:  Contraseña123">
-                                                <input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                                    <input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
                                                 </div>
                                             </label>
                                         </div>
@@ -305,7 +336,7 @@ export class Toolbar extends Component {
                                                     defaultMessage="Ingresar"
                                                 />
                                             </button>
-                                            <font color="crimson"><FormattedMessage id="obligatorio" defaultMessage="Los campos con * son obligatorios"/></font>
+                                            <font color="crimson"><FormattedMessage id="obligatorio" defaultMessage="Los campos con * son obligatorios" /></font>
 
                                         </div>
 

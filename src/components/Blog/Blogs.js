@@ -33,8 +33,6 @@ export class Blogs extends Component {
     }
 
     handlePostBlog = blog => {
-        console.log(localStorage.getItem("id"))
-        // console.log(blog)
         var chat = {
             color: '#e786d1POST',
             enabled: true,

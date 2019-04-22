@@ -16,7 +16,6 @@ export class BlogDetail extends Component {
   toMarkDown = () => {
     var markdown = require("markdown").markdown;
     var comentarioM = markdown.toHTML(this.state.blog.descripcion);
-    console.log(comentarioM)
     return comentarioM;
   };
 
@@ -26,7 +25,6 @@ export class BlogDetail extends Component {
       .then(res => {
         this.setState({ blog: res.data });
         this.setState({ chatLoad: true });
-        //console.log(this.state.blog)<p className="blogDesc">{blog.descripcion}</p>
       });
   }
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { origen } from '../helper/config.js'
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 class Pregunta extends Component {
     constructor(props) {
@@ -13,12 +13,12 @@ class Pregunta extends Component {
                         id: '',
                         materia: '',
                         respuesta: '',
-                        
+
                     }
 
                 ],
             currentQuestion: 0,
-            
+
 
         }
         this.handleChange = this.handleChange.bind(this);
@@ -35,9 +35,6 @@ class Pregunta extends Component {
             })
             .then((json) => {
                 this.setState({ preguntaas: json });
-
-                console.log(json)
-
             });
 
     }
@@ -49,12 +46,10 @@ class Pregunta extends Component {
     handleSubmit(event) {
         if (this.state.value === this.state.preguntaas[this.state.currentQuestion].respuesta) {
             alert('respuesta correcta')
-            console.log(this.state.preguntaas[this.state.currentQuestion].respuesta)
             this.setState({ currentQuestion: this.state.currentQuestion + 1 })
         }
         else {
             alert('respuesta incorrecta')
-            console.log(this.state.preguntaas[this.state.currentQuestion].respuesta)
         }
         event.preventDefault();
     }
@@ -69,7 +64,7 @@ class Pregunta extends Component {
 
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title"><FormattedMessage id="Pregunta:"/></h5>
+                            <h5 className="card-title"><FormattedMessage id="Pregunta:" /></h5>
 
                             <div className='preguntaText'>
                                 <p className="card-text">{this.state.preguntaas[this.state.currentQuestion].enunciado}</p>
