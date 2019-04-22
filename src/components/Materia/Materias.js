@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Materia from "./Materia";
 import MateriaPage from "./MateriaPage";
 import TextField from '@material-ui/core/TextField';
@@ -52,13 +52,16 @@ class Table extends Component{
 
 
 
+
+
 export class Materias extends Component {
     constructor(props) {
         super(props)
         this.state = {
             materias: [],
             materiaSeleccionada:null,
-            searchText: ""
+            searchText: "",
+            backCargado: false
         }
         this.handleSearch = this.handleSearch.bind(this);
         this.handleSelection = this.handleSelection.bind(this);
@@ -70,7 +73,7 @@ export class Materias extends Component {
                 return results.json();
 
             }).then(data => {
-                this.setState({ materias: data });
+                this.setState({ backCargado:true, materias: data });
             })
 
     }
@@ -86,6 +89,23 @@ export class Materias extends Component {
 
     render() {
 
+        if(!this.state.backCargado){
+            return(
+                <div className="m-auto">
+                    <img  src= "images/loader.gif"
+                        alt={
+                                navigator.language.includes("en")
+                                ? "Loading data"
+                                : "Cargando la información" 
+                            }/>
+                    <h1>{
+                                navigator.language.includes("en")
+                                ? "We're loading the data"
+                                : "Estamos cargando la información" 
+                            }</h1>
+                </div>
+            ) ;
+        }else
         return (
 
             <div className="container">

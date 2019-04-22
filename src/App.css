@@ -162,10 +162,19 @@ html {
   color: white;
 
 }
-.link-to-quiz :hover{
-  color: black;
+.link-to-quiz:hover .close:hover{
+  opacity: 1 !important;
 }
 .click-quiz{
-  color: darkblue;
+  color: darkblue !important;
+  opacity: 1 !important; 
+}
+.close:hover{
+  color: darkblue !important;
+  opacity: 1 !important; 
+}
+.close{
+  color: black !important;
+  opacity: 1 !important; 
 }
 
