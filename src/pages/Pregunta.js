@@ -85,7 +85,7 @@ class Pregunta extends Component {
                         )
                     }
                     else {
-                        var done = 'Respuesta Correcta'
+                        var done = 'Correct Answer'
 						
                          Swal.fire(
                             done,
@@ -98,11 +98,28 @@ class Pregunta extends Component {
                 this.setState({ currentQuestion: this.state.currentQuestion + 1, value: '' })
             }
             else {
+				
                 if (window.navigator.language.startsWith("es")) {
-                    alert('Fin de las preguntas, volviendo a empezar')
+					console.log(navigator.language)
+                    var done = 'Fin de las preguntas, inciando prueba de nuevo'
+						
+                         Swal.fire(
+                            done,
+                            "",
+                            'success'
+                        )
+						alert(done)
                 }
                 else {
-                    alert('End of questions, restarting')
+                    
+					var done = 'End of answers, restarting'
+						
+                         Swal.fire(
+                            done,
+                            "",
+                            'success'
+                        )
+						alert(done)
                 }
 
                 this.setState({ currentQuestion: this.state.currentQuestion - this.state.currentQuestion, value: '' })
@@ -113,10 +130,22 @@ class Pregunta extends Component {
         }
         else {
             if (window.navigator.language.startsWith("es")) {
-                alert('respuesta incorrecta')
+                var done = 'Respuesta incorrecta'
+						
+                         Swal.fire(
+                            done,
+                            ":(",
+                            'error'
+                        )
             }
             else {
-                alert('wrong question')
+                var done = 'Wrong Answer'
+						
+                         Swal.fire(
+                            done,
+                            ":(",
+                            'error'
+                        )
             }
         }
         event.preventDefault();
