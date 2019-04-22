@@ -76,13 +76,13 @@ export class PostBlog extends Component {
             </div>
             <div className="col">
               {materias.map((materia, materiaIndex) => (
-                <p className="mat"><input type="radio" name="PostMaterias" id="PostMaterias" />{materia.name}</p>
+                <p key={materiaIndex} className="mat"><input type="radio" name="PostMaterias" id="PostMaterias" />{window.navigator.language.startsWith("es") ? materia.nameEs : materia.nameEn}</p>
               ))}
 
             </div>
           </div>
           <Link onClick={() => handlePostBlog({
-            titulo: titulo, idioma: window.navigator.language, descripcion: descripcion, date: Date.now(),
+            titulo: titulo, idioma: window.navigator.language.substring(0, 2), descripcion: descripcion, date: Date.now(),
             idUsuario: localStorage.getItem("username") + ""
           })
           }

@@ -40,8 +40,11 @@ export class Blogs extends Component {
             enabled: true,
             comentarios: []
         }
+
         axios.post('http://localhost:3000/chats', chat).then(res => {
+
             this.setState({ chats: [...this.state.chats, res.data] })
+
             var blognew = {
                 titulo: blog.titulo,
                 descripcion: blog.descripcion,
@@ -51,13 +54,23 @@ export class Blogs extends Component {
                 comentarios: [{ idUsuario: blog.idUsuario, comentario: 'tested' }],
                 idioma: blog.idioma
             }
+
             axios
                 .post('http://localhost:3000/blogs', blognew)
                 .then(res => {
+
                     this.setState({ blogs: [...this.state.blogs, res.data] })
+
+                    var done = "Done!"
+                    var blog = 'Your Blog has been created!'
+
+                    if (window.navigator.language.startsWith("es")) {
+                        done = "Listo!"
+                        blog = "Tu Blog ha sido creado"
+                    }
                     Swal.fire(
-                        'Done!',
-                        'Your Blog has been created!',
+                        done,
+                        blog,
                         'success'
                     ).then((result) => {
                         if (result.value) {
@@ -70,14 +83,27 @@ export class Blogs extends Component {
 
     handleDeleteBlog = (id, idChat) => {
 
+        var sure = 'Are you sure?'
+        var revert = "You won't be able to revert this!"
+        var confirm = 'Yes, delete it!'
+        var delet = "Deleted!"
+        var deletedd = "Your Blog has been deleted."
+        if (window.navigator.language.startsWith("es")) {
+            sure = "¿Estás seguro?"
+            revert = "No es posible revertir este cambio"
+            confirm = " Si, Borrarlo"
+            delet = "Borrado!"
+            deletedd = "Tu Blog ha sido borrado."
+        }
+
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: sure,
+            text: revert,
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: confirm
         }).then((result) => {
             if (result.value) {
                 axios.delete(`http://localhost:3000/blogs/${id}`).then(res =>
@@ -89,8 +115,8 @@ export class Blogs extends Component {
                 axios.delete(`http://localhost:3000/chats/${idChat}`).then(res => {
                     this.setState({ chats: [...this.state.chats.filter(chat => chat._id !== idChat)] })
                     Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
+                        delet,
+                        deletedd,
                         'success'
                     )
                 }
@@ -106,9 +132,15 @@ export class Blogs extends Component {
         const { blogs } = this.state
         axios.put(`http://localhost:3000/blogs/${id}`, blog).then(res => {
             this.setState({ blogs: [...blogs.splice(blogs.indexOf(blogs.find(blog => blog._id === id)), 1, res.data)] })
+            var done = "Done!"
+            var blog = 'Your Blog has been updated!'
+            if (window.navigator.language.startsWith("es")) {
+                done = "Listo!"
+                blog = "Tu Blog ha sido actualizado"
+            }
             Swal.fire(
-                'Done!',
-                'Your Blog has been updated!',
+                done,
+                blog,
                 'success'
             ).then((result) => {
                 if (result.value) {
@@ -228,5 +260,4 @@ export class Blogs extends Component {
         )
     }
 }
-
 export default Blogs

@@ -84,7 +84,7 @@ export class PutBlog extends Component {
                         </div>
                         <div className="col">
                             {materias.map((materia, materiaIndex) => (
-                                <p className="mat"><input type="radio" name="PostMaterias" id="PostMaterias" />{materia.name}</p>
+                                <p className="mat"><input type="radio" name="PostMaterias" id="PostMaterias" />{window.navigator.language.startsWith("es") ? materia.nameEs : materia.nameEn}</p>
                             ))}
 
                         </div>
