@@ -3,9 +3,10 @@ import { Link} from "react-router-dom";
 
 
 export class Materia extends Component {
-    /*constructor(props) {
+    constructor(props) {
         super(props)
-    }*/
+        this.handleClick = this.handleClick.bind(this);
+    }
 
     setupMateria(mat){
         if(navigator.language.includes("en")){
@@ -23,32 +24,30 @@ export class Materia extends Component {
             desc: mat.descEs, 
         }
     }
+
+    handleClick(){
+        this.props.onSeleccion(this.props.materia);
+    }
+
     render() {
+        if(this.props.materia==null){
+            return null;
+        }
 
         const materia = this.setupMateria(this.props.materia);
 
         return(
-            <Fragment>   
-                <Link to={"/"+ materia.short} action="replace" className="link-to-quiz">
-                <div className="card text-center p-4 mx-2 my-3" style={{width: 16 + "rem"}}>
-                    <img className="card-img-top" src={materia.img} 
+                <div className="card text-center p-4 mx-auto my-3" 
+                    style={{width: 16 + "rem"}}
+                    onClick={this.handleClick}>
+                    <img className="card-img-top mb-3" src={"images/materias/" +materia.img} 
                     alt={navigator.language.includes("en")
                     ? "Image of the subject " + materia.name
                     :"Imágen de la materia " + materia.name}/>
                     <div className="card-title">
                         {materia.name}
                     </div>
-                    {/* <div className="card-text">
-                        Esta sería la descripcion de {materia.name}.
-                        <br/> 
-                        Si haces click en este recuadro, podras acceder a los juegos que te van a
-                        ayudar con tu renimiento en {materia.name}.
-                        <br />
-                    Allí podrás verlos separados por habilidad.
-                    </div> */}
                 </div>
-            </Link>
-            </Fragment>
             
         );
     }

@@ -2,9 +2,11 @@ import React, { Component, Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
 export class MateriaPage extends Component{
-    // constructor(props) {
-    //     super(props)
-    // }
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
     setupMateria(mat){
         if(navigator.language.includes("en")){
             return {
@@ -22,10 +24,25 @@ export class MateriaPage extends Component{
         }
     }
 
+    handleClick(){
+        this.props.onClose(null);
+    }
+
+
     render(){
+        if(this.props.materia==null){
+            return null;
+        }
         const materia = this.setupMateria(this.props.materia);
         return(
-            <Fragment>
+            <div className="page" id="selectedItem">
+            <button type="button" className="close" 
+            aria-label={navigator.language.includes("en")
+                    ? "Close"
+                    :"Cerrar"} 
+            onClick={this.handleClick}>
+                <span aria-hidden="true">&times;</span>
+            </button>
                 <h1> {materia.name}</h1>
                 <h2> {materia.desc}</h2>
                 <u>
@@ -39,7 +56,7 @@ export class MateriaPage extends Component{
                     </a>
                 </u>
 
-            </Fragment>
+            </div>
 
         );
     }
