@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 
 export class MateriaPage extends Component{
@@ -41,7 +41,7 @@ export class MateriaPage extends Component{
                     ? "Close"
                     :"Cerrar"} 
             onClick={this.handleClick}>
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true" className="close">&times;</span>
             </button>
                 <h1> {materia.name}</h1>
                 <h2> {materia.desc}</h2>

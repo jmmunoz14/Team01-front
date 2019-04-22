@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 
 export class HabilidadPage extends Component{

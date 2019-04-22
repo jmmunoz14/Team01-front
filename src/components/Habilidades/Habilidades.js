@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Habilidad from "./Habilidad";
 import HabilidadPage from "./HabilidadPage";
 import TextField from '@material-ui/core/TextField';
@@ -64,6 +64,7 @@ export class Habilidades extends Component {
             habilidades: [],
             habilidadSeleccionada: null,
             searchText: "",
+            backCargado: false
         };
         this.handleSearch = this.handleSearch.bind(this);
         this.handleSelection = this.handleSelection.bind(this);
@@ -75,7 +76,7 @@ export class Habilidades extends Component {
                 return results.json();
 
             }).then(data => {
-                this.setState({ habilidades: data });
+                this.setState({backCargado:true, habilidades: data });
             })
 
     }
@@ -91,6 +92,23 @@ export class Habilidades extends Component {
     }
 
     render() {
+        if(!this.state.backCargado){
+            return(
+                <div className="m-auto">
+                    <img  src= "images/loader.gif"
+                        alt={
+                                navigator.language.includes("en")
+                                ? "Loading data:"
+                                : "Cargando la información:" 
+                            }/>
+                    <h1>{
+                                navigator.language.includes("en")
+                                ? "We're loading the data"
+                                : "Estamos cargando la información" 
+                            }</h1>
+                </div>
+            ) ;
+        }else
         return (
 
 
