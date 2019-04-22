@@ -2,9 +2,11 @@ import React, { Component, Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
 export class HabilidadPage extends Component{
-    // constructor(props) {
-    //     super(props)
-    // }
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
     setupHabilidad(hab){
         if(navigator.language.includes("en")){
             return {
@@ -22,10 +24,26 @@ export class HabilidadPage extends Component{
         }
     }
 
+    handleClick(){
+        this.props.onClose(null);
+    }
+
     render(){
+        if(this.props.habilidad==null){
+            return null;
+        }
         const habilidad = this.setupHabilidad(this.props.habilidad);
         return(
-            <Fragment>
+            <div className="page" id="selectedItem">
+            <button 
+                type="button" 
+                className="close"  
+                aria-label={navigator.language.includes("en")
+                    ? "Close"
+                    :"Cerrar"}
+                onClick={this.handleClick}>
+                <span aria-hidden="true">&times;</span>
+            </button>
                 <h1> {habilidad.name}</h1>
                 <h2> {habilidad.desc}</h2>
                 <u>
@@ -38,7 +56,7 @@ export class HabilidadPage extends Component{
                     </h3>
                     </a>
                 </u>
-            </Fragment>
+            </div>
 
         );
     }

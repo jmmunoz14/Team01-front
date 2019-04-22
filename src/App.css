@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 .App {
   text-align: center;
 }
@@ -26,7 +29,7 @@
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
   color: #A3FFFF;
   line-height: 1.2;
-  font-size: 30px;
+  font-size: 26px;
 }
 .preguntaText {
   font-weight: 800;
@@ -165,3 +168,4 @@
 .click-quiz{
   color: darkblue;
 }
+
