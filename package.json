@@ -8,10 +8,10 @@
     "bcrypt": "^3.0.4",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.3.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "markdown": "^0.5.0",
     "material-ui": "^0.20.2",
-    "popper.js": "^1.14.7",
+    "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-intl": "^2.8.0",
@@ -20,7 +20,7 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0",
     "sweetalert2": "^8.8.7",
-    "typescript": "^3.3.4000"
+    "typescript": "^3.4.4"
   },
   "scripts": {
     "start": "cross-env PORT=3006 react-scripts start",
