@@ -63,6 +63,7 @@ export class Toolbar extends Component {
                 window.location.reload();
 
 
+
             })
 
     }
@@ -99,34 +100,34 @@ export class Toolbar extends Component {
     }
     onChange = e => this.setState({ [e.target.name]: e.target.value });
 
-    setActive(){
-        var header = document.getElementsByClassName("navbar");
+    setActive() {
+        //var header = document.getElementsByClassName("navbar");
         var btns = document.getElementsByClassName("cirr");
-        
+
         for (var i = 0; i < btns.length; i++) {
-          btns[i].addEventListener("click", function() {
-          var current = document.getElementsByClassName("active");
-          if(current[0]!= undefined)
-          {
-            current[0].className = current[0].className.replace(" active", "");
-          }
-         
-          this.className += " active";
-          });
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+                if (current[0] !== undefined) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+
+                this.className += " active";
+
+
+            });
         }
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
         this.setActive()
-        
+
     }
 
     render() {
-        
+
         return (
 
-            
+
             <nav className="navbar navbar-expand-sm navbar-dark navbar-custom p-0">
                 <Link to="/" className="nav-item nav-link cirr logo">
                     <FormattedMessage
@@ -137,6 +138,12 @@ export class Toolbar extends Component {
 
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav mr-auto">
+                        <li>
+                            <Link className="nav-item nav-link cirr" to="/"><FormattedMessage
+                                id="Toolbar.inicio"
+                                defaultMessage="Inicio"
+                            /></Link>
+                        </li>
                         <li>
                             <Link className="nav-item nav-link cirr" to="/blogs"><FormattedMessage
                                 id="Toolbar.blogs"
@@ -192,7 +199,7 @@ export class Toolbar extends Component {
                             />
                         </li>}
                     </ul>
-                    
+
                     {localStorage.getItem("login") !== "true" && <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li className="nav-item order-3 order-md-5"><a href="/home" className="nav-link" title="settings"><i className="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li className="dropdown order-3">
@@ -208,20 +215,28 @@ export class Toolbar extends Component {
                                     <form className="form" onSubmit={this.registerUser}>
                                         <div className="form-group">
                                             <label>
+                                            
                                                 <FormattedMessage
                                                     id="Toolbar.usuario"
                                                     defaultMessage="Nombre de Usuario"
                                                 />
+                                                <font color="crimson">*</font>
+                                                <div data-tip="e.g:  mathuser">
                                                 <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
+                                            </div>
                                             </label>
                                         </div>
                                         <div className="form-group">
                                             <label>
+                                            
                                                 <FormattedMessage
                                                     id="Toolbar.correo"
                                                     defaultMessage="Correo Electronico"
                                                 />
+                                                <font color="crimson">*</font>
+                                            <div data-tip="e.g:  math@gmail.com">
                                                 <input className="form-control form-control-sm" type="email" required onChange={this.onChange} name="email" value={this.state.email} />
+                                            </div>
                                             </label>
                                         </div>
                                         <div className="form-group">
@@ -230,7 +245,11 @@ export class Toolbar extends Component {
                                                     id="Toolbar.contraseña"
                                                     defaultMessage="Contraseña"
                                                 />
+                                                
+                                                <font color="crimson">*</font>
+                                                <div data-tip="e.g:  Contraseña123">
                                                 <input id="passwordInput1" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
+                                                </div>
                                             </label>
                                         </div>
                                         <div className="form-group">
@@ -239,6 +258,8 @@ export class Toolbar extends Component {
                                                 defaultMessage="Registrarse"
                                             />
                                             </button>
+                                            <br></br>
+                                            <font color="crimson"><FormattedMessage id="obligatorio" defaultMessage="Los campos con * son obligatorios" /></font>
                                         </div>
                                     </form>
                                 </li>
@@ -263,6 +284,7 @@ export class Toolbar extends Component {
                                                     id="Toolbar.usuario"
                                                     defaultMessage="Nombre de Usuario"
                                                 />
+                                                <font color="crimson">*</font>
                                                 <input className="form-control form-control-sm" type="text" required onChange={this.onChange} name="user" value={this.state.user} />
                                             </label>
                                         </div>
@@ -272,6 +294,7 @@ export class Toolbar extends Component {
                                                     id="Toolbar.contraseña"
                                                     defaultMessage="Contraseña"
                                                 />
+                                                <font color="crimson">*</font>
                                                 <input id="passwordInput2" className="form-control form-control-sm" type="password" required onChange={this.onChange} name="password" value={this.state.password} />
                                             </label>
                                         </div>
@@ -282,6 +305,8 @@ export class Toolbar extends Component {
                                                     defaultMessage="Ingresar"
                                                 />
                                             </button>
+                                            <font color="crimson"><FormattedMessage id="obligatorio" defaultMessage="Los campos con * son obligatorios"/></font>
+
                                         </div>
 
                                     </form>
@@ -291,10 +316,10 @@ export class Toolbar extends Component {
                     </ul>}
                 </div>
 
-                
+
             </nav>
-            
-            )
+
+        )
     }
 };
 

@@ -13,6 +13,8 @@ class Blog extends Component {
 
   render() {
     const { blog, handleDeleteBlog } = this.props;
+    var fecha = new Date();
+    fecha.setUTCMilliseconds(parseInt(blog.date) - fecha.getTime())
     return (
       <React.Fragment>
         <div className="row">
@@ -23,27 +25,27 @@ class Blog extends Component {
               </h2>
             </Link>
             <p className="blog">
-            <FormattedMessage
-                  id="Blog.publicadopor"
-                  defaultMessage="Publicado Por"
-                />
-            <Link className="blog" to="/">{" " + blog.idUsuario + " "}</Link>
-              {Date(blog.date)}</p>
+              <FormattedMessage
+                id="Blog.publicadopor"
+                defaultMessage="Publicado Por"
+              />
+              <Link className="blog" to="/">{" " + blog.idUsuario + " "}</Link>
+              {fecha.toString()}</p>
           </div>
           <div className="col-lg-3">
             <React.Fragment>
-              <button disabled={!((localStorage.getItem("username")===blog.idUsuario)&&(localStorage.getItem("login") === "true"))} className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>
+              <button disabled={!((localStorage.getItem("username") === blog.idUsuario) && (localStorage.getItem("login") === "true"))} className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>
                 <FormattedMessage
                   id="Blog.borrar"
                   defaultMessage="Borrar"
                 /></button>
-              {((localStorage.getItem("username")===blog.idUsuario)&&(localStorage.getItem("login") === "true"))&&<Link  className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>
+              {((localStorage.getItem("username") === blog.idUsuario) && (localStorage.getItem("login") === "true")) && <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>
                 <FormattedMessage
                   id="Blog.actualizar"
                   defaultMessage="Actualizar"
                 />
               </Link>}
-              {!((localStorage.getItem("username")===blog.idUsuario)&&(localStorage.getItem("login") === "true"))&&<button  className="btn btn-warning btn-lg btn-block" disabled={true}>
+              {!((localStorage.getItem("username") === blog.idUsuario) && (localStorage.getItem("login") === "true")) && <button className="btn btn-warning btn-lg btn-block" disabled={true}>
                 <FormattedMessage
                   id="Blog.actualizar"
                   defaultMessage="Actualizar"

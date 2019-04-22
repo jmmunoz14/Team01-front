@@ -7,7 +7,7 @@ import BlogDetail from './BlogDetail'
 import axios from 'axios'
 import { Route } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl';
-
+import Swal from 'sweetalert2'
 export class Blogs extends Component {
 
     constructor(props) {
@@ -16,8 +16,8 @@ export class Blogs extends Component {
             blogs: [],
             materias: [],
             chats: [],
-            es: false,
-            en: false,
+            es: true,
+            en: true,
             test: "",
         }
     }
@@ -40,54 +40,140 @@ export class Blogs extends Component {
             enabled: true,
             comentarios: []
         }
+
         axios.post('http://localhost:3000/chats', chat).then(res => {
+
             this.setState({ chats: [...this.state.chats, res.data] })
+
             var blognew = {
                 titulo: blog.titulo,
                 descripcion: blog.descripcion,
                 idUsuario: blog.idUsuario,
                 date: blog.date,
                 idChat: this.state.chats[this.state.chats.length - 1].chatCreada._id,
-                comentarios: [{ idUsuario: blog.idUsuario, comentario: 'tested' }]
+                comentarios: [{ idUsuario: blog.idUsuario, comentario: 'tested' }],
+                idioma: blog.idioma
             }
+
             axios
                 .post('http://localhost:3000/blogs', blognew)
                 .then(res => {
+
                     this.setState({ blogs: [...this.state.blogs, res.data] })
-                    window.location.reload();
+
+                    var done = "Done!"
+                    var blog = 'Your Blog has been created!'
+
+                    if (window.navigator.language.startsWith("es")) {
+                        done = "Listo!"
+                        blog = "Tu Blog ha sido creado"
+                    }
+                    Swal.fire(
+                        done,
+                        blog,
+                        'success'
+                    ).then((result) => {
+                        if (result.value) {
+                            window.location.reload()
+                        }
+                    })
                 })
         })
     }
 
     handleDeleteBlog = (id, idChat) => {
-        console.log(id)
-        axios.delete(`http://localhost:3000/blogs/${id}`).then(res =>
-            this.setState({
-                blogs: [...this.state.blogs.filter(blog => blog._id !== id)]
-            })
-        )
 
-        axios.delete(`http://localhost:3000/chats/${idChat}`).then(res =>
-            this.setState({
-                chats: [...this.state.chats.filter(chat => chat._id !== idChat)]
-            })
-        )
+        var sure = 'Are you sure?'
+        var revert = "You won't be able to revert this!"
+        var confirm = 'Yes, delete it!'
+        var delet = "Deleted!"
+        var deletedd = "Your Blog has been deleted."
+        if (window.navigator.language.startsWith("es")) {
+            sure = "¿Estás seguro?"
+            revert = "No es posible revertir este cambio"
+            confirm = " Si, Borrarlo"
+            delet = "Borrado!"
+            deletedd = "Tu Blog ha sido borrado."
+        }
+
+        Swal.fire({
+            title: sure,
+            text: revert,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: confirm
+        }).then((result) => {
+            if (result.value) {
+                axios.delete(`http://localhost:3000/blogs/${id}`).then(res =>
+                    this.setState({
+                        blogs: [...this.state.blogs.filter(blog => blog._id !== id)]
+                    })
+                )
+
+                axios.delete(`http://localhost:3000/chats/${idChat}`).then(res => {
+                    this.setState({ chats: [...this.state.chats.filter(chat => chat._id !== idChat)] })
+                    Swal.fire(
+                        delet,
+                        deletedd,
+                        'success'
+                    )
+                }
+                )
+
+            }
+        })
+
+
     }
 
     handlePutBlog = (blog, id) => {
         const { blogs } = this.state
-        axios.put(`http://localhost:3000/blogs/${id}`, blog).then(res =>
+        axios.put(`http://localhost:3000/blogs/${id}`, blog).then(res => {
             this.setState({ blogs: [...blogs.splice(blogs.indexOf(blogs.find(blog => blog._id === id)), 1, res.data)] })
+            var done = "Done!"
+            var blog = 'Your Blog has been updated!'
+            if (window.navigator.language.startsWith("es")) {
+                done = "Listo!"
+                blog = "Tu Blog ha sido actualizado"
+            }
+            Swal.fire(
+                done,
+                blog,
+                'success'
+            ).then((result) => {
+                if (result.value) {
+                    window.location.reload()
+                }
+            })
+        }
         )
     }
 
     onChange = e => {
+        e.preventDefault();
         this.setState({ [e.target.name]: e.target.value })
-        console.log(this.state.test)
+        if (e.target.value === "Any" || e.target.value === "Cualquiera") {
+            this.setState({ es: true })
+            this.setState({ en: true })
+        }
+        else if (e.target.value === "Español" || e.target.value === "Spanish") {
+            this.setState({ es: true })
+            this.setState({ en: false })
+        }
+        else if (e.target.value === "Inglés" || e.target.value === "English") {
+            this.setState({ en: true })
+            this.setState({ es: false })
+        }
+        else {
+            this.setState({ en: false })
+            this.setState({ es: false })
+        }
     };
 
     render() {
-        const { blogs, en, es } = this.state
+        const { blogs, en, es, test } = this.state
         const { match } = this.props
         return (
             <div style={{ backgroundColor: "white" }}>
@@ -97,9 +183,10 @@ export class Blogs extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-8 col-md-10 mx-auto">
+                                    <hr />
                                     <div className="row">
                                         <div className="col">
-                                            <h2 className="blog">
+                                            <h2 className="blog" style={{ color: '#0069D1' }}>
                                                 <FormattedMessage
                                                     id="Blog.idioma"
                                                     defaultMessage="Idioma:"
@@ -107,28 +194,22 @@ export class Blogs extends Component {
                                             </h2>
                                         </div>
                                         <div className="col">
-                                            <select id="idiomas" onChange={this.onChange} value={this.state.test} name="test" class="form-control form-control-lg">
-                                                <FormattedMessage id="{option.name}">
-                                                    {(message) => <option value="{option.value}">{message}</option>}
-                                                </FormattedMessage>
-                                                <option value="es">
-                                                    <FormattedMessage
-                                                        id="Blog.es"
-                                                        defaultMessage="es"
-                                                    />
-                                                </option>
-                                                <option values="en">
-                                                    <FormattedMessage
-                                                        id="Blog.en"
-                                                        defaultMessage="en"
-                                                    />
-                                                </option>
-                                            </select>
+                                            <label className="ocult">
+                                                .
+                                            <select id="idiomas" onChange={this.onChange} value={test} name="test" className="form-control form-control-lg">
+                                                    <FormattedMessage id="Blog.cualquiera" defaultMessage="Cualquiera" tagName='option' />
+                                                    <FormattedMessage id="Blog.es" defaultMessage="es" tagName='option' />
+                                                    <FormattedMessage id="Blog.en" defaultMessage="en" tagName='option' />
+                                                </select>
+                                            </label>
                                         </div>
                                     </div>
-
-
-                                    {blogs.map((blog, blogIndex) => (
+                                    <hr />
+                                    <hr />
+                                    {es && blogs.filter(blog => blog.idioma === "es").map((blog, blogIndex) => (
+                                        <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />
+                                    ))}
+                                    {en && blogs.filter(blog => blog.idioma === "en").map((blog, blogIndex) => (
                                         <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />
                                     ))}
                                     {localStorage.getItem("login") === "true" && <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
@@ -179,5 +260,4 @@ export class Blogs extends Component {
         )
     }
 }
-
 export default Blogs

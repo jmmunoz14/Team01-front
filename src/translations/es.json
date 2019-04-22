@@ -39,7 +39,11 @@
     "Materia.clickQuiz": "Haz click aquí para ir al único quiz disponible",
     "Habilidad.titulo": "Encuentra tus juegos por habilidad!",
     "Habilidad.clickQuiz": "Haz click aquí para ir al único quiz disponible",
-    "Blog.idioma": "Idioma",
+    "Blog.idioma": "Idioma:",
     "Blog.es": "Español",
-    "Blog.en": "Inglés"
+    "Blog.en": "Inglés",
+    "tagline":"¡El mejor sitio de ayuda en matematica!",
+    "Toolbar.inicio":"Inicio",
+    "obligatorio":"Los campos con * son obligatorios",
+    "Blog.cualquiera": "Cualquiera"
 }

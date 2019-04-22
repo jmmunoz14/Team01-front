@@ -19,8 +19,7 @@ html {
   line-height: 2;
   margin-right: 10px;
   font-size: 30px;
-  text-align: justify;
-  text-justify: inter-word;
+
   padding-left:100px;
 }
 
@@ -37,8 +36,6 @@ html {
   color:rgb(255, 255, 255);
   line-height: 1.2;
   font-size: 36px;
-  text-align: justify;
-  text-justify: inter-word;
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 
 }
@@ -46,8 +43,7 @@ html {
   font-weight: 800;
   line-height: 1.2;
   font-size: 20px;
-  text-align: justify;
-  text-justify: inter-word;
+
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
   color: #505050;
 }
@@ -76,7 +72,7 @@ html {
   font-weight: 800;
   line-height: 1.2;
   font-size: 25px;
-  text-justify: inter-word;
+
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 .welcome2{
@@ -84,7 +80,7 @@ html {
   font-weight: 800;
   line-height: 1.2;
   font-size: 36px;
-  text-justify: inter-word;
+
   font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 /* change the brand and text color */
