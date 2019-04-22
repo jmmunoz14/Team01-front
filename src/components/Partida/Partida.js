@@ -1,55 +1,42 @@
-import React, { Component } from 'react'
-import { FormattedMessage } from 'react-intl';
+import React, { Component } from "react"
+import { FormattedMessage } from "react-intl"
 
 export class Partida extends Component {
   //<button className="btn btn-danger btn-lg btn-block" onClick={handleDeletePartida}>Borrar</button>
   //<Link className="btn btn-warning btn-lg btn-block" to={"/partidas/api/put/" + partida._id}>Actualizar</Link>
   render() {
-    const { partida, usuarios } = this.props;
+    const { partida, usuarios } = this.props
     return (
       <React.Fragment>
-        <h2 className="blog" style={partida.finalizado ? { color: 'green' } : { color: 'red' }}>
-          <FormattedMessage
-            id="Partida.juego"
-            defaultMessage="Juego #"
-          />
+        <h2 className="blog" style={partida.finalizado ? { color: "darkgreen" } : { color: "darkred" }}>
+          <FormattedMessage id="Partida.juego" defaultMessage="Juego #" />
           {partida.idJuego}
-          {!partida.finalizado ? <FormattedMessage
-            id="Partida.encurso"
-            defaultMessage=" (En Curso)"
-          /> :
-            <FormattedMessage
-              id="Partida.terminada"
-              defaultMessage="Finalizada"
-            />}
+          {!partida.finalizado ? (
+            <FormattedMessage id="Partida.encurso" defaultMessage=" (En Curso)" />
+          ) : (
+              <FormattedMessage id="Partida.terminada" defaultMessage="Finalizada" />
+            )}
         </h2>
 
-        <table style={{
-          fontSize: "25px",
-          fontFamily: "Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif",
-          lineHeight: "1.2"
-        }} className="table">
-          <thead style={{ color: '#0069D1' }}>
+        <table
+          style={{
+            fontSize: "25px",
+            fontFamily: "Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif",
+            lineHeight: "1.2"
+          }}
+          className="table table-striped">
+          <thead style={{ color: "#0069D1" }}>
             <tr>
               <th>#</th>
               <th className="th-lg">ID</th>
               <th className="th-lg">
-                <FormattedMessage
-                  id="Toolbar.usuario"
-                  defaultMessage="UserName"
-                />
+                <FormattedMessage id="Toolbar.usuario" defaultMessage="UserName" />
               </th>
               <th className="th-lg">
-                <FormattedMessage
-                  id="Toolbar.correo"
-                  defaultMessage="Mail"
-                />
+                <FormattedMessage id="Toolbar.correo" defaultMessage="Mail" />
               </th>
               <th className="th-lg">
-                <FormattedMessage
-                  id="Partida.puntaje"
-                  defaultMessage="Puntaje"
-                />
+                <FormattedMessage id="Partida.puntaje" defaultMessage="Puntaje" />
               </th>
             </tr>
           </thead>
@@ -65,10 +52,8 @@ export class Partida extends Component {
             ))}
           </tbody>
         </table>
-        <hr>
-        </hr>
       </React.Fragment>
-    );
+    )
   }
 }
 

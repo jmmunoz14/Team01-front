@@ -229,3 +229,12 @@ code {
 [data-tip]:hover:after {
 	display:block;
 }
+
+.table td, .table th
+{
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-color:black!important;
+    color:black!important;
+}
+
