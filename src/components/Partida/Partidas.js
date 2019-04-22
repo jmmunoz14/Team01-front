@@ -32,7 +32,6 @@ export class Partidas extends Component {
 
 
     handlePostPartida = partida => {
-        // console.log(partida)
         var chat = {
             color: '#e786d1',
             enabled: true,
@@ -54,7 +53,6 @@ export class Partidas extends Component {
     }
 
     handleDeletePartida = (id, idChat) => {
-        console.log(id)
         axios.delete(`http://localhost:3000/partidas/${id}`).then(res =>
             this.setState({
                 partidas: [...this.state.partidas.filter(partida => partida._id !== id)]

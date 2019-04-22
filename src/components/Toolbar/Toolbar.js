@@ -23,7 +23,6 @@ export class Toolbar extends Component {
                 const use = res.data.filter(usuario => usuario.username === this.state.user)[0]
                 if (use) {
                     this.setState({ usuario: use })
-                    console.log(this.state.usuario)
                     if (this.state.usuario.password === this.state.password) {
                         localStorage.setItem("username", this.state.user)
                         localStorage.setItem("user", this.state.usuario)
@@ -65,7 +64,6 @@ export class Toolbar extends Component {
 
                     }
                 } else {
-                    console.log("usuario Inva")
                     var done3 = "Wrong User or Password"
                     if (window.navigator.language.startsWith("es")) {
                         done3 = "Usuario o Contraseña Incorrectos"
@@ -88,9 +86,7 @@ export class Toolbar extends Component {
 
     }
     registerUser = (e) => {
-        console.log("registro1")
         e.preventDefault();
-        console.log("registro2")
         axios
             .post('http://localhost:3000/api/register', { id: (Math.random() * 10000000000) + 200, email: this.state.email, username: this.state.user, password: this.state.password })
             .then(res => {
@@ -110,7 +106,6 @@ export class Toolbar extends Component {
                 this.setState({ usuario: res.data })
             }).catch(err => {
                 alert(err.response.data)
-                console.log(err.response.data)
             })
 
 
