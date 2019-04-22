@@ -3,6 +3,7 @@ import { origen } from '../helper/config.js'
 import { Button } from 'semantic-ui-react'
 import { Input } from 'semantic-ui-react'
 import { FormattedMessage } from 'react-intl';
+import Swal from 'sweetalert2'
 
 class Pregunta extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class Pregunta extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentWillMount() {
-        if (window.navigator.language === "en") {
+        if (window.navigator.language.startsWith("en")) {
             fetch(origen + '/api/allquestionen')
                 .then((response) => {
                     return response.json()
@@ -74,18 +75,30 @@ class Pregunta extends Component {
         if (this.state.value === this.state.preguntaas[this.state.currentQuestion].respuesta) {
             this.setState((respuestasCorrectas) => ({ respuestasCorrectas: this.state.respuestasCorrectas + 1 }),
                 () => {
-                    if (window.navigator.language === "es") {
-                        alert("Respuesta Correcta! \n numero de respuestas correctas: " + this.state.respuestasCorrectas);
+                    if (window.navigator.language.startsWith("es")) {
+						var done = 'Respuesta Correcta'
+						
+                         Swal.fire(
+                            done,
+                            ":)",
+                            'success'
+                        )
                     }
                     else {
-                        alert("Correct Answer! \n score: " + this.state.respuestasCorrectas);
+                        var done = 'Respuesta Correcta'
+						
+                         Swal.fire(
+                            done,
+                            ":)",
+                            'success'
+                        )
                     }
                 })
             if (this.state.currentQuestion < this.state.preguntaas.length - 1) {
                 this.setState({ currentQuestion: this.state.currentQuestion + 1, value: '' })
             }
             else {
-                if (window.navigator.language === "es") {
+                if (window.navigator.language.startsWith("es")) {
                     alert('Fin de las preguntas, volviendo a empezar')
                 }
                 else {
@@ -99,7 +112,7 @@ class Pregunta extends Component {
 
         }
         else {
-            if (window.navigator.language === "es") {
+            if (window.navigator.language.startsWith("es")) {
                 alert('respuesta incorrecta')
             }
             else {
