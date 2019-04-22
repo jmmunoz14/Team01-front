@@ -29,23 +29,22 @@ class Blog extends Component {
                 id="Blog.publicadopor"
                 defaultMessage="Publicado Por"
               />
-              <Link className="blog" to="/">{" " + blog.idUsuario + " "}</Link>
-              {fecha.toString()}</p>
+              <span style={{ color: "#0069D1", fontWeight: "bolder" }}>{" " + blog.idUsuario}</span>{" " + fecha.toString()}</p>
           </div>
           <div className="col-lg-3">
             <React.Fragment>
-              <button disabled={!((localStorage.getItem("username") === blog.idUsuario) && (localStorage.getItem("login") === "true"))} className="btn btn-danger btn-lg btn-block" onClick={handleDeleteBlog}>
+              <button disabled={!((localStorage.getItem("username") === blog.idUsuario) && (localStorage.getItem("login") === "true"))} className="btn btn-outline-danger btn-lg btn-block btn-outline" onClick={handleDeleteBlog}>
                 <FormattedMessage
                   id="Blog.borrar"
                   defaultMessage="Borrar"
                 /></button>
-              {((localStorage.getItem("username") === blog.idUsuario) && (localStorage.getItem("login") === "true")) && <Link className="btn btn-warning btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>
+              {((localStorage.getItem("username") === blog.idUsuario) && (localStorage.getItem("login") === "true")) && <Link className="btn btn-outline-info btn-lg btn-block" to={"/blogs/api/put/" + blog._id}>
                 <FormattedMessage
                   id="Blog.actualizar"
                   defaultMessage="Actualizar"
                 />
               </Link>}
-              {!((localStorage.getItem("username") === blog.idUsuario) && (localStorage.getItem("login") === "true")) && <button className="btn btn-warning btn-lg btn-block" disabled={true}>
+              {!((localStorage.getItem("username") === blog.idUsuario) && (localStorage.getItem("login") === "true")) && <button className="btn btn-outline-info btn-lg btn-block" disabled={true}>
                 <FormattedMessage
                   id="Blog.actualizar"
                   defaultMessage="Actualizar"

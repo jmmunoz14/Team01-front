@@ -170,12 +170,6 @@ export class Toolbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarMenu">
                     <ul className="navbar-nav mr-auto">
                         <li>
-                            <Link className="nav-item nav-link cirr" to="/"><FormattedMessage
-                                id="Toolbar.inicio"
-                                defaultMessage="Inicio"
-                            /></Link>
-                        </li>
-                        <li>
                             <Link className="nav-item nav-link cirr" to="/blogs"><FormattedMessage
                                 id="Toolbar.blogs"
                                 defaultMessage="Blogs"
@@ -215,7 +209,7 @@ export class Toolbar extends Component {
                     </ul>
                     <ul className="navbar-nav ml-auto">
 
-                        {localStorage.getItem("login") === "true" && <li className="nav-item nav-link blog">
+                        {localStorage.getItem("login") === "true" && <li id="welcome" className="nav-item nav-link blog">
                             <FormattedMessage
                                 id="Toolbar.bienvenido"
                                 defaultMessage="Bienvenido"
@@ -223,7 +217,7 @@ export class Toolbar extends Component {
                             {" " + localStorage.getItem("username") + "!!-"}
                         </li>}
 
-                        {localStorage.getItem("login") === "true" && <li style={{ fontSize: "20px", left: "100px!important", right: "0px" }} className="btn btn-danger btn-large flex-row justify-content-between" onClick={() => this.setLogin(false)}>
+                        {localStorage.getItem("login") === "true" && <li id="dropdownMenu3" style={{ fontSize: "20px", left: "100px!important", right: "0px" }} className="btn btn-danger btn-large flex-row justify-content-between" onClick={() => this.setLogin(false)}>
                             <FormattedMessage
                                 id="Toolbar.salir"
                                 defaultMessage="Salir"

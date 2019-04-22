@@ -47,11 +47,18 @@ h1.blog{
 }
 
 p.blog{
-    font-size: 18px;
+    font-size: 20px;
     font-style: italic;
+    font-weight: bold;
     margin-top: 0;
-    color: darkblue;
+    color: #404040;
 }
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
 a.blog
 {
     text-decoration: none;
@@ -238,3 +245,63 @@ code {
     color:black!important;
 }
 
+.btn-outline-danger , .btn-outline-info, .btn-outline-success
+{
+    border-bottom-width: 5px;
+    border-top-width: 5px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    font-size: 21px;
+    font-weight: bolder;
+}
+
+#dropdownMenu2{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-color: white;
+    color:#218739;
+    background-color: white;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    font-size: 23px!important;
+    font-weight: bolder;
+}
+
+#dropdownMenu1{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-color: white;
+    color:#2A7C89;
+    background-color: white;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    font-size: 23px!important;
+    font-weight: bolder;
+}
+
+#dropdownMenu3{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    border-color: white;
+    color:#C82333;
+    background-color: white;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    font-size: 23px!important;
+    font-weight: bolder;
+}
+
+#dropdownMenu3:hover{
+background-color: black;
+}
+
+#welcome{
+    margin-top: 10px;
+}

@@ -210,22 +210,22 @@ export class Blogs extends Component {
                                     {en && blogs.filter(blog => blog.idioma === "en").map((blog, blogIndex) => (
                                         <Blog blog={blog} blogIndex={blogIndex} key={blogIndex} handleDeleteBlog={() => this.handleDeleteBlog(blog._id, blog.idChat)} />
                                     ))}
-                                    {localStorage.getItem("login") === "true" && <Link className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
-                                        <p style={{ color: "black" }}>
-                                            <FormattedMessage
-                                                id="Blog.añadir"
-                                                defaultMessage="Añadir Nuevo Blog"
-                                            />
-                                        </p>
+                                    {localStorage.getItem("login") === "true" && <Link className="btn btn-outline-success btn-lg btn-block" to="/blogs/api/post">
+
+                                        <FormattedMessage
+                                            id="Blog.añadir"
+                                            defaultMessage="Añadir Nuevo Blog"
+                                        />
+
                                     </Link>
                                     }
-                                    {localStorage.getItem("login") === "false" && <button disabled={true} className="btn btn-success btn-lg btn-block" to="/blogs/api/post">
-                                        <p style={{ color: "black" }}>
-                                            <FormattedMessage
-                                                id="Blog.añadir"
-                                                defaultMessage="Añadir Nuevo Blog"
-                                            />
-                                        </p>
+                                    {localStorage.getItem("login") === "false" && <button disabled={true} className="btn btn-outline-success btn-lg btn-block" to="/blogs/api/post">
+
+                                        <FormattedMessage
+                                            id="Blog.añadir"
+                                            defaultMessage="Añadir Nuevo Blog"
+                                        />
+
                                     </button>}
 
                                 </div>
