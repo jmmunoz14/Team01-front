@@ -26,7 +26,7 @@ https://youtu.be/RA85Y5YT1QQ
 
 ### Instrucciones para ejecutar la aplicación
 
-Descargue/clone el repositorio del back-end [Team01-back](https://github.com/isis3710-uniandes/Team01-back)
+Descargue/clone el repositorio del back-end [Team01-back](https://github.com/isis3710-uniandes/Team01-back). El release para la entrega 4 es [Entrega4_Back](https://github.com/isis3710-uniandes/Team01-back/releases/tag/Entrega4back)
 
 Instale las dependencias
 ### `npm install`
