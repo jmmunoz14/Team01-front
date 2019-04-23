@@ -1,5 +1,5 @@
 ## Front TheMathGames
-En este repositorio está el código fuente de la aplicación web TheMathGames, una página para reforzar las matemáticas con juegos y quices.
+En este repositorio está el código fuente del front de la aplicación web TheMathGames, una página para reforzar las matemáticas con juegos y quices.
 Se utilizó el framework ReactJS
 
 ## Funcionalidades:
