@@ -1,7 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Front TheMathGames
 En este repositorio está el código fuente de la aplicación web TheMathGames, una página para reforzar las matemáticas con juegos y quices.
+Se utilizó el framework ReactJS
 
 ## Funcionalidades:
 En la página, el usuario puede, sin registrarse:
