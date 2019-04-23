@@ -1,24 +1,59 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Hello, with this project the user is able to:
-* Register new user
-* Log in
-* play a quiz
-* Post in a blog when loged in
-* Delete a blog when loged in
-* comment in blogs when loged in
-* watch the highestcore
-* See the subjects that the app will help him/her on.
+## Front TheMathGames
+En este repositorio está el código fuente de la aplicación web TheMathGames, una página para reforzar las matemáticas con juegos y quices.
 
-### Video with the features
+## Funcionalidades:
+En la página, el usuario puede, sin registrarse:
+* Ver los blogs disponibles (Filtrando por idioma)
+* Ver los resultados de las partidas (en curso y finalizadas), esto incluye ranking con usuarios y sus puntajes.
+* Ver las materias y sus juegos/quices
+* Ver las habilidades y sus juegos/quices
+* Crear un usuario (Registrarse)
+
+Una vez registrado el usuario puede hacer todo lo anterior y:
+* Iniciar sesión
+* Comentar en los blogs existentes
+* Crear blogs
+* Actualizaar sus blogs
+* Eliminar sus blogs
+* Acceder a los juegos/quices
+* Realizar los quices/ Jugar los juegos
+
+### Video con las funcionalidades
 https://youtu.be/RA85Y5YT1QQ
 
 
-### Installation
-To install this project, in the project directory, you can run:
-### `npm Install`
-To install project dependencies.
+### Instrucciones para ejecutar la aplicación
+
+Descargue/clone el repositorio del back-end [Team01-back](https://github.com/isis3710-uniandes/Team01-back)
+
+Instale las dependencias
+### `npm install`
+Actualice npm
+### `npm update`
+Si es necesario, realice los fixes pertinentes
+### `npm audit fix`
+Ejecute el proyecto
 ### `npm start`
+
+Ahora, debería tener corriendo el back-end en localhost:3000
+
+Ahora, descargue/clone este repositorio y haga lo propio
+
+Instale las dependencias
+### `npm install`
+Actualice npm
+### `npm update`
+Si es necesario, realice los fixes pertinentes
+### `npm audit fix`
+Ejecute el proyecto
+### `npm start`
+Ahora, debería tener corriendo el front-end en localhost:3006
+
+
+Info. extra autogenerada por Create-react-app:
+----------------------------------------------
 
 ### `WARNING`
 It is very important to run first the back of this project, after that you should start the front, React will ask you if you wish
