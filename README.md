@@ -9,6 +9,11 @@ Hello, with this project the user is able to:
 * comment in blogs when loged in
 * watch the highestcore
 * See the subjects that the app will help him/her on.
+
+### Video with the features
+https://youtu.be/RA85Y5YT1QQ
+
+
 ### Installation
 To install this project, in the project directory, you can run:
 ### `npm Install`
