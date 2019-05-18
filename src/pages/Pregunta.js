@@ -152,7 +152,7 @@ class Pregunta extends Component {
     }
 
     render() {
-        if (localStorage.getItem("login") === "false") {
+        if (localStorage.getItem("login") !== "true") {
             return (
 
                 <div className='todo'>

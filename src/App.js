@@ -16,14 +16,16 @@ import Materias from './components/Materia/Materias';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      user: "userr"
+      
     };
   }
   render() {
 
+    
+    
     return (
       <Router>
 
@@ -70,7 +72,7 @@ class App extends Component {
 
           <Route exact path='/' render={props => (
             <Fragment>
-
+              
               <img src={require("./images/mathicon.png")} className="mainImage" alt="Icono" ></img>
               <h1 className='welcome'> <FormattedMessage id="Bienvenido a"/> </h1>
               <h1 className='welcome2'>The Math Games</h1>
