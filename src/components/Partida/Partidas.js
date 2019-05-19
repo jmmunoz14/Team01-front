@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Partida from "./Partida";
+import BarChart from "./BarChart";
+
 import PostPartida from './PostPartida'
 import PutPartida from './PutPartida'
 import axios from 'axios'
@@ -14,6 +16,18 @@ export class Partidas extends Component {
             chats: [],
             usuarios: [],
             cargaUsuarios: false,
+            data: [
+                { year: 2012, percent: 10 },
+                { year: 2013, percent: 20 },
+                { year: 2014, percent: 30 },
+                { year: 2015, percent: 40 },
+                { year: 2016, percent: 50 },
+                { year: 2017, percent: 60 },
+                { year: 2018, percent: 70 },
+                { year: 2019, percent: 80 },
+                { year: 2020, percent: 90 },
+                { year: 2021, percent: 100 },
+            ],
         }
     }
     componentDidMount = () => {
@@ -76,7 +90,10 @@ export class Partidas extends Component {
     //<Link className="btn btn-success btn-lg btn-block" to="/partidas/api/post">Añadir Nuevo Partida</Link>
 
     render() {
-        const { partidas, usuarios } = this.state
+        const { partidas, usuarios, data } = this.state
+
+
+
         return (
             <Fragment>
                 <h1 className="blog" style={{ color: '#0069D1' }}>
@@ -85,15 +102,27 @@ export class Partidas extends Component {
                         defaultMessage="Partidas en Curso"
                     />
                 </h1>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-8 col-md-10 mx-auto">
-                            {this.state.cargaUsuarios && partidas.map((partida, partidaIndex) => (
-                                <Partida usuarios={usuarios} partida={partida} partidaIndex={partidaIndex} key={partidaIndex} handleDeletePartida={() => this.handleDeletePartida(partida._id, partida.idChat)} />))}
 
+
+
+
+
+                {this.state.cargaUsuarios && partidas.map((partida, partidaIndex) => (
+                    <div className="row">
+                        <div className="col-lg-3"></div>
+                        <div className="col-lg-6">
+                            <div className="row-lg-9" style={{ height: "400px" }}>
+                                <BarChart partida={partida} maxVal={50} />
+                            </div>
+                            <div className="row-lg-3">
+                                <Partida usuarios={usuarios} partida={partida} partidaIndex={partidaIndex} key={partidaIndex} handleDeletePartida={() => this.handleDeletePartida(partida._id, partida.idChat)} />
+                            </div>
                         </div>
+                        <div className="col-lg-3"></div>
                     </div>
-                </div>
+                ))}
+
+
 
                 <Route exact path='/partidas/api/post' render={props => (
                     <Fragment>
@@ -114,3 +143,4 @@ export class Partidas extends Component {
 }
 
 export default Partidas
+                                //</Fragment><Partida usuarios={usuarios} partida={partida} partidaIndex={partidaIndex} key={partidaIndex} handleDeletePartida={() => this.handleDeletePartida(partida._id, partida.idChat)} />))}
