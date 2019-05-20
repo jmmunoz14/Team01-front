@@ -10,6 +10,7 @@ export class Chat extends Component {
       chat: {},
       comentLoad: false,
       nuevoComentario: "",
+      authHeader: "Team01 " + String(localStorage.getItem('USERTOKEN')).replace('\n','').trim(),
       hovered: false
     };
   }
@@ -22,12 +23,17 @@ export class Chat extends Component {
   }
 
   postComentario = comentario => {
+    console.log(comentario)
     const { chat } = this.state;
     var colorr = chat.color;
     if (comentario[0] === "#") {
+      console.log("entra 1")
       colorr = comentario;
     } else {
+      
       chat.comentarios.push({ idUsuario: localStorage.getItem("username"), comentario: comentario });
+      console.log(chat.comentarios)
+     
     }
     var newChat = {
       _id: chat._id,
@@ -35,7 +41,13 @@ export class Chat extends Component {
       enabled: chat.enabled,
       comentarios: chat.comentarios
     };
-    axios.put(`http://localhost:3000/chats/${chat._id}`, newChat).then(res => {
+
+    
+    axios.put(`http://localhost:3000/chats/${chat._id}`, newChat, {
+      headers: {
+                  authorization: this.state.authHeader
+              }
+  }).then(res => {
       this.setState({ chat: res.data });
     });
   };
