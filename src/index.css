@@ -46,6 +46,14 @@ h1.blog{
     text-align: center!important;
 }
 
+h3.blog{
+    font-weight: 800;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    line-height: 1.1;
+    font-size: 30px;
+    text-align: center!important;
+}
+
 p.blog{
     font-size: 20px;
     font-style: italic;

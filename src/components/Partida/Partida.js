@@ -8,15 +8,7 @@ export class Partida extends Component {
     const { partida, usuarios } = this.props
     return (
       <React.Fragment>
-        <h2 className="blog" style={partida.finalizado ? { color: "darkgreen" } : { color: "darkred" }}>
-          <FormattedMessage id="Partida.juego" defaultMessage="Juego #" />
-          {partida.idJuego}
-          {!partida.finalizado ? (
-            <FormattedMessage id="Partida.encurso" defaultMessage=" (En Curso)" />
-          ) : (
-              <FormattedMessage id="Partida.terminada" defaultMessage="Finalizada" />
-            )}
-        </h2>
+
 
         <table
           style={{

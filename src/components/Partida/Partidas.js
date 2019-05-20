@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Partida from "./Partida";
 import BarChart from "./BarChart";
 
+
 import PostPartida from './PostPartida'
 import PutPartida from './PutPartida'
 import axios from 'axios'
@@ -16,6 +17,8 @@ export class Partidas extends Component {
             chats: [],
             usuarios: [],
             cargaUsuarios: false,
+            cargatodos: false,
+            todos: [],
             data: [
                 { year: 2012, percent: 10 },
                 { year: 2013, percent: 20 },
@@ -33,7 +36,26 @@ export class Partidas extends Component {
     componentDidMount = () => {
         axios
             .get('http://localhost:3000/partidas')
-            .then(res => this.setState({ partidas: res.data }))
+            .then(res => {
+                this.setState({ partidas: res.data })
+                var acc = [];
+                const todos = res.data.map((partida, indexP) =>
+
+                    partida.puntajes.map((puntaje, index) => {
+
+                        var rObj = {};
+                        rObj["id"] = partida.idUsuarios[index];
+                        rObj["puntaje"] = puntaje;
+                        rObj["partida"] = partida.idJuego;
+
+
+                        acc.push(rObj)
+                    })
+                );
+                this.setState({ todos: todos })
+                this.setState({ cargatodos: true })
+                console.log(acc);
+            })
         axios
             .get('http://localhost:3000/api/obtainall')
             .then(res => {
@@ -90,9 +112,12 @@ export class Partidas extends Component {
     //<Link className="btn btn-success btn-lg btn-block" to="/partidas/api/post">Añadir Nuevo Partida</Link>
 
     render() {
-        const { partidas, usuarios, data } = this.state
-
-
+        const { partidas, usuarios } = this.state
+        /*var rObj = {};
+       rObj["id"] = usuarios[partida.idUsuarios[index] - 1].username;
+       rObj["puntaje"] = puntaje;
+       rObj["email"] = usuarios[partida.idUsuarios[index] - 1].email;
+       return rObj;*/
 
         return (
             <Fragment>
@@ -109,14 +134,13 @@ export class Partidas extends Component {
 
                 {this.state.cargaUsuarios && partidas.map((partida, partidaIndex) => (
                     <div className="row">
-                        <div className="col-lg-3"></div>
-                        <div className="col-lg-6">
-                            <div className="row-lg-9" style={{ height: "400px" }}>
-                                <BarChart partida={partida} maxVal={50} />
-                            </div>
-                            <div className="row-lg-3">
-                                <Partida usuarios={usuarios} partida={partida} partidaIndex={partidaIndex} key={partidaIndex} handleDeletePartida={() => this.handleDeletePartida(partida._id, partida.idChat)} />
-                            </div>
+                        <div className="col-lg-3">
+                        </div>
+                        <div className="col-lg-6" style={{ height: "600px" }}>
+
+                            <BarChart usuarios={usuarios} partida={partida} maxVal={50} key={partidaIndex} llave={partidaIndex} />
+
+
                         </div>
                         <div className="col-lg-3"></div>
                     </div>
