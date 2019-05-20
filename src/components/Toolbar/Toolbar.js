@@ -15,6 +15,70 @@ export class Toolbar extends Component {
         };
     }//.filter(usuario=>usuario.username===this.state.username)
 
+    setLoggedUser = (e) => {
+        e.preventDefault();
+ 
+        axios.get('http://localhost:3000/api/login', 
+            { 
+                headers: { 
+                            username: this.state.user,
+                            password: this.state.password
+                         }      
+            })
+        .then(res =>{
+
+            const token = res.data['token'];
+            if(token){
+                console.log("Works fine");
+                console.log('token',token);
+                const responseUser = res.data['user'];
+                this.setState({usuario: responseUser});
+
+                localStorage.setItem("username", this.state.user)
+                localStorage.setItem("user", this.state.usuario)
+                localStorage.setItem("login", "true")
+                localStorage.setItem("id", this.state.usuario._id)
+                localStorage.setItem('USERTOKEN', token);
+
+
+                var done = 'Successful Login!';
+
+                if (window.navigator.language.startsWith("es")) {
+                    done = "Inicio Exitoso!"
+                }
+                Swal.fire(
+                    done,
+                    ":)",
+                    'success'
+                ).then((result) => {
+                    if (result.value) {
+                        window.location.reload()
+                    }
+                });
+
+            }else{
+                localStorage.setItem("login", "false")
+                var done2 = "Wrong User or Password"
+                if (window.navigator.language.startsWith("es")) {
+                    done2 = "Usuario o Contraseña Incorrectos"
+                }
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: done2
+                }).then((result) => {
+                    if (result.value) {
+                        window.location.reload()
+                    }
+                })
+                localStorage.setItem("username", "")
+                localStorage.setItem("id", "")
+
+                console.log('Does not work')
+            }
+        });
+    }
+
     setLogedUser = (e) => {
         e.preventDefault();
         axios
@@ -111,10 +175,11 @@ export class Toolbar extends Component {
 
     }
     setLogin = (login) => {
-        localStorage.setItem("login", login ? "true" : "false")
-        localStorage.setItem("username", "")
-        localStorage.setItem("id", "")
-        var done = 'Successful Logout!'
+        localStorage.setItem("login", login ? "true" : "false");
+        localStorage.setItem("username", "");
+        localStorage.setItem("id", "");
+        localStorage.setItem("USERTOKEN", "");
+        var done = 'Successful Logout!';
         if (window.navigator.language.startsWith("es")) {
             done = "Salida Exitosa!"
         }
@@ -302,7 +367,7 @@ export class Toolbar extends Component {
                                 <span className="caret"></span></button>
                             <ul className="dropdown-menu dropdown-menu-right mt-2">
                                 <li className="px-3 py-2">
-                                    <form className="form" onSubmit={this.setLogedUser}>
+                                    <form className="form" onSubmit={this.setLoggedUser}>
                                         <div className="form-group">
                                             <label>
                                                 <FormattedMessage

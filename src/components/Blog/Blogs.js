@@ -19,17 +19,22 @@ export class Blogs extends Component {
             es: true,
             en: true,
             test: "",
+            authHeader: "Team01 " + String(localStorage.getItem('USERTOKEN')).replace('\n','').trim(),
+            backCargado: false,
+            backCargado2: false
+
         }
     }
 
     componentDidMount() {
         axios
             .get('http://localhost:3000/blogs')
-            .then(res => this.setState({ blogs: res.data }))
-
+            .then(res => {
+                this.setState({ blogs: res.data, backCargado: true })
+            })
         axios
             .get('http://localhost:3000/chats')
-            .then(res => this.setState({ chats: res.data }))
+            .then(res => this.setState({ chats: res.data, backCargado2: true }))
     }
 
     handlePostBlog = blog => {
@@ -39,7 +44,11 @@ export class Blogs extends Component {
             comentarios: []
         }
 
-        axios.post('http://localhost:3000/chats', chat).then(res => {
+        axios.post('http://localhost:3000/chats', chat, {
+            headers: {
+                        authorization: this.state.authHeader
+                    }
+        }).then(res => {
 
             this.setState({ chats: [...this.state.chats, res.data] })
 
@@ -53,9 +62,16 @@ export class Blogs extends Component {
                 idioma: blog.idioma
             }
 
+
             axios
-                .post('http://localhost:3000/blogs', blognew)
+                .post('http://localhost:3000/blogs', blognew, {
+                        headers: {
+                                    authorization: this.state.authHeader
+                                }
+                    })
                 .then(res => {
+                    console.log(res.statusText);
+                    console.log('config', res.config);
 
                     this.setState({ blogs: [...this.state.blogs, res.data] })
 
@@ -104,13 +120,21 @@ export class Blogs extends Component {
             confirmButtonText: confirm
         }).then((result) => {
             if (result.value) {
-                axios.delete(`http://localhost:3000/blogs/${id}`).then(res =>
+                axios.delete(`http://localhost:3000/blogs/${id}`, {
+                    headers: {
+                                authorization: this.state.authHeader
+                            }
+                }).then(res =>
                     this.setState({
                         blogs: [...this.state.blogs.filter(blog => blog._id !== id)]
                     })
                 )
 
-                axios.delete(`http://localhost:3000/chats/${idChat}`).then(res => {
+                axios.delete(`http://localhost:3000/chats/${idChat}`, {
+                    headers: {
+                                authorization: this.state.authHeader
+                            }
+                }).then(res => {
                     this.setState({ chats: [...this.state.chats.filter(chat => chat._id !== idChat)] })
                     Swal.fire(
                         delet,
@@ -128,7 +152,11 @@ export class Blogs extends Component {
 
     handlePutBlog = (blog, id) => {
         const { blogs } = this.state
-        axios.put(`http://localhost:3000/blogs/${id}`, blog).then(res => {
+        axios.put(`http://localhost:3000/blogs/${id}`, blog, {
+            headers: {
+                        authorization: this.state.authHeader
+                    }
+        }).then(res => {
             this.setState({ blogs: [...blogs.splice(blogs.indexOf(blogs.find(blog => blog._id === id)), 1, res.data)] })
             var done = "Done!"
             var blog = 'Your Blog has been updated!'
@@ -171,8 +199,28 @@ export class Blogs extends Component {
     };
 
     render() {
+
+        
         const { blogs, en, es, test } = this.state
         const { match } = this.props
+
+        if(!this.state.backCargado || !this.state.backCargado2){
+            return(
+                <div className="m-auto">
+                    <img  src= "images/loader.gif"
+                        alt={
+                                navigator.language.includes("en")
+                                ? "Loading data:"
+                                : "Cargando la información:" 
+                            }/>
+                    <h1>{
+                                navigator.language.includes("en")
+                                ? "We're loading the data"
+                                : "Estamos cargando la información" 
+                            }</h1>
+                </div>
+            ) ;
+        }else
         return (
             <div style={{ backgroundColor: "white" }}>
                 <Route exact path="/blogs" render={props => (

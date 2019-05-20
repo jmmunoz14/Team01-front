@@ -7,20 +7,21 @@ class Pregunta extends Component {
         super(props);
 
         this.state = {
-            preguntaas:
-                [
-                    {
-                        id: '',
-                        materia: '',
-                        respuesta: '',
-
-                    }
-
-                ],
+           
             currentQuestion: 0,
+            backCargado :false,
+            preguntaas:
+            [
+                {
+                    id: '',
+                    materia: '',
+                    respuesta: '',
+                }
+
+            ],
 
 
-        }
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -34,7 +35,7 @@ class Pregunta extends Component {
                 return json;
             })
             .then((json) => {
-                this.setState({ preguntaas: json });
+                this.setState({ preguntaas: json , backCargado: true});
             });
 
     }
@@ -55,6 +56,24 @@ class Pregunta extends Component {
     }
 
     render() {
+        console.log(this.state.backCargado);
+        if(!this.state.backCargado){
+            return(
+                <div className="m-auto">
+                    <img  src= "images/loader.gif"
+                        alt={
+                                navigator.language.includes("en")
+                                ? "Loading data:"
+                                : "Cargando la información:" 
+                            }/>
+                    <h1>{
+                                navigator.language.includes("en")
+                                ? "We're loading the data"
+                                : "Estamos cargando la información" 
+                            }</h1>
+                </div>
+            ) ;
+        }else
         return (
             <main>
                 <div>

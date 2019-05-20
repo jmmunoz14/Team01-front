@@ -31,6 +31,9 @@ export class Partidas extends Component {
                 { year: 2020, percent: 90 },
                 { year: 2021, percent: 100 },
             ],
+            backCargado : false,
+            backCargado2 : false,
+            
         }
     }
     componentDidMount = () => {
@@ -53,14 +56,14 @@ export class Partidas extends Component {
                     })
                 );
                 this.setState({ todos: todos })
-                this.setState({ cargatodos: true })
+                this.setState({ cargatodos: true , backCargado:true})
                 console.log(acc);
             })
         axios
             .get('http://localhost:3000/api/obtainall')
             .then(res => {
                 this.setState({ usuarios: res.data })
-                this.setState({ cargaUsuarios: true })
+                this.setState({ cargaUsuarios: true , backCargado2: true})
             })
     }
 
@@ -118,8 +121,24 @@ export class Partidas extends Component {
        rObj["puntaje"] = puntaje;
        rObj["email"] = usuarios[partida.idUsuarios[index] - 1].email;
        return rObj;*/
-
-        return (
+       if(!this.state.backCargado || !this.state.backCargado2){
+        return(
+            <div className="m-auto">
+                <img  src= "images/loader.gif"
+                    alt={
+                            navigator.language.includes("en")
+                            ? "Loading data:"
+                            : "Cargando la información:" 
+                        }/>
+                <h1>{
+                            navigator.language.includes("en")
+                            ? "We're loading the data"
+                            : "Estamos cargando la información" 
+                        }</h1>
+            </div>
+        ) ;
+    }else
+    return (
             <Fragment>
                 <h1 className="blog" style={{ color: '#0069D1' }}>
                     <FormattedMessage
