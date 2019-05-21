@@ -36,7 +36,7 @@ Si es necesario, realice los fixes pertinentes
 Ejecute el proyecto
 ### `npm start`
 
-Ahora, debería tener corriendo el back-end en localhost:3000
+Ahora, debería tener corriendo el back-end en https://team01back.herokuapp.com
 
 Ahora, descargue/clone este repositorio y haga lo propio
 

@@ -38,7 +38,7 @@ export class Partidas extends Component {
     }
     componentDidMount = () => {
         axios
-            .get('http://localhost:3000/partidas')
+            .get('https://team01back.herokuapp.compartidas')
             .then(res => {
                 this.setState({ partidas: res.data })
                 var acc = [];
@@ -60,7 +60,7 @@ export class Partidas extends Component {
                 console.log(acc);
             })
         axios
-            .get('http://localhost:3000/api/obtainall')
+            .get('https://team01back.herokuapp.comapi/obtainall')
             .then(res => {
                 this.setState({ usuarios: res.data })
                 this.setState({ cargaUsuarios: true , backCargado2: true})
@@ -76,7 +76,7 @@ export class Partidas extends Component {
             enabled: true,
             comentarios: []
         }
-        axios.post('http://localhost:3000/chats', chat).then(res => {
+        axios.post('https://team01back.herokuapp.comchats', chat).then(res => {
             this.setState({ chats: [...this.state.chats, res.data] })
             var partidanew = {
                 idUsuarios: partida.idUsuarios,
@@ -86,19 +86,19 @@ export class Partidas extends Component {
                 idChat: this.state.chats[this.state.chats.length - 1].chatCreada._id
             }
             axios
-                .post('http://localhost:3000/partidas', partidanew)
+                .post('https://team01back.herokuapp.compartidas', partidanew)
                 .then(res => this.setState({ partidas: [...this.state.partidas, res.data] }))
         })
     }
 
     handleDeletePartida = (id, idChat) => {
-        axios.delete(`http://localhost:3000/partidas/${id}`).then(res =>
+        axios.delete(`https://team01back.herokuapp.compartidas/${id}`).then(res =>
             this.setState({
                 partidas: [...this.state.partidas.filter(partida => partida._id !== id)]
             })
         )
 
-        axios.delete(`http://localhost:3000/chats/${idChat}`).then(res =>
+        axios.delete(`https://team01back.herokuapp.comchats/${idChat}`).then(res =>
             this.setState({
                 chats: [...this.state.chats.filter(chat => chat._id !== idChat)]
             })
@@ -107,7 +107,7 @@ export class Partidas extends Component {
 
     handlePutPartida = (partida, id) => {
         const { partidas } = this.state
-        axios.put(`http://localhost:3000/partidas/${id}`, partida).then(res =>
+        axios.put(`https://team01back.herokuapp.compartidas/${id}`, partida).then(res =>
             this.setState({ partidas: [...partidas.splice(partidas.indexOf(partidas.find(partida => partida._id === id)), 1, res.data)] })
         )
     }

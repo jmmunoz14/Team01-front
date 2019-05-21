@@ -16,11 +16,11 @@ export class PutBlog extends Component {
 
     componentDidMount = () => {
         axios
-            .get('http://localhost:3000/materias')
+            .get('https://team01back.herokuapp.commaterias')
             .then(res => this.setState({ materias: res.data }))
 
         axios
-            .get('http://localhost:3000/blogs/' + this.props.match.params.id)
+            .get('https://team01back.herokuapp.comblogs/' + this.props.match.params.id)
             .then(res => {
                 this.setState({ titulo: res.data.titulo })
                 this.setState({ descripcion: res.data.descripcion })

@@ -16,7 +16,7 @@ export class Chat extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/chats/" + this.props.idChat).then(res => {
+    axios.get("https://team01back.herokuapp.comchats/" + this.props.idChat).then(res => {
       this.setState({ chat: res.data });
       this.setState({ comentLoad: true });
     });
@@ -43,7 +43,7 @@ export class Chat extends Component {
     };
 
     
-    axios.put(`http://localhost:3000/chats/${chat._id}`, newChat, {
+    axios.put(`https://team01back.herokuapp.comchats/${chat._id}`, newChat, {
       headers: {
                   authorization: this.state.authHeader
               }

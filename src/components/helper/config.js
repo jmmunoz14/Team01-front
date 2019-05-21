@@ -1,2 +1,2 @@
-const origen = 'http://localhost:3000'
+const origen = 'http://https://team01back.herokuapp.com'
 export {origen}

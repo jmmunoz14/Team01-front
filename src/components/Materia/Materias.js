@@ -68,7 +68,7 @@ export class Materias extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/materias/')
+        fetch('https://team01back.herokuapp.commaterias/')
             .then(results => {
                 return results.json();
 

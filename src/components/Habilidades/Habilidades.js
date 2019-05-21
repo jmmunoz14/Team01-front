@@ -71,7 +71,7 @@ export class Habilidades extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/habilidades/')
+        fetch('https://team01back.herokuapp.comhabilidades/')
             .then(results => {
                 return results.json();
 
